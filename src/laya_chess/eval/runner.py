@@ -98,13 +98,27 @@ def git_state() -> dict:
         return {"commit": None, "uncommitted_changes": None}
 
 
+def cpu_name() -> str:
+    """The CPU's marketing name (platform.processor() only gives a family code on Windows)."""
+    if platform.system() == "Windows":
+        import winreg
+
+        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"HARDWARE\DESCRIPTION\System\CentralProcessor\0")
+        return winreg.QueryValueEx(key, "ProcessorNameString")[0].strip()
+    if Path("/proc/cpuinfo").exists():
+        for line in Path("/proc/cpuinfo").read_text().splitlines():
+            if line.startswith("model name"):
+                return line.split(":", 1)[1].strip()
+    return platform.processor()
+
+
 def environment() -> dict:
     import torch
 
     env = {
         "python": platform.python_version(),
         "os": platform.platform(),
-        "cpu": platform.processor(),
+        "cpu": cpu_name(),
         "gpu": torch.cuda.get_device_name() if torch.cuda.is_available() else None,
         "packages": {p: version(p) for p in ("torch", "laya", "chess")},
     }

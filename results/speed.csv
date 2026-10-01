@@ -1,0 +1,10 @@
+device,hardware,batch_size,ms_per_position,positions_per_s,peak_vram_mb
+cuda,NVIDIA GeForce RTX 5080,1,17.881,52.9,2320
+cuda,NVIDIA GeForce RTX 5080,4,6.76,145.8,2348
+cuda,NVIDIA GeForce RTX 5080,16,4.912,206.2,2471
+cuda,NVIDIA GeForce RTX 5080,64,5.257,190.6,2969
+cuda,NVIDIA GeForce RTX 5080,256,5.231,191.0,5061
+cpu,AMD Ryzen 9 9900X 12-Core Processor,1,280.48,3.7,
+cpu,AMD Ryzen 9 9900X 12-Core Processor,4,247.458,4.0,
+cpu,AMD Ryzen 9 9900X 12-Core Processor,16,264.037,3.8,
+cpu,AMD Ryzen 9 9900X 12-Core Processor,64,282.502,3.6,

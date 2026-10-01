@@ -33,7 +33,7 @@ change. That way the numbers stay comparable from one milestone to the next.
 |---|---|---|
 | 0. Setup | Environment, Laya and Stockfish wrappers, first test | Laya picks a move and we see how long it took |
 | 1. Test harness | Test positions, metrics, the per-move record format | A results table for random play and Stockfish |
-| 2. Out of the box | Question 1, speed on GPU and CPU, accuracy vs number of legal moves | First charts and the first step of the Elo ladder |
+| 2. Speed and hardware | Speed on GPU and CPU, batching, chart style (shortened, since Phase 1 already answered question 1) | First charts |
 | 3. Training | Build a dataset, train, calibrate, evaluate | Trained checkpoints and the Elo ladder going up |
 | 4. Strength vs time | Engine matches, question 3 | The main chart: Elo vs milliseconds per move |
 | 5. Fallback | Question 4, try different confidence thresholds | Elo vs average time per move |
@@ -46,7 +46,7 @@ together.
 
 - **2026-10-01:** Keep all four questions.
 - **2026-10-01:** Ask Laya with one multiple-choice question: the position is the input, every legal move is an
-  option ("Option A"). Revisit after Phase 2.
+  option ("Option A"). Revisit during Phase 3, once Laya knows some chess.
 - **2026-10-01:** Visuals matter as much as the numbers: an Elo ladder across milestones and a replay video
   showing speed and Elo.
 - **2026-10-01:** Write moves as `Nf3` (SAN), not `g1f3` (UCI). Laya gives each option only about 4 tokens, and
@@ -56,6 +56,7 @@ together.
   Committed to the repo, never used for training. See [testsets/README.md](../testsets/README.md).
 - **2026-10-01:** Answer key: Stockfish 19 evaluates every legal move of every test position (300,000 nodes each).
   Grading any engine is then a lookup, which will make checking training checkpoints fast.
+- **2026-10-01:** Phase 2 shortened to speed and hardware only, since Laya out of the box plays like random.
 - **2026-10-01:** Only small summary tables go into git (`results/summary.csv`). Raw per-move records stay local in
   `runs/`.
 
@@ -90,8 +91,28 @@ Tested on an RTX 5080, Laya 0.3.22, one position at a time.
 - Times include Python's overhead for every engine (about 0.5 ms for talking to Stockfish). Stockfish runs on one CPU
   thread. Stockfish's memory is cleared between test positions outside the timed window.
 
+## What Phase 2 showed
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../figures/laya_speed-dark.png">
+  <img alt="Laya time per position on an RTX 5080: 17.9 ms one at a time, about 5 ms in batches of 16 or more" src="../figures/laya_speed.png">
+</picture>
+
+- **One move at a time (what a game needs): about 18 ms on the GPU.** Batching 16 or more positions brings it down to
+  about 5 ms per position (about 200 per second). Evaluating the full test sets then takes about 15 seconds.
+- **GPU memory: 2.3 GB** one at a time, 5 GB for batches of 256. Any recent GPU with 4 GB or more is enough.
+- **CPU: about 250–280 ms per position**, and batching doesn't help. Playing on a CPU works, but about 15× slower.
+- **The model itself is the bottleneck**, not preparing its input: in a batch of 64, the forward pass takes 259 ms
+  and preparing the input 56 ms. Training cost scales with this, so faster attention or compiled kernels are worth
+  trying at the start of Phase 3.
+- Laya's own batch function asks the same question about every input, but each chess position has its own legal
+  moves. Batching therefore uses Laya's internal steps directly (`LayaEngine.choose_batch`). It picks the same move
+  as one-at-a-time in 63 of 64 positions; the difference is rounding in the lower-precision maths.
+- Chart style: one look for every chart, in a light and a dark version that follow the reader's GitHub theme.
+  Stockfish is always blue, Laya always orange, simple baselines gray. The colors are checked for color-blind safety.
+
 ## Still open
 
 - Demo video: Python (draw frames, join with ffmpeg) or a web replay page that we record. A web page could
-  also run live on GitHub Pages. Decide by Phase 2.
+  also run live on GitHub Pages. Doesn't block Phase 3; decide before the first games are recorded in Phase 4.
 - Whether to also try "Option D" (Laya's encoder with a chess-specific output layer) as a comparison.
