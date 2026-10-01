@@ -8,6 +8,7 @@ Because the options are exactly the legal moves, Laya can never play an illegal 
 from __future__ import annotations
 
 import time
+from importlib.metadata import version
 
 import chess
 import laya
@@ -52,6 +53,8 @@ class LayaEngine:
         self.notation = notation
         self.state_format = state_format
         self.name = f"laya[{subfolder or 'english'}|{notation}|{state_format}]"
+        self.version = f"laya {version('laya')}"
+        self.device = str(self.agent.device)
 
     def warmup(self) -> float:
         """Run a few dummy forward passes so the first timed move isn't paying CUDA start-up costs."""

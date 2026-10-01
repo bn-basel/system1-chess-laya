@@ -52,15 +52,25 @@ class StockfishEngine:
         self.engine.configure(options)
 
         self.version = self.engine.id.get("name", "unknown")
+        self.device = "cpu"
         self.name = f"stockfish[{self._describe_limit()}" + (f"|elo={elo}" if elo else "") + "]"
 
     def _describe_limit(self) -> str:
         parts = [f"{k}={v}" for k in ("depth", "nodes", "time") if (v := getattr(self.limit, k)) is not None]
         return ",".join(parts) or "unlimited"
 
+    def reset(self) -> None:
+        """Forget earlier positions (clears the hash table). Called between unrelated test positions.
+
+        Done here and waited for (ping), so the clearing isn't counted in the next move's time.
+        """
+        self.engine.configure({"Clear Hash": None})
+        self.engine.ping()
+
     def choose(self, board: chess.Board) -> MoveDecision:
         t0 = time.perf_counter()
-        result = self.engine.play(board, self.limit, info=chess.engine.INFO_BASIC | chess.engine.INFO_SCORE)
+        info = chess.engine.INFO_BASIC | chess.engine.INFO_SCORE
+        result = self.engine.play(board, self.limit, info=info)
         latency_ms = (time.perf_counter() - t0) * 1000
 
         score = result.info.get("score")

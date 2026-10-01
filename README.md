@@ -7,7 +7,20 @@ answer from a list of options in a single step, without thinking ahead. This pro
 choose chess moves, and measures how good and how fast those moves are compared with Stockfish. First as it comes,
 then after training it on chess.
 
-> **Status:** Phase 0 done (setup and first test). See the [roadmap](docs/roadmap.md).
+> **Status:** Phase 1 done (test harness and baselines). See the [roadmap](docs/roadmap.md).
+
+## First results
+
+Tested on 1,000 Lichess puzzles and 2,000 positions from real games ([details](testsets/README.md)).
+
+| Engine | Puzzles solved | Win-chance lost per move (games) | Time per move (median) |
+|---|---:|---:|---:|
+| Random moves | 4.9% | 21.3% | 26 µs |
+| Stockfish, 1 node | 78.8% | 2.5% | 0.6 ms |
+| Stockfish, 10,000 nodes | 98.9% | 0.7% | 6.6 ms |
+| **Laya, before any training** | 4.7% | 21.1% | 19.4 ms (GPU) |
+
+Out of the box, Laya plays no better than random. The next step is to find out how far chess training can take it.
 
 ## Quick start
 
@@ -15,10 +28,12 @@ You need [uv](https://docs.astral.sh/uv/). An NVIDIA GPU is recommended but not 
 
 ```bash
 uv sync
-uv run python scripts/smoke_test.py
+uv run python scripts/smoke_test.py          # Laya picks moves on a few positions
+uv run python scripts/evaluate.py laya       # full test: puzzles and game positions
+uv run python scripts/results_table.py       # results so far
 ```
 
-The first run downloads the Laya model (about 1.7 GB). Stockfish is optional for this test, see
+The first run downloads the Laya model (about 1.7 GB). Stockfish is needed for Stockfish runs, see
 [engines/README.md](engines/README.md).
 
 ## License

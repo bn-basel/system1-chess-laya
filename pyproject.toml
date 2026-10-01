@@ -10,6 +10,8 @@ dependencies = [
     "torch>=2.7",
     "chess>=1.11",
     "numpy>=1.26",
+    "zstandard>=0.25.0",
+    "tqdm>=4.70.1",
 ]
 
 # RTX 50-series (Blackwell) GPUs need a PyTorch build against CUDA 12.8 or newer;
@@ -25,6 +27,11 @@ explicit = true
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/laya_chess"]
