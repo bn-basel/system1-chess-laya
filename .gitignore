@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.ruff_cache/
+
+# Engine programs (downloaded separately, see engines/README.md)
+engines/*/
+
+# Large files: datasets, model checkpoints, raw logs
+data/
+checkpoints/
+runs/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
