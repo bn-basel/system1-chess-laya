@@ -57,6 +57,32 @@ def evaluate(engine: Engine, positions: list[dict]) -> list[dict]:
     return records
 
 
+def evaluate_batched(engine, positions: list[dict], batch_size: int = 64) -> list[dict]:
+    """Like `evaluate`, but many positions per forward pass (Laya only). Much faster, so it's used to score
+    training checkpoints. The latency is the batch time divided by the batch size, not the time to play a move."""
+    records = []
+    for i in range(0, len(positions), batch_size):
+        chunk = positions[i : i + batch_size]
+        boards = [chess.Board(p["fen"]) for p in chunk]
+        for pos, board, decision in zip(chunk, boards, engine.choose_batch(boards)):
+            move = decision.move
+            record = {
+                "engine": engine.name,
+                "set": pos["set"],
+                "id": pos["id"],
+                "move_uci": move.uci(),
+                "latency_ms": round(decision.latency_ms, 3),
+                "confidence": decision.confidence,
+                "correct": is_correct(pos, move),
+                "wp_loss": round(wp_loss(pos["values"], move.uci()), 4),
+                "batched": True,
+            }
+            if "rating" in pos:
+                record["rating"] = pos["rating"]
+            records.append(record)
+    return records
+
+
 def percentile(sorted_values: list[float], q: float) -> float:
     return sorted_values[round(q * (len(sorted_values) - 1))]
 

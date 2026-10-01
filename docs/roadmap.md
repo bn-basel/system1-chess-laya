@@ -57,6 +57,17 @@ together.
 - **2026-10-01:** Answer key: Stockfish 19 evaluates every legal move of every test position (300,000 nodes each).
   Grading any engine is then a lookup, which will make checking training checkpoints fast.
 - **2026-10-01:** Phase 2 shortened to speed and hardware only, since Laya out of the box plays like random.
+- **2026-10-01:** Demo video: a web replay page built from the per-move records, recorded to video. The same page
+  can run live on GitHub Pages.
+- **2026-10-01:** Training data: the [Lichess evaluation database](https://database.lichess.org/#evals) (deep
+  Stockfish analysis, CC0), streamed so only the slice we use is downloaded. Test-set positions are removed.
+- **2026-10-01:** Training targets: soft targets. Where several moves are evaluated, the target is spread over them
+  by how good each one is; otherwise it's the best move.
+- **2026-10-01:** Training recipe: Laya's official one (soft-target loss + RLCD + re-calibration on held-out data).
+- **2026-10-01:** Training budget: a short pilot, then a ~4-5 hour run, then overnight runs while Laya keeps improving.
+- **2026-10-01:** Training settings: batches of 32 with gradient checkpointing, 2 batches per optimizer step. Batches
+  of 24 or more without checkpointing overflow the 16 GB GPU, and Windows then silently uses system RAM, which made
+  training 2.5x slower or worse. Checkpointing keeps peak memory at 9 GB for about 17% less speed.
 - **2026-10-01:** Only small summary tables go into git (`results/summary.csv`). Raw per-move records stay local in
   `runs/`.
 
@@ -111,8 +122,17 @@ Tested on an RTX 5080, Laya 0.3.22, one position at a time.
 - Chart style: one look for every chart, in a light and a dark version that follow the reader's GitHub theme.
   Stockfish is always blue, Laya always orange, simple baselines gray. The colors are checked for color-blind safety.
 
+## What Phase 3 has shown so far
+
+**Pilot (50k positions, 10 minutes):** puzzles solved went from 4.7% to 32.6%, and win-chance lost per move from
+21% to 16%. That beats the "grab material" player on every measure. Most of the gain came in the first 20k positions;
+after that the curve flattens, partly because in a short run the learning rate is already near zero by then.
+Calibration now works: the fitted temperature for positions with 11+ moves is 0.98 (the shipped one was 0.10).
+
+**Training data:** 6M positions from the Lichess evaluation database (every 2nd position of the first 12.2M). 46
+positions that also appear in the test sets were removed. Half the positions have 5 or more evaluated moves, which
+is what soft targets need.
+
 ## Still open
 
-- Demo video: Python (draw frames, join with ffmpeg) or a web replay page that we record. A web page could
-  also run live on GitHub Pages. Doesn't block Phase 3; decide before the first games are recorded in Phase 4.
 - Whether to also try "Option D" (Laya's encoder with a chess-specific output layer) as a comparison.

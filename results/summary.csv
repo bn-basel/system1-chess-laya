@@ -17,3 +17,5 @@ run_id,engine,device,set,n,correct,wp_loss,latency_p50_ms,latency_p95_ms
 20261001-143740_stockfish-nodes-100000-,stockfish[nodes=100000],cpu,puzzles,1000,0.997,0.001,47.714,62.985
 20261001-143848_laya-english-san-fen-,laya[english|san|fen],cuda,games,2000,0.0335,0.2106,19.404,24.258
 20261001-143848_laya-english-san-fen-,laya[english|san|fen],cuda,puzzles,1000,0.047,0.7254,19.564,25.008
+20261001-154755_laya-pilot-final-san-fen-,laya[pilot/final|san|fen],cuda,games,2000,0.1885,0.1623,17.31,21.077
+20261001-154755_laya-pilot-final-san-fen-,laya[pilot/final|san|fen],cuda,puzzles,1000,0.326,0.4968,17.256,23.475

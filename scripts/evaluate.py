@@ -5,6 +5,7 @@ Examples:
     uv run python scripts/evaluate.py greedy
     uv run python scripts/evaluate.py stockfish --nodes 1000
     uv run python scripts/evaluate.py laya --device cuda
+    uv run python scripts/evaluate.py laya --model checkpoints/pilot/final   # a trained checkpoint
     uv run python scripts/evaluate.py laya --limit 50        # quick check on the first 50 positions per set
 
 Writes runs/<run_id>/ (moves.jsonl + manifest.json) and appends to results/summary.csv.
@@ -40,7 +41,7 @@ def make_engine(args: argparse.Namespace):
     if args.engine == "laya":
         from laya_chess.engines.laya_engine import LayaEngine
 
-        engine = LayaEngine(device=args.device, notation=args.notation, state_format=args.state)
+        engine = LayaEngine(model=args.model, device=args.device, notation=args.notation, state_format=args.state)
         engine.warmup()
         return engine
     raise ValueError(args.engine)
@@ -53,6 +54,7 @@ def main() -> None:
     parser.add_argument("--limit", type=int, help="only use the first N positions of each set (for quick checks)")
     parser.add_argument("--seed", type=int, default=0, help="random and greedy engines")
     parser.add_argument("--nodes", type=int, default=1000, help="stockfish: nodes per move")
+    parser.add_argument("--model", default="convaiinnovations/laya", help="laya: base model or a trained checkpoint")
     parser.add_argument("--device", default=None, help="laya: cuda or cpu (default: auto)")
     parser.add_argument("--notation", choices=["san", "uci"], default="san", help="laya")
     parser.add_argument("--state", choices=["fen", "fen_ascii"], default="fen", help="laya")

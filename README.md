@@ -7,7 +7,7 @@ answer from a list of options in a single step, without thinking ahead. This pro
 choose chess moves, and measures how good and how fast those moves are compared with Stockfish. First as it comes,
 then after training it on chess.
 
-> **Status:** Phase 2 done (speed and hardware). See the [roadmap](docs/roadmap.md).
+> **Status:** Phase 3 in progress (training Laya on chess). Pilot run done. See the [roadmap](docs/roadmap.md).
 
 ## First results
 
@@ -18,14 +18,21 @@ Tested on 1,000 Lichess puzzles and 2,000 positions from real games ([details](t
 | Random moves | 4.9% | 21.3% | 26 µs |
 | Stockfish, 1 node | 78.8% | 2.5% | 0.6 ms |
 | Stockfish, 10,000 nodes | 98.9% | 0.7% | 6.6 ms |
-| **Laya, before any training** | 4.7% | 21.1% | 19.4 ms (GPU) |
+| Laya, before any training | 4.7% | 21.1% | 19.4 ms (GPU) |
+| **Laya, after a 10-minute pilot (50k positions)** | 32.6% | 16.2% | 17.3 ms (GPU) |
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/strength_vs_time-dark.png">
-  <img alt="Puzzles solved vs time per move: Stockfish solves 79-100% of puzzles in 0.5-60 ms; untrained Laya solves 5% in 19 ms, the same as random moves" src="figures/strength_vs_time.png">
+  <img alt="Puzzles solved vs time per move: Stockfish solves 79-100% of puzzles in 0.5-60 ms; Laya goes from 5% before training to 33% after training on 50k positions, at about 17 ms per move" src="figures/strength_vs_time.png">
 </picture>
 
-Out of the box, Laya plays no better than random. The next step is to find out how far chess training can take it.
+Out of the box, Laya plays no better than random. After training on 50,000 positions analysed by Stockfish, it already
+beats a "grab material" player. Longer training runs are next.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/learning_curve-dark.png">
+  <img alt="Learning curve: puzzles solved rises from 5% to 32% over the first 50k training positions" src="figures/learning_curve.png">
+</picture>
 
 **Hardware:** Laya needs about 2.3 GB of GPU memory. On an RTX 5080 it takes about 18 ms per move, or about
 5 ms per position when positions are processed in batches. On a CPU (Ryzen 9 9900X) it takes about 280 ms per move.
@@ -42,6 +49,8 @@ uv run python scripts/evaluate.py laya       # full test: puzzles and game posit
 uv run python scripts/results_table.py       # results so far
 uv run python scripts/make_charts.py         # redraw the charts in figures/
 ```
+
+To train Laya yourself, see [docs/training.md](docs/training.md).
 
 The first run downloads the Laya model (about 1.7 GB). Stockfish is needed for Stockfish runs, see
 [engines/README.md](engines/README.md).

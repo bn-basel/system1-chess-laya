@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import time
 from importlib.metadata import version
+from pathlib import Path
 
 import chess
 import laya
@@ -42,6 +43,28 @@ def encode_moves(board: chess.Board, notation: str = "san") -> dict[str, chess.M
     raise ValueError(f"unknown notation {notation!r}")
 
 
+def build_question(board: chess.Board, notation: str = "san") -> tuple[dict, dict[str, chess.Move]]:
+    """The multiple-choice question for this position, and which move each option stands for."""
+    moves = encode_moves(board, notation)
+    if not moves:
+        raise ValueError("no legal moves: the game is over")
+    side = "white" if board.turn == chess.WHITE else "black"
+    question = {"type": "choice", "instructions": INSTRUCTIONS.format(side=side), "criteria": list(moves)}
+    return question, moves
+
+
+def encode_position(agent, board: chess.Board, notation: str = "san", state_format: str = "fen"):
+    """Tokenize a position exactly the way Laya does before a forward pass.
+
+    Used for batched play and for training, so the model is trained on precisely the input it later sees.
+    Returns (item, internal question, label -> move). Raises ValueError if the options don't fit Laya's input.
+    """
+    question, moves = build_question(board, notation)
+    internal = {"move": agent._to_internal(question)}
+    item = agent._encode_state(encode_state(board, state_format), ["move"], internal)[0]
+    return item, internal, moves
+
+
 class LayaEngine:
     def __init__(
         self,
@@ -50,26 +73,24 @@ class LayaEngine:
         device: str | None = None,
         notation: str = "san",
         state_format: str = "fen",
+        agent: laya.Agent | None = None,
     ):
-        self.agent = laya.load(model, device=device, subfolder=subfolder)
+        """`model` is a Hugging Face id or a local folder with a trained checkpoint. Pass `agent` to wrap an
+        already-loaded model instead (used to evaluate during training)."""
+        self.agent = agent or laya.load(model, device=device, subfolder=subfolder)
         self.notation = notation
         self.state_format = state_format
-        self.name = f"laya[{subfolder or 'english'}|{notation}|{state_format}]"
+        # A trained checkpoint is named after its run folder, e.g. "pilot/final".
+        checkpoint = (
+            Path(model).parent.name + "/" + Path(model).name if Path(model).is_dir() else (subfolder or "english")
+        )
+        self.name = f"laya[{checkpoint}|{notation}|{state_format}]"
         self.version = f"laya {version('laya')}"
         self.device = str(self.agent.device)
 
     def warmup(self) -> float:
         """Run a few dummy forward passes so the first timed move isn't paying CUDA start-up costs."""
         return self.agent.warmup()
-
-    def _question(self, board: chess.Board) -> tuple[dict, dict[str, chess.Move]]:
-        """The multiple-choice question for this position, and which move each option stands for."""
-        moves = encode_moves(board, self.notation)
-        if not moves:
-            raise ValueError("no legal moves: the game is over")
-        side = "white" if board.turn == chess.WHITE else "black"
-        question = {"type": "choice", "instructions": INSTRUCTIONS.format(side=side), "criteria": list(moves)}
-        return question, moves
 
     @staticmethod
     def _decision(answer: dict, moves: dict[str, chess.Move], latency_ms: float, usage: dict | None) -> MoveDecision:
@@ -86,7 +107,7 @@ class LayaEngine:
         )
 
     def choose(self, board: chess.Board) -> MoveDecision:
-        question, moves = self._question(board)
+        question, moves = build_question(board, self.notation)
         state = encode_state(board, self.state_format)
 
         # Timed end to end (tokenisation + forward pass + decoding): that is the real cost of a move.
@@ -109,10 +130,8 @@ class LayaEngine:
         t0 = time.perf_counter()
         prepared = []
         for board in boards:
-            question, moves = self._question(board)
-            internal = {"move": agent._to_internal(question)}
-            items = agent._encode_state(encode_state(board, self.state_format), ["move"], internal)
-            prepared.append((moves, internal, items))
+            item, internal, moves = encode_position(agent, board, self.notation, self.state_format)
+            prepared.append((moves, internal, [item]))
 
         batch = collate_items([items for _, _, items in prepared], agent.tok.pad_token_id)
         logits, act = agent._forward(batch)

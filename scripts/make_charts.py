@@ -31,6 +31,14 @@ def format_ms(ms: float, _pos=None) -> str:
     return f"{ms:g} ms"
 
 
+def format_positions(n: float, _pos=None) -> str:
+    if n >= 1_000_000:
+        return f"{n / 1_000_000:g}M"
+    if n >= 1000:
+        return f"{n / 1000:g}k"
+    return f"{n:g}"
+
+
 def strength_vs_time(theme: dict):
     """Puzzles solved against time per move: the chart this whole project is about."""
     latest = {(r["engine"], r["set"]): r for r in read_csv("summary.csv")}
@@ -57,12 +65,26 @@ def strength_vs_time(theme: dict):
             ax.annotate(text, (t, c), xytext=(8, -14), textcoords="offset points", fontsize=8.5,
                         color=theme["ink_secondary"])  # fmt: skip
 
-    laya = next(r for e, r in puzzles.items() if e.startswith("laya"))
-    t, c = float(laya["latency_p50_ms"]), float(laya["correct"])
-    ax.plot(t, c, "o", markersize=9, color=theme["laya"], markeredgecolor=theme["surface"], markeredgewidth=1.5,
-            zorder=5, label="Laya")  # fmt: skip
-    ax.annotate("Laya, before training", (t, c), xytext=(-10, 12), textcoords="offset points", ha="right",
-                fontsize=9, fontweight="semibold", color=theme["ink"])  # fmt: skip
+    # Laya before training (hollow) and the latest trained checkpoint (filled), joined by an arrow.
+    base = puzzles["laya[english|san|fen]"]
+    t0, c0 = float(base["latency_p50_ms"]), float(base["correct"])
+    ax.plot(t0, c0, "o", markersize=9, markerfacecolor=theme["surface"], markeredgecolor=theme["laya"],
+            markeredgewidth=2, zorder=5, label="Laya")  # fmt: skip
+    ax.annotate("Laya, before training", (t0, c0), xytext=(-10, 6), textcoords="offset points", ha="right",
+                fontsize=9, color=theme["ink_secondary"])  # fmt: skip
+    trained = [e for e in puzzles if e.startswith("laya[") and "/" in e]
+    if trained:
+        engine = trained[-1]  # the most recently evaluated checkpoint
+        run = engine[len("laya[") :].split("/")[0]
+        positions = int(read_csv(f"training/{run}.csv")[-1]["positions_seen"])
+        t1, c1 = float(puzzles[engine]["latency_p50_ms"]), float(puzzles[engine]["correct"])
+        ax.annotate("", (t1, c1), (t0, c0), arrowprops={"arrowstyle": "-|>", "color": theme["laya"], "lw": 1.5,
+                    "shrinkA": 7, "shrinkB": 7}, zorder=4)  # fmt: skip
+        ax.plot(t1, c1, "o", markersize=9, color=theme["laya"], markeredgecolor=theme["surface"],
+                markeredgewidth=1.5, zorder=5)  # fmt: skip
+        ax.annotate(f"Laya, trained on {format_positions(positions)} positions", (t1, c1), xytext=(-10, 6),
+                    textcoords="offset points", ha="right", fontsize=9, fontweight="semibold",
+                    color=theme["ink"])  # fmt: skip
 
     for engine, label in (("random", "Random moves"), ("greedy", "Grab material")):
         r = puzzles[engine]
@@ -119,9 +141,59 @@ def laya_speed(theme: dict):
     return fig
 
 
+def longest_training_run() -> str | None:
+    """The training run that has seen the most positions (its curve is the one shown)."""
+    runs = {}
+    for path in (RESULTS / "training").glob("*.csv"):
+        rows = read_csv(f"training/{path.name}")
+        if rows:
+            runs[path.stem] = int(rows[-1]["positions_seen"])
+    return max(runs, key=runs.get) if runs else None
+
+
+def learning_curve(theme: dict, run: str):
+    """Puzzles solved as Laya trains, against the baselines it has to beat."""
+    rows = read_csv(f"training/{run}.csv")
+    latest = {(r["engine"], r["set"]): r for r in read_csv("summary.csv")}
+
+    fig, ax = new_figure(
+        theme,
+        "Laya learning chess",
+        f"Puzzles solved (of 1,000) after training on more and more positions. Training run: {run}.",
+    )
+    xs = [int(r["positions_seen"]) for r in rows]
+    ys = [float(r["puzzles_solved"]) for r in rows]
+    ax.plot(xs, ys, color=theme["laya"], linewidth=2, zorder=3)
+    ax.plot(xs, ys, "o", markersize=6, color=theme["laya"], markeredgecolor=theme["surface"], markeredgewidth=1.5,
+            zorder=4)  # fmt: skip
+    ax.annotate(f"{ys[-1]:.0%}", (xs[-1], ys[-1]), xytext=(0, 10), textcoords="offset points", ha="center",
+                fontsize=9, fontweight="semibold", color=theme["ink"])  # fmt: skip
+
+    references = [
+        ("stockfish[nodes=1]", "Stockfish, 1 node", theme["stockfish"]),
+        ("greedy", "Grab material", theme["muted"]),
+        ("random", "Random moves", theme["muted"]),
+    ]
+    for engine, label, color in references:
+        y = float(latest[(engine, "puzzles")]["correct"])
+        ax.axhline(y, color=color, linewidth=1, linestyle=(0, (4, 3)), zorder=2)
+        ax.annotate(label, (1.0, y), xycoords=("axes fraction", "data"), xytext=(-4, 4), textcoords="offset points",
+                    ha="right", fontsize=8.5, color=theme["ink_secondary"])  # fmt: skip
+
+    ax.set_xlim(0, xs[-1] * 1.03)
+    ax.xaxis.set_major_formatter(FuncFormatter(format_positions))
+    ax.set_xlabel("Training positions seen")
+    ax.set_ylim(0, 1.0)
+    ax.yaxis.set_major_formatter(PercentFormatter(1.0, decimals=0))
+    ax.set_ylabel("Puzzles solved")
+    return fig
+
+
 def main() -> None:
     save_both_themes(strength_vs_time, FIGURES / "strength_vs_time.png")
     save_both_themes(laya_speed, FIGURES / "laya_speed.png")
+    if run := longest_training_run():
+        save_both_themes(lambda theme: learning_curve(theme, run), FIGURES / "learning_curve.png")
     print(f"Wrote charts to {FIGURES.relative_to(REPO_ROOT)}/")
 
 
