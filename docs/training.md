@@ -34,6 +34,7 @@ didn't evaluate get 0. With only one evaluated move, the target is simply that m
 ```bash
 uv run python scripts/build_trainset.py                    # stream 6M positions (~30 min, ~800 MB on disk)
 uv run python scripts/train.py --run pilot --positions 50000 --eval-every 10000
+uv run python scripts/overnight.py --run overnight1 --positions 2500000   # train + test + charts, ~9 h
 uv run python scripts/evaluate.py laya --model checkpoints/pilot/final
 uv run python scripts/make_charts.py
 ```

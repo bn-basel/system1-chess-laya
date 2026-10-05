@@ -17,6 +17,7 @@ import argparse
 import csv
 import json
 import math
+import platform
 import random
 import statistics
 import time
@@ -84,6 +85,15 @@ def validate(model, agent, examples: list[dict], device) -> dict:
     return {"val_loss": statistics.mean(losses), "val_top1": statistics.mean(hits)}
 
 
+def keep_awake() -> None:
+    """Ask Windows not to sleep while this process runs (the request ends when it exits; no setting is changed)."""
+    if platform.system() == "Windows":
+        import ctypes
+
+        es_continuous, es_system_required = 0x80000000, 0x00000001
+        ctypes.windll.kernel32.SetThreadExecutionState(es_continuous | es_system_required)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--run", required=True, help="name of this training run")
@@ -106,6 +116,7 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args()
 
+    keep_awake()
     torch.manual_seed(args.seed)
     device = torch.device("cuda")
     ckpt_dir = REPO_ROOT / "checkpoints" / args.run
