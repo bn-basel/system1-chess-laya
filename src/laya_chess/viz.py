@@ -24,6 +24,8 @@ THEMES = {
         "axis": "#c3c2b7",
         "stockfish": "#2a78d6",
         "laya": "#eb6834",
+        "alt_1": "#1baf7a",  # extra series, for comparing Laya variants (checked together with "laya")
+        "alt_2": "#4a3aa7",
     },
     "dark": {
         "surface": "#1a1a19",
@@ -34,6 +36,8 @@ THEMES = {
         "axis": "#383835",
         "stockfish": "#3987e5",
         "laya": "#d95926",
+        "alt_1": "#199e70",
+        "alt_2": "#9085e9",
     },
 }
 
@@ -45,26 +49,31 @@ def _font() -> str:
     return next(name for name in FONTS if name in installed or name == "DejaVu Sans")
 
 
-def new_figure(theme: dict, title: str, subtitle: str, size=(8, 5)):
-    """A figure with the title and subtitle left-aligned above the plot, and quiet axes."""
+def new_figure(theme: dict, title: str, subtitle: str, size=(8, 5), ncols: int = 1):
+    """A figure with the title and subtitle left-aligned above the plot(s), and quiet axes.
+
+    Returns (fig, ax), or (fig, list of axes) when ncols > 1.
+    """
     plt.rcParams.update({"font.family": _font(), "font.size": 10})
-    fig, ax = plt.subplots(figsize=size, dpi=200)
+    fig, axes = plt.subplots(1, ncols, figsize=size, dpi=200, squeeze=False)
+    axes = list(axes[0])
     fig.patch.set_facecolor(theme["surface"])
-    ax.set_facecolor(theme["surface"])
     fig.text(0.07, 0.95, title, fontsize=14, fontweight="semibold", color=theme["ink"], va="top")
     fig.text(0.07, 0.895, subtitle, fontsize=9.5, color=theme["ink_secondary"], va="top")
-    fig.subplots_adjust(left=0.1, right=0.95, top=0.8, bottom=0.13)
+    fig.subplots_adjust(left=0.1, right=0.95, top=0.8, bottom=0.13, wspace=0.3)
 
-    for side in ("top", "right"):
-        ax.spines[side].set_visible(False)
-    for side in ("left", "bottom"):
-        ax.spines[side].set_color(theme["axis"])
-    ax.tick_params(colors=theme["muted"], labelcolor=theme["ink_secondary"], length=3)
-    ax.grid(True, color=theme["grid"], linewidth=0.6)
-    ax.set_axisbelow(True)
-    ax.xaxis.label.set_color(theme["ink_secondary"])
-    ax.yaxis.label.set_color(theme["ink_secondary"])
-    return fig, ax
+    for ax in axes:
+        ax.set_facecolor(theme["surface"])
+        for side in ("top", "right"):
+            ax.spines[side].set_visible(False)
+        for side in ("left", "bottom"):
+            ax.spines[side].set_color(theme["axis"])
+        ax.tick_params(colors=theme["muted"], labelcolor=theme["ink_secondary"], length=3)
+        ax.grid(True, color=theme["grid"], linewidth=0.6)
+        ax.set_axisbelow(True)
+        ax.xaxis.label.set_color(theme["ink_secondary"])
+        ax.yaxis.label.set_color(theme["ink_secondary"])
+    return (fig, axes[0]) if ncols == 1 else (fig, axes)
 
 
 def save_both_themes(draw: Callable[[dict], plt.Figure], path: Path) -> None:

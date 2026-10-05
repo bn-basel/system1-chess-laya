@@ -7,6 +7,7 @@ Because the options are exactly the legal moves, Laya can never play an illegal 
 
 from __future__ import annotations
 
+import json
 import time
 from importlib.metadata import version
 from pathlib import Path
@@ -21,14 +22,34 @@ from .base import MoveDecision
 INSTRUCTIONS = "You are playing chess as {side}. Which move is best in this position?"
 
 
+STATE_FORMATS = ("fen", "fen_ascii", "fen_pieces")
+
+
+def piece_list(board: chess.Board, color: chess.Color) -> str:
+    """One side's pieces as move-style tokens, e.g. "Ke1 Qd1 Nf3 Pe4": the same square names the move options use."""
+    pieces = []
+    for piece_type in (chess.KING, chess.QUEEN, chess.ROOK, chess.BISHOP, chess.KNIGHT, chess.PAWN):
+        letter = chess.piece_symbol(piece_type).upper()
+        pieces += [letter + chess.square_name(sq) for sq in board.pieces(piece_type, color)]
+    return " ".join(pieces)
+
+
 def encode_state(board: chess.Board, state_format: str = "fen") -> dict:
-    """Turn a board into Laya's state. The format is an experiment knob, not a settled choice."""
+    """Turn a board into Laya's state. Every format keeps the FEN; the others add a clearer view of the board.
+
+    fen         the FEN and whose turn it is
+    fen_ascii   plus an 8x8 grid, one character per square
+    fen_pieces  plus a list of each side's pieces with their squares
+    """
     state = {
         "fen": board.fen(),
         "side_to_move": "white" if board.turn == chess.WHITE else "black",
     }
     if state_format == "fen_ascii":
-        state["board"] = str(board)  # 8x8 grid, one character per square
+        state["board"] = str(board)
+    elif state_format == "fen_pieces":
+        state["white"] = piece_list(board, chess.WHITE)
+        state["black"] = piece_list(board, chess.BLACK)
     elif state_format != "fen":
         raise ValueError(f"unknown state_format {state_format!r}")
     return state
@@ -71,13 +92,22 @@ class LayaEngine:
         model: str = "convaiinnovations/laya",
         subfolder: str | None = None,
         device: str | None = None,
-        notation: str = "san",
-        state_format: str = "fen",
+        notation: str | None = None,
+        state_format: str | None = None,
         agent: laya.Agent | None = None,
     ):
         """`model` is a Hugging Face id or a local folder with a trained checkpoint. Pass `agent` to wrap an
-        already-loaded model instead (used to evaluate during training)."""
+        already-loaded model instead (used to evaluate during training).
+
+        A trained checkpoint remembers the move notation and board format it was trained with, and those are used
+        unless given here. Otherwise the defaults are SAN and FEN.
+        """
         self.agent = agent or laya.load(model, device=device, subfolder=subfolder)
+        trained_with = {}
+        if (Path(model) / "training.json").exists():
+            trained_with = json.loads((Path(model) / "training.json").read_text(encoding="utf-8"))["args"]
+        notation = notation or trained_with.get("notation", "san")
+        state_format = state_format or trained_with.get("state", "fen")
         self.notation = notation
         self.state_format = state_format
         # A trained checkpoint is named after its run folder, e.g. "pilot/final".

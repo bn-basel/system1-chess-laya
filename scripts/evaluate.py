@@ -20,6 +20,7 @@ from pathlib import Path
 import chess.engine
 
 from laya_chess.data.testsets import load_jsonl
+from laya_chess.engines.laya_engine import STATE_FORMATS
 from laya_chess.eval.runner import evaluate, save_run, summarize
 
 TESTSETS = Path(__file__).resolve().parents[1] / "testsets"
@@ -56,8 +57,8 @@ def main() -> None:
     parser.add_argument("--nodes", type=int, default=1000, help="stockfish: nodes per move")
     parser.add_argument("--model", default="convaiinnovations/laya", help="laya: base model or a trained checkpoint")
     parser.add_argument("--device", default=None, help="laya: cuda or cpu (default: auto)")
-    parser.add_argument("--notation", choices=["san", "uci"], default="san", help="laya")
-    parser.add_argument("--state", choices=["fen", "fen_ascii"], default="fen", help="laya")
+    parser.add_argument("--notation", choices=["san", "uci"], help="laya (default: what the checkpoint used, or san)")
+    parser.add_argument("--state", choices=STATE_FORMATS, help="laya (default: what the checkpoint used, or fen)")
     args = parser.parse_args()
 
     meta = json.loads((TESTSETS / "meta.json").read_text(encoding="utf-8"))

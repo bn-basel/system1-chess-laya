@@ -46,6 +46,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--run", required=True)
     parser.add_argument("--positions", type=int, required=True)
+    parser.add_argument("--state", default="fen", help="board format (see train.py)")
+    parser.add_argument("--eval-every", type=int, default=100_000)
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
 
@@ -56,7 +58,8 @@ def main() -> None:
         if final.exists():
             print(f"{args.run} is already trained, skipping to the evaluation")
         else:
-            train = ["scripts/train.py", "--run", args.run, "--positions", str(args.positions)]
+            train = ["scripts/train.py", "--run", args.run, "--positions", str(args.positions), "--state", args.state,
+                     "--eval-every", str(args.eval_every)]  # fmt: skip
             run_step("Training", train + (["--resume"] if args.resume else []), log)
         run_step("Testing the final model", ["scripts/evaluate.py", "laya", "--model", f"checkpoints/{args.run}/final"],
                  log)  # fmt: skip

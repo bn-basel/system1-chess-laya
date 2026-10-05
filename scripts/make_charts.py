@@ -11,6 +11,7 @@ from pathlib import Path
 
 from matplotlib.ticker import FuncFormatter, PercentFormatter
 
+from laya_chess.experiments import BOARD_FORMAT_RUNS
 from laya_chess.viz import new_figure, save_both_themes
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -72,11 +73,15 @@ def strength_vs_time(theme: dict):
             markeredgewidth=2, zorder=5, label="Laya")  # fmt: skip
     ax.annotate("Laya, before training", (t0, c0), xytext=(-10, 6), textcoords="offset points", ha="right",
                 fontsize=9, color=theme["ink_secondary"])  # fmt: skip
-    trained = [e for e in puzzles if e.startswith("laya[") and "/" in e]
+    trained = [e for e in puzzles if e.startswith("laya[") and "/final" in e]
     if trained:
-        engine = trained[-1]  # the most recently evaluated checkpoint
-        run = engine[len("laya[") :].split("/")[0]
-        positions = int(read_csv(f"training/{run}.csv")[-1]["positions_seen"])
+        # Show the checkpoint trained on the most positions (the latest one if several tie).
+        def positions_of(engine: str) -> int:
+            run = engine[len("laya[") :].split("/")[0]
+            return int(read_csv(f"training/{run}.csv")[-1]["positions_seen"])
+
+        engine = max(reversed(trained), key=positions_of)
+        positions = positions_of(engine)
         t1, c1 = float(puzzles[engine]["latency_p50_ms"]), float(puzzles[engine]["correct"])
         ax.annotate("", (t1, c1), (t0, c0), arrowprops={"arrowstyle": "-|>", "color": theme["laya"], "lw": 1.5,
                     "shrinkA": 7, "shrinkB": 7}, zorder=4)  # fmt: skip
@@ -189,11 +194,46 @@ def learning_curve(theme: dict, run: str):
     return fig
 
 
+def board_formats(theme: dict):
+    """The board-format experiment: the same short training run with three ways of showing the board."""
+    fig, (left, right) = new_figure(
+        theme,
+        "Does a clearer board help Laya learn?",
+        "Three identical training runs that differ only in how the position is shown to Laya.",
+        size=(10, 5),
+        ncols=2,
+    )
+    for (run, label, _), color_key in zip(BOARD_FORMAT_RUNS, ("laya", "alt_1", "alt_2")):
+        rows = read_csv(f"training/{run}.csv")
+        xs = [int(r["positions_seen"]) for r in rows]
+        for ax, column in ((left, "puzzles_solved"), (right, "games_wp_loss")):
+            ys = [float(r[column]) for r in rows]
+            ax.plot(xs, ys, color=theme[color_key], linewidth=2, marker="o", markersize=5,
+                    markeredgecolor=theme["surface"], markeredgewidth=1, zorder=3, label=label)  # fmt: skip
+            ax.annotate(f"{ys[-1]:.1%}", (xs[-1], ys[-1]), xytext=(6, 0), textcoords="offset points", va="center",
+                        fontsize=8.5, color=theme["ink_secondary"])  # fmt: skip
+    for ax, ylabel in (
+        (left, "Puzzles solved (higher is better)"),
+        (right, "Win-chance lost per move (lower is better)"),
+    ):
+        ax.xaxis.set_major_formatter(FuncFormatter(format_positions))
+        ax.set_xlabel("Training positions seen")
+        ax.yaxis.set_major_formatter(PercentFormatter(1.0, decimals=0))
+        ax.set_ylabel(ylabel)
+    left.set_ylim(bottom=0)
+    legend = left.legend(loc="lower right", frameon=False, fontsize=9)
+    for text in legend.get_texts():
+        text.set_color(theme["ink_secondary"])
+    return fig
+
+
 def main() -> None:
     save_both_themes(strength_vs_time, FIGURES / "strength_vs_time.png")
     save_both_themes(laya_speed, FIGURES / "laya_speed.png")
     if run := longest_training_run():
         save_both_themes(lambda theme: learning_curve(theme, run), FIGURES / "learning_curve.png")
+    if all((RESULTS / "training" / f"{run}.csv").exists() for run, _, _ in BOARD_FORMAT_RUNS):
+        save_both_themes(board_formats, FIGURES / "board_formats.png")
     print(f"Wrote charts to {FIGURES.relative_to(REPO_ROOT)}/")
 
 

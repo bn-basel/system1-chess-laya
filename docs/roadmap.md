@@ -68,6 +68,8 @@ together.
 - **2026-10-01:** Training settings: batches of 32 with gradient checkpointing, 2 batches per optimizer step. Batches
   of 24 or more without checkpointing overflow the 16 GB GPU, and Windows then silently uses system RAM, which made
   training 2.5x slower or worse. Checkpointing keeps peak memory at 9 GB for about 17% less speed.
+- **2026-10-06:** After the overnight run levelled off, test clearer board formats (short runs, same settings)
+  before training longer.
 - **2026-10-01:** Only small summary tables go into git (`results/summary.csv`). Raw per-move records stay local in
   `runs/`.
 
@@ -128,6 +130,36 @@ Tested on an RTX 5080, Laya 0.3.22, one position at a time.
 21% to 16%. That beats the "grab material" player on every measure. Most of the gain came in the first 20k positions;
 after that the curve flattens, partly because in a short run the learning rate is already near zero by then.
 Calibration now works: the fitted temperature for positions with 11+ moves is 0.98 (the shipped one was 0.10).
+
+**Overnight run (2.5M positions, 7.6 hours):**
+
+| | Puzzles solved | Win-chance lost per move (games) | Best move (games) |
+|---|---:|---:|---:|
+| Before training | 4.7% | 21.1% | 3.4% |
+| Pilot, 50k positions | 32.6% | 16.2% | 18.9% |
+| Overnight, 2.5M positions | 35.3% | 12.9% | 22.8% |
+
+- Training on 50 times more data than the pilot added only about 3 points on puzzles. Moves in normal positions
+  improved more (win-chance lost per move fell from 16% to 13%).
+- The curve rises steeply in the first 300k positions and is nearly flat after that. Validation loss was still
+  falling slowly at the end, so more data would help a little, but not much.
+- Puzzle scores move by about ±1.5 points between checkpoints just from chance (1,000 puzzles), so the
+  win-chance-lost measure on 2,000 game positions is the steadier signal.
+- Calibration stays good: the fitted temperature is 1.04.
+- Training ran at 91 positions per second.
+
+**Likely bottleneck: how the board is shown.** A FEN string like `r1bqkb1r/pppp1ppp/2n2n2` is split by the text
+tokenizer into fragments like `r`, `4`, `rk`, `1`, `/`, `pp`, `qn`, so Laya has to count its way to where each piece
+stands. The next experiment (`scripts/board_experiment.py`) trains three identical 300k-position runs that differ
+only in the board format:
+
+| Format | What Laya sees | Input length (median tokens) |
+|---|---|---:|
+| `fen` | FEN and whose turn it is (as before) | 210 |
+| `fen_ascii` | plus an 8×8 grid, one character per square | 286 |
+| `fen_pieces` | plus each side's pieces with their squares, e.g. `Ke1 Qd1 Nf3`, written like the move options | 282 |
+
+The longer inputs cost speed, so the comparison also has to check time per move.
 
 **Training data:** 6M positions from the Lichess evaluation database (every 2nd position of the first 12.2M). 46
 positions that also appear in the test sets were removed. Half the positions have 5 or more evaluated moves, which

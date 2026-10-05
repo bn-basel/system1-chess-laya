@@ -31,3 +31,18 @@ def test_laya_state_says_whose_turn_it_is():
     board = chess.Board()
     board.push_san("e4")
     assert encode_state(board)["side_to_move"] == "black"
+
+
+def test_piece_list_uses_move_style_squares():
+    from laya_chess.engines.laya_engine import piece_list
+
+    board = chess.Board()
+    assert piece_list(board, chess.WHITE).startswith("Ke1 Qd1 Ra1 Rh1 Bc1 Bf1 Nb1 Ng1 Pa2")
+    assert len(piece_list(board, chess.BLACK).split()) == 16
+
+
+def test_every_state_format_keeps_the_fen():
+    from laya_chess.engines.laya_engine import STATE_FORMATS
+
+    for state_format in STATE_FORMATS:
+        assert encode_state(chess.Board(), state_format)["fen"] == chess.STARTING_FEN

@@ -9,6 +9,7 @@ Usage:
     uv run python scripts/train.py --run pilot --positions 50000 --eval-every 10000
     uv run python scripts/train.py --run run1 --positions 1000000
     uv run python scripts/train.py --run run1 --positions 1000000 --resume     # continue after a crash
+    uv run python scripts/train.py --run grid --positions 300000 --state fen_ascii   # show the board as a grid
 """
 
 from __future__ import annotations
@@ -29,7 +30,7 @@ import torch
 from huggingface_hub import snapshot_download
 
 from laya_chess.data.testsets import load_jsonl
-from laya_chess.engines.laya_engine import LayaEngine
+from laya_chess.engines.laya_engine import STATE_FORMATS, LayaEngine
 from laya_chess.eval.runner import evaluate_batched, git_state, summarize
 from laya_chess.train import calibrate, collate, laya_loss, make_example, save_checkpoint
 
@@ -49,7 +50,7 @@ def line_offsets(path: Path, n: int) -> np.ndarray:
     return offsets
 
 
-def batches(path: Path, offsets: np.ndarray, start: int, agent, batch_size: int, rng: random.Random):
+def batches(path: Path, offsets: np.ndarray, start: int, agent, batch_size: int, rng: random.Random, fmt: dict):
     """Yield (batch of examples, how many positions were consumed), starting `start` positions into the order."""
     with open(path, "rb") as f:
         for pool_start in range(start, len(offsets), POOL):
@@ -57,7 +58,7 @@ def batches(path: Path, offsets: np.ndarray, start: int, agent, batch_size: int,
             examples = []
             for offset in pool_offsets:
                 f.seek(int(offset))
-                example = make_example(agent, json.loads(f.readline()))
+                example = make_example(agent, json.loads(f.readline()), **fmt)
                 if example is not None:
                     examples.append(example)
             examples.sort(key=lambda e: len(e["ids"]))
@@ -99,6 +100,8 @@ def main() -> None:
     parser.add_argument("--run", required=True, help="name of this training run")
     parser.add_argument("--positions", type=int, required=True, help="training positions to use (one pass)")
     parser.add_argument("--eval-every", type=int, default=100_000, help="positions between evaluations")
+    parser.add_argument("--state", choices=STATE_FORMATS, default="fen", help="how the board is shown to Laya")
+    parser.add_argument("--notation", choices=["san", "uci"], default="san", help="how moves are written")
     parser.add_argument("--batch-size", type=int, default=32, help="positions per forward pass")
     parser.add_argument("--accumulate", type=int, default=2, help="forward passes per optimizer step")
     parser.add_argument("--lr-encoder", type=float, default=2.5e-5)
@@ -149,11 +152,12 @@ def main() -> None:
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_factor)
 
     print("Preparing validation and test positions...")
-    val_examples = [e for r in load_jsonl(args.data / "val.jsonl") if (e := make_example(agent, r))]
+    fmt = {"notation": args.notation, "state_format": args.state}
+    val_examples = [e for r in load_jsonl(args.data / "val.jsonl") if (e := make_example(agent, r, **fmt))]
     test_positions = load_jsonl(REPO_ROOT / "testsets" / "puzzles.jsonl") + load_jsonl(
         REPO_ROOT / "testsets" / "games.jsonl"
     )
-    engine = LayaEngine(agent=agent)
+    engine = LayaEngine(agent=agent, **fmt)
     engine.name = f"laya[{args.run}]"
 
     offsets = line_offsets(train_path, args.positions)
@@ -215,7 +219,7 @@ def main() -> None:
     next_eval = (seen // args.eval_every + 1) * args.eval_every
     t_last = time.perf_counter()
     optimizer.zero_grad(set_to_none=True)
-    for micro, (chunk, consumed) in enumerate(batches(train_path, offsets, seen, agent, args.batch_size, rng), 1):
+    for micro, (chunk, consumed) in enumerate(batches(train_path, offsets, seen, agent, args.batch_size, rng, fmt), 1):
         sigma = args.sigma[0] + (args.sigma[1] - args.sigma[0]) * min(1.0, seen / args.positions)
         b = collate(chunk, agent.tok.pad_token_id, device)
         with torch.autocast("cuda", dtype=torch.bfloat16):

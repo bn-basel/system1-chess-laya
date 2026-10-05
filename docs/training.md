@@ -34,7 +34,8 @@ didn't evaluate get 0. With only one evaluated move, the target is simply that m
 ```bash
 uv run python scripts/build_trainset.py                    # stream 6M positions (~30 min, ~800 MB on disk)
 uv run python scripts/train.py --run pilot --positions 50000 --eval-every 10000
-uv run python scripts/overnight.py --run overnight1 --positions 2500000   # train + test + charts, ~9 h
+uv run python scripts/overnight.py --run overnight1 --positions 2500000   # train + test + charts, ~8 h
+uv run python scripts/board_experiment.py                  # compare three board formats, ~3.5 h
 uv run python scripts/evaluate.py laya --model checkpoints/pilot/final
 uv run python scripts/make_charts.py
 ```
@@ -53,5 +54,5 @@ If a run stops, add `--resume` to the same command. The final, calibrated model 
 | RLCD noise | 0.4, falling to 0.1 | Laya's official values. |
 | Precision | bf16 | Supported natively by the RTX 5080, and needs no loss scaling. |
 
-On an RTX 5080 training runs at about 80 positions per second, so about 290k positions per hour.
+On an RTX 5080 training runs at about 90 positions per second, so about 330k positions per hour.
 Disk: each run keeps a resumable checkpoint (5.5 GB) and the final model (0.8 GB).
