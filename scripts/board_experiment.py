@@ -1,7 +1,7 @@
 """Run the board-format experiment: three identical 300k-position training runs, one per board format (~3.5 h).
 
 Each run trains, is tested, and the charts are redrawn (via overnight.py). If it stops, run the same command with
---resume: finished runs are skipped and the interrupted one continues from its last checkpoint.
+--resume: finished runs are skipped and the interrupted one continues from its last saved checkpoint.
 
 Usage:
     uv run python scripts/board_experiment.py
@@ -27,6 +27,9 @@ def main() -> None:
 
     for run, label, state in BOARD_FORMAT_RUNS:
         print(f"\n##### {label} ({run}) #####", flush=True)
+        if args.resume and (REPO_ROOT / "checkpoints" / run / "final").exists():
+            print("already finished, skipping", flush=True)
+            continue
         started = (REPO_ROOT / "checkpoints" / run / "latest").exists()
         command = [sys.executable, "scripts/overnight.py", "--run", run, "--positions", str(BOARD_FORMAT_POSITIONS),
                    "--eval-every", str(BOARD_FORMAT_EVAL_EVERY), "--state", state]  # fmt: skip

@@ -40,6 +40,19 @@ def format_positions(n: float, _pos=None) -> str:
     return f"{n:g}"
 
 
+def best_trained_model() -> tuple[str, str] | None:
+    """(engine name, run name) of the trained Laya with the lowest win-chance lost per move on the game positions.
+
+    That's the steadiest measure we have (2,000 positions), so it decides which model the charts feature.
+    """
+    games = {r["engine"]: float(r["wp_loss"]) for r in read_csv("summary.csv") if r["set"] == "games"}
+    trained = [e for e in games if e.startswith("laya[") and "/final" in e]
+    if not trained:
+        return None
+    engine = min(trained, key=games.get)
+    return engine, engine[len("laya[") :].split("/")[0]
+
+
 def strength_vs_time(theme: dict):
     """Puzzles solved against time per move: the chart this whole project is about."""
     latest = {(r["engine"], r["set"]): r for r in read_csv("summary.csv")}
@@ -73,15 +86,9 @@ def strength_vs_time(theme: dict):
             markeredgewidth=2, zorder=5, label="Laya")  # fmt: skip
     ax.annotate("Laya, before training", (t0, c0), xytext=(-10, 6), textcoords="offset points", ha="right",
                 fontsize=9, color=theme["ink_secondary"])  # fmt: skip
-    trained = [e for e in puzzles if e.startswith("laya[") and "/final" in e]
-    if trained:
-        # Show the checkpoint trained on the most positions (the latest one if several tie).
-        def positions_of(engine: str) -> int:
-            run = engine[len("laya[") :].split("/")[0]
-            return int(read_csv(f"training/{run}.csv")[-1]["positions_seen"])
-
-        engine = max(reversed(trained), key=positions_of)
-        positions = positions_of(engine)
+    if best := best_trained_model():
+        engine, run = best
+        positions = int(read_csv(f"training/{run}.csv")[-1]["positions_seen"])
         t1, c1 = float(puzzles[engine]["latency_p50_ms"]), float(puzzles[engine]["correct"])
         ax.annotate("", (t1, c1), (t0, c0), arrowprops={"arrowstyle": "-|>", "color": theme["laya"], "lw": 1.5,
                     "shrinkA": 7, "shrinkB": 7}, zorder=4)  # fmt: skip
@@ -146,16 +153,6 @@ def laya_speed(theme: dict):
     return fig
 
 
-def longest_training_run() -> str | None:
-    """The training run that has seen the most positions (its curve is the one shown)."""
-    runs = {}
-    for path in (RESULTS / "training").glob("*.csv"):
-        rows = read_csv(f"training/{path.name}")
-        if rows:
-            runs[path.stem] = int(rows[-1]["positions_seen"])
-    return max(runs, key=runs.get) if runs else None
-
-
 def learning_curve(theme: dict, run: str):
     """Puzzles solved as Laya trains, against the baselines it has to beat."""
     rows = read_csv(f"training/{run}.csv")
@@ -203,6 +200,7 @@ def board_formats(theme: dict):
         size=(10, 5),
         ncols=2,
     )
+    ends = {left: [], right: []}  # (x, y) of each line's last point, labelled after all lines are drawn
     for (run, label, _), color_key in zip(BOARD_FORMAT_RUNS, ("laya", "alt_1", "alt_2")):
         rows = read_csv(f"training/{run}.csv")
         xs = [int(r["positions_seen"]) for r in rows]
@@ -210,7 +208,16 @@ def board_formats(theme: dict):
             ys = [float(r[column]) for r in rows]
             ax.plot(xs, ys, color=theme[color_key], linewidth=2, marker="o", markersize=5,
                     markeredgecolor=theme["surface"], markeredgewidth=1, zorder=3, label=label)  # fmt: skip
-            ax.annotate(f"{ys[-1]:.1%}", (xs[-1], ys[-1]), xytext=(6, 0), textcoords="offset points", va="center",
+            ends[ax].append((xs[-1], ys[-1]))
+    for ax, points in ends.items():
+        # Spread end labels apart vertically so close values don't print on top of each other.
+        low, high = ax.get_ylim()
+        gap = (high - low) * 0.045
+        placed: list[float] = []
+        for x, y in sorted(points, key=lambda p: p[1]):
+            label_y = max(y, placed[-1] + gap) if placed else y
+            placed.append(label_y)
+            ax.annotate(f"{y:.1%}", (x, y), xytext=(8, label_y), textcoords=("offset points", "data"), va="center",
                         fontsize=8.5, color=theme["ink_secondary"])  # fmt: skip
     for ax, ylabel in (
         (left, "Puzzles solved (higher is better)"),
@@ -230,7 +237,8 @@ def board_formats(theme: dict):
 def main() -> None:
     save_both_themes(strength_vs_time, FIGURES / "strength_vs_time.png")
     save_both_themes(laya_speed, FIGURES / "laya_speed.png")
-    if run := longest_training_run():
+    if best := best_trained_model():
+        run = best[1]
         save_both_themes(lambda theme: learning_curve(theme, run), FIGURES / "learning_curve.png")
     if all((RESULTS / "training" / f"{run}.csv").exists() for run, _, _ in BOARD_FORMAT_RUNS):
         save_both_themes(board_formats, FIGURES / "board_formats.png")

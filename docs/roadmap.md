@@ -70,6 +70,10 @@ together.
   training 2.5x slower or worse. Checkpointing keeps peak memory at 9 GB for about 17% less speed.
 - **2026-10-06:** After the overnight run levelled off, test clearer board formats (short runs, same settings)
   before training longer.
+- **2026-10-06:** Board format for all new runs: FEN + piece list (`--state fen_pieces`). Next: a long run with it,
+  then Phase 4 (games and Elo) while the GPU trains.
+- **2026-10-06:** Charts feature the best trained model, judged by win-chance lost per move on the 2,000 game
+  positions (the steadiest measure).
 - **2026-10-01:** Only small summary tables go into git (`results/summary.csv`). Raw per-move records stay local in
   `runs/`.
 
@@ -160,6 +164,30 @@ only in the board format:
 | `fen_pieces` | plus each side's pieces with their squares, e.g. `Ke1 Qd1 Nf3`, written like the move options | 282 |
 
 The longer inputs cost speed, so the comparison also has to check time per move.
+
+**Board-format results (300k positions each, same settings):**
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../figures/board_formats-dark.png">
+  <img alt="Board-format experiment: the piece list gives the lowest win-chance lost per move (11.5%) and similar puzzle scores" src="../figures/board_formats.png">
+</picture>
+
+| Format | Puzzles solved | Win-chance lost per move | Best move (games) | Val top-1 | Training speed |
+|---|---:|---:|---:|---:|---:|
+| FEN only | 33.9% | 13.9% | 21.3% | 21.1% | 86 pos/s |
+| FEN + 8×8 grid | 31.8% | 14.1% | 21.2% | 22.1% | 62 pos/s |
+| **FEN + piece list** | 34.8% | **11.5%** | **24.3%** | **23.7%** | about 55 pos/s |
+
+- The piece list is clearly better on every measure that uses the 2,000 game positions or the validation set. After
+  only 300k positions it beats the 2.5M-position FEN run (12.9%) on move quality.
+- The grid, with as many extra tokens, made no difference. So it's not the extra length that helps; it's writing the
+  squares the same way the move options are written (`Nf3` in the state, `Nf3` as an option).
+- Puzzle scores are within chance of each other for all three: the gain is in ordinary positions, not tactics.
+- Time per move is the same: about 21 ms for both FEN and piece list when measured back to back. Training is slower
+  (longer inputs), about 55 rather than 86 positions per second.
+- Caveat: one run per format. A second seed would make the comparison firmer (planned under "rigour").
+- Speed readings drift between sessions (15–21 ms for the same model), so the final speed comparison should come
+  from one controlled benchmark run.
 
 **Training data:** 6M positions from the Lichess evaluation database (every 2nd position of the first 12.2M). 46
 positions that also appear in the test sets were removed. Half the positions have 5 or more evaluated moves, which

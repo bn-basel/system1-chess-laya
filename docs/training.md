@@ -35,7 +35,8 @@ didn't evaluate get 0. With only one evaluated move, the target is simply that m
 uv run python scripts/build_trainset.py                    # stream 6M positions (~30 min, ~800 MB on disk)
 uv run python scripts/train.py --run pilot --positions 50000 --eval-every 10000
 uv run python scripts/overnight.py --run overnight1 --positions 2500000   # train + test + charts, ~8 h
-uv run python scripts/board_experiment.py                  # compare three board formats, ~3.5 h
+uv run python scripts/board_experiment.py                  # compare three board formats, ~4 h
+uv run python scripts/overnight.py --run pieces-long --positions 1500000 --state fen_pieces   # best format, ~7-8 h
 uv run python scripts/evaluate.py laya --model checkpoints/pilot/final
 uv run python scripts/make_charts.py
 ```
@@ -43,6 +44,18 @@ uv run python scripts/make_charts.py
 During training, the model is scored on all test positions every `--eval-every` positions. Each score goes into
 `results/training/<run>.csv` (the learning curve) and a resumable checkpoint is saved to `checkpoints/<run>/latest`.
 If a run stops, add `--resume` to the same command. The final, calibrated model is saved to `checkpoints/<run>/final`.
+
+## Board formats
+
+`--state` sets how the position is shown to Laya. Every format includes the FEN and whose turn it is.
+
+| `--state` | Adds | Result (300k positions) |
+|---|---|---|
+| `fen` | nothing | baseline |
+| `fen_ascii` | an 8×8 grid | no better than `fen` |
+| `fen_pieces` | each side's pieces with their squares (`Ke1 Qd1 Nf3`) | clearly better; used from now on |
+
+A trained checkpoint remembers its format, so `evaluate.py --model checkpoints/<run>/final` uses the right one.
 
 ## Settings, and why
 
@@ -54,5 +67,6 @@ If a run stops, add `--resume` to the same command. The final, calibrated model 
 | RLCD noise | 0.4, falling to 0.1 | Laya's official values. |
 | Precision | bf16 | Supported natively by the RTX 5080, and needs no loss scaling. |
 
-On an RTX 5080 training runs at about 90 positions per second, so about 330k positions per hour.
+On an RTX 5080 training runs at about 90 positions per second with `fen` (about 330k per hour) and about 55-65 with
+`fen_pieces`, whose inputs are longer.
 Disk: each run keeps a resumable checkpoint (5.5 GB) and the final model (0.8 GB).
