@@ -7,8 +7,8 @@ answer from a list of options in a single step, without thinking ahead. This pro
 choose chess moves, and measures how good and how fast those moves are compared with Stockfish. First as it comes,
 then after training it on chess.
 
-> **Status:** Phase 3 in progress (training Laya on chess). Board-format experiment done; a long run with the winning
-> format is next. See the [roadmap](docs/roadmap.md).
+> **Status:** Phase 3 done (training Laya on chess). Phase 4 (games and Elo) in progress. See the
+> [roadmap](docs/roadmap.md).
 
 ## First results
 
@@ -22,7 +22,8 @@ Tested on 1,000 Lichess puzzles and 2,000 positions from real games ([details](t
 | Laya, before any training | 4.7% | 21.1% | 19.4 ms (GPU) |
 | Laya, after a 10-minute pilot (50k positions) | 32.6% | 16.2% | 17.3 ms (GPU) |
 | Laya, after an overnight run (2.5M positions) | 35.3% | 12.9% | 15.3 ms (GPU) |
-| **Laya with a piece list, 300k positions** | 34.8% | **11.5%** | 17.2 ms (GPU) |
+| Laya with a piece list, 300k positions | 34.8% | 11.5% | 17.2 ms (GPU) |
+| **Laya with a piece list, 1.5M positions** | **35.8%** | **10.9%** | 14.9 ms (GPU) |
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/strength_vs_time-dark.png">
@@ -35,7 +36,8 @@ beats a "grab material" player. Training overnight on 2.5 million positions impr
 **How the board is shown matters more than how much data Laya sees.** Laya reads text, and a FEN string such as
 `r1bqkb1r/pppp1ppp/2n2n2` reaches it as fragments like `rk`, `pp`, `1`, so it has to count its way to each piece.
 Adding a list of each side's pieces, written like the moves (`Ke1 Qd1 Nf3`), let a 300k-position run beat the 2.5M
-FEN run on move quality. An 8×8 grid of the same length made no difference.
+FEN run on move quality. An 8×8 grid of the same length made no difference. A longer run with the piece list (1.5M
+positions) gave the best model so far, but only by a little: with this setup Laya levels off at about 36% of puzzles.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/board_formats-dark.png">
@@ -44,7 +46,7 @@ FEN run on move quality. An 8×8 grid of the same length made no difference.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/learning_curve-dark.png">
-  <img alt="Learning curve of the best model so far: puzzles solved rises from 4% to about 36% within the first 100k training positions, then stays level" src="figures/learning_curve.png">
+  <img alt="Learning curve of the best model: puzzles solved rises from 4% to about 30% in the first 400k training positions and levels off at about 36% from 800k positions on" src="figures/learning_curve.png">
 </picture>
 
 **Hardware:** Laya needs about 2.3 GB of GPU memory. On an RTX 5080 it takes about 18 ms per move, or about
@@ -61,6 +63,7 @@ uv run python scripts/smoke_test.py          # Laya picks moves on a few positio
 uv run python scripts/evaluate.py laya       # full test: puzzles and game positions
 uv run python scripts/results_table.py       # results so far
 uv run python scripts/make_charts.py         # redraw the charts in figures/
+uv run python scripts/play_matches.py        # games against Stockfish and baselines, then Elo (~2 h)
 ```
 
 To train Laya yourself, see [docs/training.md](docs/training.md).

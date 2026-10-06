@@ -29,3 +29,5 @@ run_id,engine,device,set,n,correct,wp_loss,latency_p50_ms,latency_p95_ms
 20261006-162948_laya-board-pieces-final-san-fen-pieces-,laya[board-pieces/final|san|fen_pieces],cuda,puzzles,1000,0.348,0.4641,32.127,35.427
 20261006-182654_laya-board-pieces-final-san-fen-pieces-,laya[board-pieces/final|san|fen_pieces],cuda,games,2000,0.243,0.1149,17.215,23.664
 20261006-182654_laya-board-pieces-final-san-fen-pieces-,laya[board-pieces/final|san|fen_pieces],cuda,puzzles,1000,0.348,0.4641,16.931,23.619
+20261007-072939_laya-pieces-long-final-san-fen-pieces-,laya[pieces-long/final|san|fen_pieces],cuda,games,2000,0.246,0.1087,14.873,15.91
+20261007-072939_laya-pieces-long-final-san-fen-pieces-,laya[pieces-long/final|san|fen_pieces],cuda,puzzles,1000,0.358,0.4504,14.918,16.079

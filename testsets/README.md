@@ -16,6 +16,13 @@ mate-in-1 puzzles any checkmate counts, as on Lichess.
 
 **Game positions** are graded against Stockfish's best move. Positions with only one legal move are skipped.
 
+## Openings
+
+`openings.jsonl` holds 50 starting positions for engine matches: the position after the first 4 moves of real rated
+games from the same January 2013 Lichess file (both players rated 1600+), kept only if Stockfish 19 rates it within
+half a pawn of equal. Each is played twice in a match, once with each colour. Rebuild with
+`uv run python scripts/build_openings.py`.
+
 ## Labels
 
 Every legal move in every position has a Stockfish value (`values`, in centipawns for the side to move after

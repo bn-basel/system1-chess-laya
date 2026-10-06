@@ -72,6 +72,9 @@ together.
   before training longer.
 - **2026-10-06:** Board format for all new runs: FEN + piece list (`--state fen_pieces`). Next: a long run with it,
   then Phase 4 (games and Elo) while the GPU trains.
+- **2026-10-07:** Phase 4 setup: own match runner (saves every move for the replay page), Stockfish 1320-2000 plus
+  random and grab-material as opponents, 50 balanced openings x 2 colours = 100 games per pairing.
+- **2026-10-07:** Phase 3 closes with `pieces-long` (piece list, 1.5M positions) as the main model. Phase 4 next.
 - **2026-10-06:** Charts feature the best trained model, judged by win-chance lost per move on the 2,000 game
   positions (the steadiest measure).
 - **2026-10-01:** Only small summary tables go into git (`results/summary.csv`). Raw per-move records stay local in
@@ -189,10 +192,51 @@ The longer inputs cost speed, so the comparison also has to check time per move.
 - Speed readings drift between sessions (15–21 ms for the same model), so the final speed comparison should come
   from one controlled benchmark run.
 
+**Long run with the piece list (1.5M positions, 6 hours):**
+
+| Run | Puzzles solved | Win-chance lost per move | Best move (games) |
+|---|---:|---:|---:|
+| FEN only, 2.5M positions | 35.3% | 12.9% | 22.8% |
+| Piece list, 300k positions | 34.8% | 11.5% | 24.3% |
+| **Piece list, 1.5M positions** | **35.8%** | **10.9%** | **24.6%** |
+
+- The best model so far, but five times more data than the 300k run gained little: the same levelling-off as with FEN.
+  With this setup Laya tops out at about 36% of puzzles and 11% win-chance lost per move.
+- Early in the run it did much *worse* than the short run at the same point (17% against 36% of puzzles at 100k
+  positions), and win-chance lost even rose from 16% to 19% between 100k and 200k. A long run keeps the learning
+  rate high for longer; the gains came as it decreased. This suggests the official learning rate is too high for
+  this task, which is a cheap experiment for later.
+- Calibration stays good (temperature 1.05).
+
 **Training data:** 6M positions from the Lichess evaluation database (every 2nd position of the first 12.2M). 46
 positions that also appear in the test sets were removed. Half the positions have 5 or more evaluated moves, which
 is what soft targets need.
 
+## Phase 4: games and Elo (method)
+
+Every Laya milestone plays the same opponents (`scripts/play_matches.py`):
+
+| | |
+|---|---|
+| Laya versions | untrained, pilot (50k), FEN 2.5M, piece list 300k, piece list 1.5M |
+| Opponents | random moves, grab material, Stockfish 19 limited to 1320, 1500, 1700 and 2000 Elo |
+| Openings | 50 balanced positions after 4 moves of real games, each played with both colours (100 games per pairing) |
+| Game end | checkmate, stalemate, claimable draws (threefold repetition, 50-move rule), insufficient material, or 400 half-moves (draw) |
+| Elo | the ratings under which all results are most likely, with the Stockfish levels fixed at their stated ratings; one imaginary draw per pairing keeps all-win or all-loss records finite; 95% ranges from resampling the games |
+
+How to read the numbers:
+
+- **The scale is Stockfish's.** Its strength-limited mode is calibrated to roughly the CCRL blitz rating list
+  (1320 to 3190). These are computer-chess ratings, not Lichess or FIDE ratings.
+- **Limited Stockfish is an unusual opponent.** It searches only a few moves deep (one move deep at 1320) and then
+  sometimes picks a weaker move on purpose, at random. Its mistakes are random, unlike a human's.
+- **1320 is the floor.** Ratings far below it rest on few points of contact, which shows up as wide ranges.
+- **Laya sees only the current position**, not how it got there. It can't tell that a move repeats an earlier
+  position, so it may walk into a threefold-repetition draw even when winning.
+- Time per move isn't part of Elo: Laya takes about 15-20 ms per move, and limited Stockfish is capped at 50 ms.
+
 ## Still open
+
+- A lower learning rate (two 300k-position runs, about 3 hours) to test whether the official rate is too high.
 
 - Whether to also try "Option D" (Laya's encoder with a chess-specific output layer) as a comparison.
