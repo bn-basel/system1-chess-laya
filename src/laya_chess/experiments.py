@@ -17,6 +17,7 @@ LAYA_MILESTONES = [
     ("laya-fen-2.5M", "checkpoints/overnight1/final"),
     ("laya-pieces-300k", "checkpoints/board-pieces/final"),
     ("laya-pieces-1.5M", "checkpoints/pieces-long/final"),
+    ("laya-pieces-1.5M+guard", "checkpoints/pieces-long/final"),  # with the "finish the game" guard
 ]
 # Opponents: Stockfish's strength-limited mode is fixed at its stated rating (roughly the CCRL blitz scale) and
 # anchors the Elo numbers; random and grab-material are rated from their games like the Laya versions.

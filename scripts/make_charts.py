@@ -240,6 +240,7 @@ PLAYER_LABELS = {
     "laya-fen-2.5M": "Laya, FEN (2.5M positions)",
     "laya-pieces-300k": "Laya, piece list (300k positions)",
     "laya-pieces-1.5M": "Laya, piece list (1.5M positions)",
+    "laya-pieces-1.5M+guard": "Laya, piece list (1.5M) + finish-the-game guard",
     "random": "Random moves",
     "greedy": "Grab material",
 }

@@ -46,3 +46,22 @@ def test_every_state_format_keeps_the_fen():
 
     for state_format in STATE_FORMATS:
         assert encode_state(chess.Board(), state_format)["fen"] == chess.STARTING_FEN
+
+
+def test_guard_avoids_stalemate_when_ahead():
+    from laya_chess.engines.laya_engine import guarded_choice
+
+    # White (king b6, queen c1) is far ahead; Qc7 would stalemate the black king on a8.
+    board = chess.Board("k7/8/1K6/8/8/8/8/2Q5 w - - 0 1")
+    moves = {board.san(m): m for m in board.legal_moves}
+    probabilities = dict.fromkeys(moves, 0.01) | {"Qc7": 0.9, "Qc8#": 0.05}
+    assert guarded_choice(board, probabilities, moves) == "Qc8#"
+
+
+def test_guard_does_nothing_when_not_ahead():
+    from laya_chess.engines.laya_engine import guarded_choice
+
+    board = chess.Board()
+    moves = {board.san(m): m for m in board.legal_moves}
+    probabilities = dict.fromkeys(moves, 0.01) | {"e4": 0.5}
+    assert guarded_choice(board, probabilities, moves) == "e4"

@@ -56,16 +56,18 @@ limited to 1320, 1500, 1700 and 2000 Elo. All games start from 50 balanced openi
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/elo_ladder-dark.png">
-  <img alt="Elo ladder: untrained Laya 721 (level with random moves at 723), grab material 858, pilot 933, piece list 300k 983, FEN 2.5M 986, piece list 1.5M 1028; Stockfish levels at 1320 to 2000 above" src="figures/elo_ladder.png">
+  <img alt="Elo ladder: untrained Laya 689 (level with random moves at 678), grab material 834, pilot 908, piece list 300k 961, FEN 2.5M 964, piece list 1.5M 1008, and 1053 with the finish-the-game guard; Stockfish levels at 1320 to 2000 above" src="figures/elo_ladder.png">
 </picture>
 
-Training took Laya from the level of a random mover (721) to about **1030 Elo**, ahead of "grab material" (858) but
+Training took Laya from the level of a random mover (689) to about **1010 Elo**, ahead of "grab material" (834) but
 still well below Stockfish's weakest setting (1320), against which it scored 11.5 out of 100. The ranking matches
 the test-set results. The numbers are on Stockfish's scale (roughly the CCRL computer rating list), not a human one.
 
 **Laya wins material but can't finish games.** Against the random mover, the best Laya won 74 games and drew 26, and
 in every one of those 26 draws it was at least a rook ahead. It walks into threefold repetitions and stalemates
-because it only ever sees the current position, not how the game got there.
+because it only ever sees the current position, not how the game got there. A simple guard (when clearly ahead, skip
+moves that repeat a position or stalemate) fixes that: 99.5 out of 100 against the random mover, and **1053 Elo**.
+It changes nothing against Stockfish, where Laya is rarely ahead.
 
 **Hardware:** Laya needs about 2.3 GB of GPU memory. On an RTX 5080 it takes about 18 ms per move, or about
 5 ms per position when positions are processed in batches. On a CPU (Ryzen 9 9900X) it takes about 280 ms per move.

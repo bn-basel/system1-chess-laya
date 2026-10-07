@@ -245,17 +245,20 @@ How to read the numbers:
 
 | Player | Elo (95% range) | vs random | vs grab material | vs Stockfish 1320 | vs 1500 | vs 1700 | vs 2000 |
 |---|---|---:|---:|---:|---:|---:|---:|
-| Laya, piece list 1.5M | **1028** (993-1062) | 87 | 72.5 | 11.5 | 4.5 | 3 | 2.5 |
-| Laya, FEN 2.5M | 986 (949-1022) | 83.5 | 69 | 7.5 | 5 | 1.5 | 1.5 |
-| Laya, piece list 300k | 983 (945-1021) | 85.5 | 63.5 | 7 | 4 | 2.5 | 4.5 |
-| Laya, pilot 50k | 933 (897-965) | 82.5 | 54 | 6.5 | 4 | 1 | 3 |
-| Grab material | 858 (823-887) | | | | | | |
-| Random moves | 723 (688-755) | | | | | | |
-| Laya, untrained | 721 (681-762) | 38.5 | 41 | 0.5 | 1 | 0.5 | 2 |
+| Laya, piece list 1.5M + guard | **1053** (1017-1084) | 99.5 | 78 | 7 | 2.5 | 3.5 | 3.5 |
+| Laya, piece list 1.5M | 1008 (977-1041) | 87 | 72.5 | 11.5 | 4.5 | 3 | 2.5 |
+| Laya, FEN 2.5M | 964 (922-1002) | 83.5 | 69 | 7.5 | 5 | 1.5 | 1.5 |
+| Laya, piece list 300k | 961 (921-995) | 85.5 | 63.5 | 7 | 4 | 2.5 | 4.5 |
+| Laya, pilot 50k | 908 (866-941) | 82.5 | 54 | 6.5 | 4 | 1 | 3 |
+| Grab material | 834 (801-867) | | | | | | |
+| Laya, untrained | 689 (654-727) | 38.5 | 41 | 0.5 | 1 | 0.5 | 2 |
+| Random moves | 678 (641-707) | | | | | | |
 
-Scores are points out of 100 games (a draw is half a point).
+Scores are points out of 100 games (a draw is half a point). All ratings come from one joint fit over all games, so
+adding a player (the guarded model) moves the others slightly: the unguarded 1.5M model went from 1028 to 1008 when
+the guarded one was added. Differences between players are what matter.
 
-- **Training is worth about 300 Elo:** from 721 (level with random moves) to 1028. The order of the Laya versions
+- **Training is worth about 300 Elo:** from 689 (level with random moves) to 1008. The order of the Laya versions
   matches the test-set results, and the piece-list model is best here too.
 - **Still far below Stockfish's floor.** The best Laya scored 11.5/100 against Stockfish limited to 1320 (5 wins,
   13 draws). Its rating relies on those few points, so it's a rough extrapolation below 1320, even though the
@@ -270,9 +273,9 @@ Scores are points out of 100 games (a draw is half a point).
 
 ## Still open
 
-- Teach Laya to finish games. Options: tell it which moves would repeat a position (part of the state, still no
-  search), filter out moves that repeat or stalemate when a better move exists (a one-move check), or add won
-  endgames to the training data. The first is the cleanest System-1 fix.
+- **Finish-the-game guard (done, see [experiments.md](experiments.md)):** fixes conversion against weak opponents
+  (+45 Elo), no effect against Stockfish. Telling Laya about repetitions in its input wouldn't work: the training
+  positions carry no game history. Endgame training data remains an option for the improvement loop.
 
 - A lower learning rate (two 300k-position runs, about 3 hours) to test whether the official rate is too high.
 

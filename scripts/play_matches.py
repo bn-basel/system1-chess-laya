@@ -95,7 +95,10 @@ def main() -> None:
 
     for laya_name in args.laya:
         model = checkpoints[laya_name]
-        laya = LayaEngine(model=str(REPO_ROOT / model) if model.startswith("checkpoints") else model)
+        laya = LayaEngine(
+            model=str(REPO_ROOT / model) if model.startswith("checkpoints") else model,
+            guard=laya_name.endswith("+guard"),
+        )
         laya.warmup()
         laya.name = laya_name
         for opponent_name in args.opponents:

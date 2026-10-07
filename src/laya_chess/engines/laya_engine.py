@@ -86,6 +86,37 @@ def encode_position(agent, board: chess.Board, notation: str = "san", state_form
     return item, internal, moves
 
 
+PIECE_POINTS = {chess.PAWN: 1, chess.KNIGHT: 3, chess.BISHOP: 3, chess.ROOK: 5, chess.QUEEN: 9}
+GUARD_MIN_LEAD = 3  # material lead (in pawns) from which the guard avoids drawing moves
+
+
+def material_lead(board: chess.Board) -> int:
+    """Material of the side to move minus the opponent's, in pawns."""
+    return sum(
+        points * (len(board.pieces(piece, board.turn)) - len(board.pieces(piece, not board.turn)))
+        for piece, points in PIECE_POINTS.items()
+    )
+
+
+def guarded_choice(board: chess.Board, probabilities: dict[str, float], moves: dict[str, chess.Move]) -> str:
+    """The "finish the game" guard: when clearly ahead, don't throw the win away.
+
+    If the side to move leads by at least GUARD_MIN_LEAD pawns of material, play the most likely move that neither
+    repeats an earlier position nor stalemates the opponent. If every move does one of those, or the side isn't
+    ahead, play Laya's first choice as usual. This only applies the rules and counts material; it doesn't search.
+    """
+    ranked = sorted(probabilities, key=probabilities.get, reverse=True)
+    if material_lead(board) < GUARD_MIN_LEAD:
+        return ranked[0]
+    for label in ranked:
+        board.push(moves[label])
+        draws = board.is_stalemate() or board.is_repetition(2)
+        board.pop()
+        if not draws:
+            return label
+    return ranked[0]
+
+
 class LayaEngine:
     def __init__(
         self,
@@ -95,6 +126,7 @@ class LayaEngine:
         notation: str | None = None,
         state_format: str | None = None,
         agent: laya.Agent | None = None,
+        guard: bool = False,
     ):
         """`model` is a Hugging Face id or a local folder with a trained checkpoint. Pass `agent` to wrap an
         already-loaded model instead (used to evaluate during training).
@@ -114,7 +146,8 @@ class LayaEngine:
         checkpoint = (
             Path(model).parent.name + "/" + Path(model).name if Path(model).is_dir() else (subfolder or "english")
         )
-        self.name = f"laya[{checkpoint}|{notation}|{state_format}]"
+        self.guard = guard
+        self.name = f"laya[{checkpoint}|{notation}|{state_format}]" + ("+guard" if guard else "")
         self.version = f"laya {version('laya')}"
         self.device = str(self.agent.device)
 
@@ -143,9 +176,12 @@ class LayaEngine:
         # Timed end to end (tokenisation + forward pass + decoding): that is the real cost of a move.
         t0 = time.perf_counter()
         result = self.agent.system_one(state, {"move": question})
+        answer = result["answers"]["move"]
+        if self.guard:
+            answer = {**answer, "choice": guarded_choice(board, answer["probabilities"], moves)}
         latency_ms = (time.perf_counter() - t0) * 1000
 
-        return self._decision(result["answers"]["move"], moves, latency_ms, result["usage"])
+        return self._decision(answer, moves, latency_ms, result["usage"])
 
     @torch.no_grad()
     def choose_batch(self, boards: list[chess.Board]) -> list[MoveDecision]:
