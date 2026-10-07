@@ -1,0 +1,12 @@
+player,elo,low_95,high_95,games,anchor
+stockfish-2000,2000,2000,2000,500,True
+stockfish-1700,1700,1700,1700,500,True
+stockfish-1500,1500,1500,1500,500,True
+stockfish-1320,1320,1320,1320,500,True
+laya-pieces-1.5M,1028,993,1062,600,False
+laya-fen-2.5M,986,949,1022,600,False
+laya-pieces-300k,983,945,1021,600,False
+laya-pilot-50k,933,897,965,600,False
+greedy,858,823,887,500,False
+random,723,688,755,500,False
+laya-untrained,721,681,762,600,False

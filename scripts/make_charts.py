@@ -234,6 +234,53 @@ def board_formats(theme: dict):
     return fig
 
 
+PLAYER_LABELS = {
+    "laya-untrained": "Laya, untrained",
+    "laya-pilot-50k": "Laya, pilot (50k positions)",
+    "laya-fen-2.5M": "Laya, FEN (2.5M positions)",
+    "laya-pieces-300k": "Laya, piece list (300k positions)",
+    "laya-pieces-1.5M": "Laya, piece list (1.5M positions)",
+    "random": "Random moves",
+    "greedy": "Grab material",
+}
+
+
+def elo_ladder(theme: dict):
+    """Every player on one Elo scale, with 95% ranges. Stockfish's levels are fixed and set the scale."""
+    rows = sorted(read_csv("elo.csv"), key=lambda r: int(r["elo"]))
+    fig, ax = new_figure(
+        theme,
+        "The Elo ladder",
+        "3,000 games: each Laya version played 100 games against each opponent. Stockfish levels are fixed at their "
+        "stated ratings.",
+        size=(8, 5.5),
+    )
+    for y, r in enumerate(rows):
+        elo, low, high = int(r["elo"]), int(r["low_95"]), int(r["high_95"])
+        player = r["player"]
+        if r["anchor"] == "True":
+            color, label, marker = theme["stockfish"], "Stockfish, strength-limited (fixed)", "D"
+        elif player.startswith("laya"):
+            color, label, marker = theme["laya"], PLAYER_LABELS.get(player, player), "o"
+        else:
+            color, label, marker = theme["muted"], PLAYER_LABELS.get(player, player), "o"
+        if high > low:
+            ax.plot([low, high], [y, y], color=color, linewidth=2, alpha=0.45, solid_capstyle="round", zorder=2)
+        ax.plot(elo, y, marker, markersize=8, color=color, markeredgecolor=theme["surface"], markeredgewidth=1.5,
+                zorder=3)  # fmt: skip
+        bold = player == "laya-pieces-1.5M"
+        ax.annotate(f"{label}  {elo}", (high, y), xytext=(10, 0), textcoords="offset points", va="center",
+                    fontsize=9, color=theme["ink"] if bold else theme["ink_secondary"],
+                    fontweight="semibold" if bold else "normal")  # fmt: skip
+    ax.set_yticks([])
+    ax.spines["left"].set_visible(False)
+    ax.set_xlim(600, 2600)
+    ax.set_xticks(range(600, 2101, 300))
+    ax.set_xlabel("Elo (Stockfish's scale, roughly the CCRL blitz list)")
+    ax.grid(axis="y", visible=False)
+    return fig
+
+
 def main() -> None:
     save_both_themes(strength_vs_time, FIGURES / "strength_vs_time.png")
     save_both_themes(laya_speed, FIGURES / "laya_speed.png")
@@ -242,6 +289,8 @@ def main() -> None:
         save_both_themes(lambda theme: learning_curve(theme, run), FIGURES / "learning_curve.png")
     if all((RESULTS / "training" / f"{run}.csv").exists() for run, _, _ in BOARD_FORMAT_RUNS):
         save_both_themes(board_formats, FIGURES / "board_formats.png")
+    if (RESULTS / "elo.csv").exists():
+        save_both_themes(elo_ladder, FIGURES / "elo_ladder.png")
     print(f"Wrote charts to {FIGURES.relative_to(REPO_ROOT)}/")
 
 

@@ -72,6 +72,7 @@ together.
   before training longer.
 - **2026-10-06:** Board format for all new runs: FEN + piece list (`--state fen_pieces`). Next: a long run with it,
   then Phase 4 (games and Elo) while the GPU trains.
+- **2026-10-07:** Phase 4 done: training lifts Laya from about 720 to about 1030 Elo; it can't yet finish won games.
 - **2026-10-07:** Phase 4 setup: own match runner (saves every move for the replay page), Stockfish 1320-2000 plus
   random and grab-material as opponents, 50 balanced openings x 2 colours = 100 games per pairing.
 - **2026-10-07:** Phase 3 closes with `pieces-long` (piece list, 1.5M positions) as the main model. Phase 4 next.
@@ -235,7 +236,43 @@ How to read the numbers:
   position, so it may walk into a threefold-repetition draw even when winning.
 - Time per move isn't part of Elo: Laya takes about 15-20 ms per move, and limited Stockfish is capped at 50 ms.
 
+## What Phase 4 showed
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../figures/elo_ladder-dark.png">
+  <img alt="Elo ladder from 3,000 games" src="../figures/elo_ladder.png">
+</picture>
+
+| Player | Elo (95% range) | vs random | vs grab material | vs Stockfish 1320 | vs 1500 | vs 1700 | vs 2000 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Laya, piece list 1.5M | **1028** (993-1062) | 87 | 72.5 | 11.5 | 4.5 | 3 | 2.5 |
+| Laya, FEN 2.5M | 986 (949-1022) | 83.5 | 69 | 7.5 | 5 | 1.5 | 1.5 |
+| Laya, piece list 300k | 983 (945-1021) | 85.5 | 63.5 | 7 | 4 | 2.5 | 4.5 |
+| Laya, pilot 50k | 933 (897-965) | 82.5 | 54 | 6.5 | 4 | 1 | 3 |
+| Grab material | 858 (823-887) | | | | | | |
+| Random moves | 723 (688-755) | | | | | | |
+| Laya, untrained | 721 (681-762) | 38.5 | 41 | 0.5 | 1 | 0.5 | 2 |
+
+Scores are points out of 100 games (a draw is half a point).
+
+- **Training is worth about 300 Elo:** from 721 (level with random moves) to 1028. The order of the Laya versions
+  matches the test-set results, and the piece-list model is best here too.
+- **Still far below Stockfish's floor.** The best Laya scored 11.5/100 against Stockfish limited to 1320 (5 wins,
+  13 draws). Its rating relies on those few points, so it's a rough extrapolation below 1320, even though the
+  95% range is narrow.
+- **Laya can't convert won games.** Against the random mover, all 26 of the best model's draws came with Laya at
+  least a rook ahead: 19 by threefold repetition, 7 by stalemate. Against grab material, 55 draws, 27 of them with
+  Laya a rook or more ahead. Laya sees only the current position, so it doesn't know a move repeats an earlier one,
+  and it was never trained on how to finish a won game.
+- The draws against Stockfish are almost all repetitions as well, which is why some versions score slightly more
+  against Stockfish 2000 than against 1700: those small differences are noise.
+- Time per move in games: 16.8 ms median for Laya.
+
 ## Still open
+
+- Teach Laya to finish games. Options: tell it which moves would repeat a position (part of the state, still no
+  search), filter out moves that repeat or stalemate when a better move exists (a one-move check), or add won
+  endgames to the training data. The first is the cleanest System-1 fix.
 
 - A lower learning rate (two 300k-position runs, about 3 hours) to test whether the official rate is too high.
 

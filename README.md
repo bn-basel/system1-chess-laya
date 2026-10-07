@@ -7,7 +7,7 @@ answer from a list of options in a single step, without thinking ahead. This pro
 choose chess moves, and measures how good and how fast those moves are compared with Stockfish. First as it comes,
 then after training it on chess.
 
-> **Status:** Phase 3 done (training Laya on chess). Phase 4 (games and Elo) in progress. See the
+> **Status:** Phase 4 done (games and Elo). See the
 > [roadmap](docs/roadmap.md).
 
 ## First results
@@ -48,6 +48,24 @@ positions) gave the best model so far, but only by a little: with this setup Lay
   <source media="(prefers-color-scheme: dark)" srcset="figures/learning_curve-dark.png">
   <img alt="Learning curve of the best model: puzzles solved rises from 4% to about 30% in the first 400k training positions and levels off at about 36% from 800k positions on" src="figures/learning_curve.png">
 </picture>
+
+## Elo from 3,000 games
+
+Each Laya version played 100 games against each opponent: a random mover, a "grab material" player, and Stockfish
+limited to 1320, 1500, 1700 and 2000 Elo. All games start from 50 balanced openings, each played with both colours.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/elo_ladder-dark.png">
+  <img alt="Elo ladder: untrained Laya 721 (level with random moves at 723), grab material 858, pilot 933, piece list 300k 983, FEN 2.5M 986, piece list 1.5M 1028; Stockfish levels at 1320 to 2000 above" src="figures/elo_ladder.png">
+</picture>
+
+Training took Laya from the level of a random mover (721) to about **1030 Elo**, ahead of "grab material" (858) but
+still well below Stockfish's weakest setting (1320), against which it scored 11.5 out of 100. The ranking matches
+the test-set results. The numbers are on Stockfish's scale (roughly the CCRL computer rating list), not a human one.
+
+**Laya wins material but can't finish games.** Against the random mover, the best Laya won 74 games and drew 26, and
+in every one of those 26 draws it was at least a rook ahead. It walks into threefold repetitions and stalemates
+because it only ever sees the current position, not how the game got there.
 
 **Hardware:** Laya needs about 2.3 GB of GPU memory. On an RTX 5080 it takes about 18 ms per move, or about
 5 ms per position when positions are processed in batches. On a CPU (Ryzen 9 9900X) it takes about 280 ms per move.
