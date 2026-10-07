@@ -44,6 +44,7 @@ uv run python scripts/make_charts.py
 During training, the model is scored on all test positions every `--eval-every` positions. Each score goes into
 `results/training/<run>.csv` (the learning curve) and a resumable checkpoint is saved to `checkpoints/<run>/latest`.
 If a run stops, add `--resume` to the same command. The final, calibrated model is saved to `checkpoints/<run>/final`.
+For short experiments, `--no-resume-state` skips the 4.7 GB resume state (a crashed run is simply rerun).
 
 ## Board formats
 

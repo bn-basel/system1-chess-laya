@@ -4,13 +4,13 @@ One entry per experiment: the idea, what changed, the result, and the decision. 
 
 ## How experiments are judged
 
-- **Decide on validation, confirm on the test sets.** Each idea is judged on the 5,000 held-out validation positions
-  (`val_top1`, `val_loss`) and, where it applies, on win-chance lost per move. Only a clear winner is then checked on
+- **Decide on validation, confirm on the test sets.** Each idea is judged on 2,000 held-out validation positions
+  (`val_top1`, and `val_loss` where comparable). Only a clear winner is then checked on
   the test sets and in matches. Checking the test sets after every experiment would eventually crown a change that
   only looks better by luck.
 - **Same budget, same baseline.** Training ideas use a short run (300k positions) and are compared with a baseline
   trained the same way, at the same point in training.
-- **Small differences are noise.** Rough noise levels: about ±1 point on validation top-1 (5,000 positions), about
+- **Small differences are noise.** Rough noise levels: about ±1 point on validation top-1 (2,000 positions), about
   ±1.5 points on puzzles (1,000), about ±0.5 points on win-chance lost (2,000 game positions).
 
 ## Experiments

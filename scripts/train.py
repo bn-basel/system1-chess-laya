@@ -116,6 +116,11 @@ def main() -> None:
     )
     parser.add_argument("--data", type=Path, default=REPO_ROOT / "data" / "train", help="folder with train/val.jsonl")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument(
+        "--no-resume-state",
+        action="store_true",
+        help="don't save the 4.7 GB optimizer state needed to resume; for short runs that can simply be rerun",
+    )
     parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args()
 
@@ -250,7 +255,7 @@ def main() -> None:
         if seen >= next_eval or seen >= args.positions:
             elapsed += time.perf_counter() - t_last
             evaluate_now()
-            save("latest", with_state=True)
+            save("latest", with_state=not args.no_resume_state)
             t_last = time.perf_counter()
             next_eval += args.eval_every
 
