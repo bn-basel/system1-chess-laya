@@ -21,7 +21,7 @@ def test_greedy_engine_takes_the_queen():
 
 def test_laya_options_are_exactly_the_legal_moves():
     board = chess.Board(KIWIPETE)
-    for notation in ("san", "uci"):
+    for notation in ("san", "uci", "lan"):
         moves = encode_moves(board, notation)
         assert len(moves) == 48
         assert set(moves.values()) == set(board.legal_moves)
@@ -41,11 +41,35 @@ def test_piece_list_uses_move_style_squares():
     assert len(piece_list(board, chess.BLACK).split()) == 16
 
 
-def test_every_state_format_keeps_the_fen():
+def test_every_fen_format_keeps_the_fen():
     from laya_chess.engines.laya_engine import STATE_FORMATS
 
     for state_format in STATE_FORMATS:
-        assert encode_state(chess.Board(), state_format)["fen"] == chess.STARTING_FEN
+        if state_format.startswith("fen"):
+            assert encode_state(chess.Board(), state_format)["fen"] == chess.STARTING_FEN
+
+
+def test_pieces_format_has_everything_but_the_fen():
+    # Black can take en passant on d3; White has lost the right to castle queenside.
+    board = chess.Board("r3k2r/8/8/8/2pP4/8/8/4K2R b Kkq d3 0 1")
+    state = encode_state(board, "pieces")
+    assert "fen" not in state
+    assert state == {
+        "side_to_move": "black",
+        "castling": "Kkq",
+        "en_passant": "d3",
+        "white": "Ke1 Rh1 Pd4",
+        "black": "Ke8 Ra8 Rh8 Pc4",
+    }
+    assert encode_state(chess.Board(), "pieces")["en_passant"] == "-"
+
+
+def test_lan_names_the_starting_square():
+    board = chess.Board(KIWIPETE)
+    moves = encode_moves(board, "lan")
+    assert moves["Ne5xf7"] == chess.Move.from_uci("e5f7")
+    assert moves["O-O"] == chess.Move.from_uci("e1g1")
+    assert "Nc3-b1" in moves
 
 
 def test_guard_avoids_stalemate_when_ahead():

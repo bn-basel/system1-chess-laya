@@ -10,6 +10,7 @@ Usage:
     uv run python scripts/train.py --run run1 --positions 1000000
     uv run python scripts/train.py --run run1 --positions 1000000 --resume     # continue after a crash
     uv run python scripts/train.py --run grid --positions 300000 --state fen_ascii   # show the board as a grid
+    uv run python scripts/train.py --run ft --positions 300000 --format from_to     # which piece, which square
 """
 
 from __future__ import annotations
@@ -30,9 +31,20 @@ import torch
 from huggingface_hub import snapshot_download
 
 from laya_chess.data.testsets import load_jsonl
-from laya_chess.engines.laya_engine import STATE_FORMATS, LayaEngine
+from laya_chess.engines.laya_engine import NOTATIONS, STATE_FORMATS, LayaEngine
+from laya_chess.engines.move_head import MoveHeadEngine, MoveHeadModel, collate_boards, move_head_loss
 from laya_chess.eval.runner import evaluate_batched, git_state, summarize
-from laya_chess.train import calibrate, collate, laya_loss, make_example, save_checkpoint
+from laya_chess.train import (
+    calibrate,
+    collate,
+    laya_loss,
+    make_example,
+    make_from_to_example,
+    make_move_head_example,
+    save_checkpoint,
+    validate_from_to,
+    validate_move_head,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 BASE_MODEL = "convaiinnovations/laya"
@@ -50,17 +62,20 @@ def line_offsets(path: Path, n: int) -> np.ndarray:
     return offsets
 
 
-def batches(path: Path, offsets: np.ndarray, start: int, agent, batch_size: int, rng: random.Random, fmt: dict):
-    """Yield (batch of examples, how many positions were consumed), starting `start` positions into the order."""
+def batches(path: Path, offsets: np.ndarray, start: int, make_rows, batch_size: int, rng: random.Random):
+    """Yield (batch of examples, how many positions were consumed), starting `start` positions into the order.
+
+    `make_rows` turns a position into its training rows: one per question asked about it (or None to skip it).
+    """
     with open(path, "rb") as f:
         for pool_start in range(start, len(offsets), POOL):
             pool_offsets = offsets[pool_start : pool_start + POOL]
             examples = []
             for offset in pool_offsets:
                 f.seek(int(offset))
-                example = make_example(agent, json.loads(f.readline()), **fmt)
-                if example is not None:
-                    examples.append(example)
+                rows = make_rows(json.loads(f.readline()))
+                if rows is not None:
+                    examples.extend(rows)
             examples.sort(key=lambda e: len(e["ids"]))
             chunks = [examples[i : i + batch_size] for i in range(0, len(examples), batch_size)]
             rng.shuffle(chunks)
@@ -101,8 +116,26 @@ def main() -> None:
     parser.add_argument("--positions", type=int, required=True, help="training positions to use (one pass)")
     parser.add_argument("--eval-every", type=int, default=100_000, help="positions between evaluations")
     parser.add_argument("--state", choices=STATE_FORMATS, default="fen", help="how the board is shown to Laya")
-    parser.add_argument("--notation", choices=["san", "uci"], default="san", help="how moves are written")
-    parser.add_argument("--batch-size", type=int, default=32, help="positions per forward pass")
+    parser.add_argument("--notation", choices=NOTATIONS, default="san", help="how moves are written")
+    parser.add_argument(
+        "--format",
+        choices=["choice", "from_to", "move_head"],
+        default="choice",
+        help="choice: one question, every legal move an option (Laya's format); from_to: two questions, which piece"
+        " and which square; move_head: Laya's encoder with a 64x64 move output instead of Laya's question head",
+    )
+    parser.add_argument(
+        "--fix-castling",
+        action="store_true",
+        help="match the database's castling moves (e1h1) to python-chess's (e1g1); without it castling gets target 0",
+    )
+    parser.add_argument(
+        "--head-max-len", type=int, help="tokens for the question and its options (Laya's default: 192)"
+    )
+    parser.add_argument("--max-len", type=int, help="tokens for the whole input (Laya's default: 512)")
+    parser.add_argument(
+        "--batch-size", type=int, default=32, help="rows per forward pass (a position per row, except from_to: two)"
+    )
     parser.add_argument("--accumulate", type=int, default=2, help="forward passes per optimizer step")
     parser.add_argument("--lr-encoder", type=float, default=2.5e-5)
     parser.add_argument("--lr-head", type=float, default=1e-4)
@@ -132,8 +165,13 @@ def main() -> None:
     train_path = args.data / "train.jsonl"
 
     agent = laya.load(BASE_MODEL, device="cuda")
+    # Saved into the checkpoint's config, so the trained model is later played with the same budget.
+    if args.head_max_len:
+        agent.cfg["head_max_len"] = args.head_max_len
+    if args.max_len:
+        agent.cfg["max_len"] = args.max_len
     base_dir = Path(snapshot_download(BASE_MODEL, revision=agent.revision, allow_patterns=["tokenizer/*", "encoder/*"]))
-    model = agent.model
+    model = MoveHeadModel(agent.model.encoder).to(device) if args.format == "move_head" else agent.model
     if args.checkpointing:
         model.encoder.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
     model.train()
@@ -144,7 +182,9 @@ def main() -> None:
         [{"params": encoder_params, "lr": args.lr_encoder}, {"params": head_params, "lr": args.lr_head}],
         weight_decay=0.01,
     )
-    total_steps = math.ceil(args.positions / (args.batch_size * args.accumulate))
+    # --batch-size counts rows; from_to asks two questions (two rows) per position.
+    rows_per_position = 2 if args.format == "from_to" else 1
+    total_steps = math.ceil(args.positions * rows_per_position / (args.batch_size * args.accumulate))
     warmup_steps = max(1, int(args.warmup * total_steps))
 
     def lr_factor(step: int) -> float:
@@ -158,11 +198,29 @@ def main() -> None:
 
     print("Preparing validation and test positions...")
     fmt = {"notation": args.notation, "state_format": args.state}
-    val_examples = [e for r in load_jsonl(args.data / "val.jsonl") if (e := make_example(agent, r, **fmt))]
+    pad_id = agent.tok.pad_token_id
+
+    def make_position(record: dict):
+        if args.format == "from_to":
+            return make_from_to_example(agent, record, args.state, args.fix_castling)
+        if args.format == "move_head":
+            return make_move_head_example(agent.tok, record, args.state, agent.cfg["max_len"], args.fix_castling)
+        return make_example(agent, record, **fmt, fix_castling=args.fix_castling)
+
+    def make_rows(record: dict):
+        example = make_position(record)
+        if example is None:
+            return None
+        return [example] if args.format == "choice" else example["rows"]
+
+    val_examples = [e for r in load_jsonl(args.data / "val.jsonl") if (e := make_position(r))]
     test_positions = load_jsonl(REPO_ROOT / "testsets" / "puzzles.jsonl") + load_jsonl(
         REPO_ROOT / "testsets" / "games.jsonl"
     )
-    engine = LayaEngine(agent=agent, **fmt)
+    if args.format == "move_head":
+        engine = MoveHeadEngine(net=model, tok=agent.tok, state_format=args.state, max_len=agent.cfg["max_len"])
+    else:
+        engine = LayaEngine(agent=agent, question_format=args.format, **fmt)
     engine.name = f"laya[{args.run}]"
 
     offsets = line_offsets(train_path, args.positions)
@@ -181,7 +239,12 @@ def main() -> None:
         model.eval()
         t = time.perf_counter()
         summary = summarize(evaluate_batched(engine, test_positions))
-        val = validate(model, agent, val_examples[:2000], device)
+        if args.format == "from_to":
+            val = validate_from_to(model, pad_id, val_examples[:2000], device)
+        elif args.format == "move_head":
+            val = validate_move_head(model, pad_id, val_examples[:2000], device)
+        else:
+            val = validate(model, agent, val_examples[:2000], device)
         model.train()
         row = {
             "positions_seen": seen,
@@ -224,12 +287,18 @@ def main() -> None:
     next_eval = (seen // args.eval_every + 1) * args.eval_every
     t_last = time.perf_counter()
     optimizer.zero_grad(set_to_none=True)
-    for micro, (chunk, consumed) in enumerate(batches(train_path, offsets, seen, agent, args.batch_size, rng, fmt), 1):
+    for micro, (chunk, consumed) in enumerate(batches(train_path, offsets, seen, make_rows, args.batch_size, rng), 1):
         sigma = args.sigma[0] + (args.sigma[1] - args.sigma[0]) * min(1.0, seen / args.positions)
-        b = collate(chunk, agent.tok.pad_token_id, device)
-        with torch.autocast("cuda", dtype=torch.bfloat16):
-            logits, _ = model(b["input_ids"], b["attention_mask"], b["marker_pos"], b["marker_mask"], b["qtype"])
-        loss, stats = laya_loss(logits, b, sigma)
+        if args.format == "move_head":
+            b = collate_boards(chunk, pad_id, device)
+            with torch.autocast("cuda", dtype=torch.bfloat16):
+                logits = model(b["input_ids"], b["attention_mask"])
+            loss, stats = move_head_loss(logits, b)
+        else:
+            b = collate(chunk, pad_id, device)
+            with torch.autocast("cuda", dtype=torch.bfloat16):
+                logits, _ = model(b["input_ids"], b["attention_mask"], b["marker_pos"], b["marker_mask"], b["qtype"])
+            loss, stats = laya_loss(logits, b, sigma)
         (loss / args.accumulate).backward()
         recent_losses = (recent_losses + [stats["loss_ce"]])[-200:]
         seen += consumed
@@ -259,14 +328,17 @@ def main() -> None:
             t_last = time.perf_counter()
             next_eval += args.eval_every
 
-    print("Calibrating confidence on the validation positions...")
     model.eval()
-    temperatures = calibrate(agent, val_examples)
-    agent.cfg["temperature"] = temperatures["temperature"]
-    agent.cfg["temperature_by_options"] = temperatures["temperature_by_options"]
     agent.cfg["model_name"] = f"laya-chess-{args.run}"
+    if args.format == "choice":
+        # The other formats choose from raw scores (several questions, or no Laya head), so they skip this.
+        print("Calibrating confidence on the validation positions...")
+        temperatures = calibrate(agent, val_examples)
+        agent.cfg["temperature"] = temperatures["temperature"]
+        agent.cfg["temperature_by_options"] = temperatures["temperature_by_options"]
+        print(f"Temperatures {json.dumps(temperatures)}")
     save("final", with_state=False)
-    print(f"Saved {ckpt_dir / 'final'} | temperatures {json.dumps(temperatures)}")
+    print(f"Saved {ckpt_dir / 'final'}")
 
 
 if __name__ == "__main__":

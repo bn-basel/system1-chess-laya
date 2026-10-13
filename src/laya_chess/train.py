@@ -3,6 +3,7 @@
 The pieces:
   soft_target    turns Stockfish's evaluations of a few moves into a probability spread over them
   make_example   tokenizes a position exactly as Laya does when playing, and attaches the target
+  make_from_to_example / make_move_head_example  the same for the from/to questions and for the move-output model
   laya_loss      soft-target cross-entropy + RLCD, the reinforcement-learning term that rewards calibrated confidence
   calibrate      re-fits Laya's confidence temperatures on held-out positions after training
   save_checkpoint writes a folder that `laya.load(path)` and `LayaEngine(model=path)` can open
@@ -13,6 +14,7 @@ from __future__ import annotations
 import json
 import math
 import shutil
+import statistics
 from pathlib import Path
 
 import chess
@@ -21,7 +23,8 @@ from laya.agent import _option_logits
 from laya.common import collate_items, proper_reward
 from safetensors.torch import save_file
 
-from .engines.laya_engine import encode_position
+from .engines.laya_engine import combine_from_to, encode_from_to, encode_position, log_softmax, playable_moves
+from .engines.move_head import collate_boards, encode_board, move_index
 from .eval.metrics import win_prob
 
 # How quickly the target falls off for worse moves: a move with 5 percentage points less winning chance than the
@@ -38,7 +41,21 @@ def soft_target(cps: list[int], tau: float = TAU) -> list[float]:
     return [w / total for w in weights]
 
 
-def make_example(agent, record: dict, notation: str = "san", state_format: str = "fen", tau: float = TAU):
+def move_weights(board: chess.Board, record: dict, tau: float = TAU, fix_castling: bool = False) -> dict[str, float]:
+    """Target weight per evaluated move, keyed by UCI.
+
+    The Lichess database writes castling as the king taking its own rook (e1h1), while python-chess writes e1g1. So
+    without `fix_castling`, castling never matches a legal move and gets target 0 (as in every run up to round 1).
+    """
+    weights = dict(zip(record["moves"], soft_target(record["cp"], tau)))
+    if fix_castling:
+        weights = {board.parse_uci(uci).uci(): w for uci, w in weights.items()}
+    return weights
+
+
+def make_example(
+    agent, record: dict, notation: str = "san", state_format: str = "fen", tau: float = TAU, fix_castling: bool = False
+):
     """A training example in Laya's own format: token ids, option positions, and a target per option.
 
     Legal moves that Stockfish didn't evaluate get target 0. Returns None if the moves don't fit Laya's input.
@@ -48,9 +65,108 @@ def make_example(agent, record: dict, notation: str = "san", state_format: str =
         item, _, moves = encode_position(agent, board, notation, state_format)
     except ValueError:
         return None
-    weights = dict(zip(record["moves"], soft_target(record["cp"], tau)))
+    weights = move_weights(board, record, tau, fix_castling)
     target = [weights.get(move.uci(), 0.0) for move in moves.values()]  # same order as the options
     return {"ids": item["ids"], "markers": item["markers"], "qtype": item["qtype"], "target": target}
+
+
+def move_level_targets(board: chess.Board, record: dict, tau: float = TAU, fix_castling: bool = False):
+    """For the formats that pick a from-square and a to-square: the playable moves, a target for each (an
+    under-promotion's weight goes to the queen promotion on the same squares), and the best move.
+
+    The best move is defined exactly as validation does for `make_example`: the legal move with the highest target,
+    the first one in python-chess's move order on ties. So move-level top-1 stays comparable across formats.
+    """
+    weights = move_weights(board, record, tau, fix_castling)
+    legal = list(board.legal_moves)
+    legal_weights = [weights.get(m.uci(), 0.0) for m in legal]
+    best = legal[max(range(len(legal)), key=legal_weights.__getitem__)]
+    moves = playable_moves(board)
+    index = {(m.from_square, m.to_square): i for i, m in enumerate(moves)}
+    target = [0.0] * len(moves)
+    for m, w in zip(legal, legal_weights):
+        target[index[m.from_square, m.to_square]] += w
+    return moves, target, best
+
+
+def make_from_to_example(agent, record: dict, state_format: str = "fen", fix_castling: bool = False):
+    """Both questions for one position. `rows` are two Laya training items (which piece, which square), each with
+    the move targets summed per square. The rest is kept for move-level validation."""
+    board = chess.Board(record["fen"])
+    try:
+        items, squares = encode_from_to(agent, board, state_format)
+    except ValueError:
+        return None
+    moves, target, best = move_level_targets(board, record, fix_castling=fix_castling)
+    from_target = dict.fromkeys(squares["from"], 0.0)
+    to_target = dict.fromkeys(squares["to"], 0.0)
+    for m, w in zip(moves, target):
+        from_target[m.from_square] += w
+        to_target[m.to_square] += w
+    rows = [
+        {"ids": item["ids"], "markers": item["markers"], "qtype": item["qtype"], "target": list(t.values())}
+        for item, t in zip(items, (from_target, to_target))
+    ]
+    return {"rows": rows, "fen": record["fen"], "squares": squares, "moves": moves, "target": target, "best": best}
+
+
+def make_move_head_example(tok, record: dict, state_format: str = "fen", max_len: int = 512, fix_castling=False):
+    """The board alone as input, and a target over the playable moves (as from-square * 64 + to-square)."""
+    board = chess.Board(record["fen"])
+    moves, target, best = move_level_targets(board, record, fix_castling=fix_castling)
+    row = {"ids": encode_board(tok, board, state_format, max_len), "legal": [move_index(m) for m in moves]}
+    row["target"] = target
+    return {"rows": [row], "fen": record["fen"], "moves": moves, "target": target, "best": best}
+
+
+def move_level_scores(scores: list[float], example: dict) -> dict:
+    """Cross-entropy against the move targets, and whether the top move is the best move."""
+    log_p = log_softmax(scores)
+    top = example["moves"][int(log_p.argmax())]
+    return {"loss": float(-(log_p * example["target"]).sum()), "hit": float(top == example["best"])}
+
+
+def _summary(results: list[dict]) -> dict:
+    return {
+        "val_loss": statistics.mean(r["loss"] for r in results),
+        "val_top1": statistics.mean(r["hit"] for r in results),
+    }
+
+
+@torch.no_grad()
+def validate_from_to(model, pad_id: int, examples: list[dict], device) -> dict:
+    """Move-level validation for the from/to questions: each move scored as log p(from) + log p(to)."""
+    model.eval()
+    results = []
+    for i in range(0, len(examples), 32):
+        chunk = examples[i : i + 32]
+        b = collate([row for e in chunk for row in e["rows"]], pad_id, device)
+        with torch.autocast(torch.device(device).type, dtype=torch.bfloat16):
+            logits, _ = model(b["input_ids"], b["attention_mask"], b["marker_pos"], b["marker_mask"], b["qtype"])
+        logits = logits.float().cpu().numpy()
+        for j, e in enumerate(chunk):
+            from_logits = logits[2 * j, : len(e["rows"][0]["markers"])]
+            to_logits = logits[2 * j + 1, : len(e["rows"][1]["markers"])]
+            scores = combine_from_to(chess.Board(e["fen"]), e["squares"], from_logits, to_logits)
+            results.append(move_level_scores([scores[m] for m in e["moves"]], e))
+    model.train()
+    return _summary(results)
+
+
+@torch.no_grad()
+def validate_move_head(model, pad_id: int, examples: list[dict], device) -> dict:
+    """Move-level validation for the move-output model."""
+    model.eval()
+    results = []
+    for i in range(0, len(examples), 64):
+        chunk = examples[i : i + 64]
+        b = collate_boards([e["rows"][0] for e in chunk], pad_id, device)
+        with torch.autocast(torch.device(device).type, dtype=torch.bfloat16):
+            logits = model(b["input_ids"], b["attention_mask"]).float().cpu()
+        for row, e in zip(logits, chunk):
+            results.append(move_level_scores(row[e["rows"][0]["legal"]].tolist(), e))
+    model.train()
+    return _summary(results)
 
 
 def collate(examples: list[dict], pad_id: int, device: torch.device) -> dict:

@@ -20,7 +20,7 @@ from pathlib import Path
 import chess.engine
 
 from laya_chess.data.testsets import load_jsonl
-from laya_chess.engines.laya_engine import STATE_FORMATS
+from laya_chess.engines.laya_engine import NOTATIONS, STATE_FORMATS
 from laya_chess.eval.runner import evaluate, save_run, summarize
 
 TESTSETS = Path(__file__).resolve().parents[1] / "testsets"
@@ -42,6 +42,14 @@ def make_engine(args: argparse.Namespace):
     if args.engine == "laya":
         from laya_chess.engines.laya_engine import LayaEngine
 
+        training = Path(args.model) / "training.json"
+        if training.exists() and json.loads(training.read_text(encoding="utf-8"))["args"].get("format") == "move_head":
+            from laya_chess.engines.move_head import MoveHeadEngine
+
+            engine = MoveHeadEngine(model=args.model, device=args.device, state_format=args.state)
+            engine.warmup()
+            return engine
+
         engine = LayaEngine(model=args.model, device=args.device, notation=args.notation, state_format=args.state)
         engine.warmup()
         return engine
@@ -57,7 +65,7 @@ def main() -> None:
     parser.add_argument("--nodes", type=int, default=1000, help="stockfish: nodes per move")
     parser.add_argument("--model", default="convaiinnovations/laya", help="laya: base model or a trained checkpoint")
     parser.add_argument("--device", default=None, help="laya: cuda or cpu (default: auto)")
-    parser.add_argument("--notation", choices=["san", "uci"], help="laya (default: what the checkpoint used, or san)")
+    parser.add_argument("--notation", choices=NOTATIONS, help="laya (default: what the checkpoint used, or san)")
     parser.add_argument("--state", choices=STATE_FORMATS, help="laya (default: what the checkpoint used, or fen)")
     args = parser.parse_args()
 
