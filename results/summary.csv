@@ -33,3 +33,13 @@ run_id,engine,device,set,n,correct,wp_loss,latency_p50_ms,latency_p95_ms
 20261007-072939_laya-pieces-long-final-san-fen-pieces-,laya[pieces-long/final|san|fen_pieces],cuda,puzzles,1000,0.358,0.4504,14.918,16.079
 20261014-020218_laya-board-pieces-final-san-fen-pieces-,laya[board-pieces/final|san|fen_pieces],cuda,games,2000,0.243,0.1149,15.714,16.956
 20261014-020218_laya-board-pieces-final-san-fen-pieces-,laya[board-pieces/final|san|fen_pieces],cuda,puzzles,1000,0.348,0.4641,15.762,17.207
+20261015-031959_laya-base-castling-fix-final-san-fen-pieces-,laya[base-castling-fix/final|san|fen_pieces],cuda,games,2000,0.247,0.1161,15.83,18.077
+20261015-031959_laya-base-castling-fix-final-san-fen-pieces-,laya[base-castling-fix/final|san|fen_pieces],cuda,puzzles,1000,0.35,0.4594,16.525,20.842
+20261015-043208_laya-exp3-pieces-only-final-san-pieces-,laya[exp3-pieces-only/final|san|pieces],cuda,games,2000,0.2375,0.1208,15.617,16.687
+20261015-043208_laya-exp3-pieces-only-final-san-pieces-,laya[exp3-pieces-only/final|san|pieces],cuda,puzzles,1000,0.358,0.4488,15.679,16.997
+20261015-070521_laya-exp4-lan-final-lan-fen-pieces-,laya[exp4-lan/final|lan|fen_pieces],cuda,games,2000,0.241,0.1143,15.795,16.885
+20261015-070521_laya-exp4-lan-final-lan-fen-pieces-,laya[exp4-lan/final|lan|fen_pieces],cuda,puzzles,1000,0.342,0.4666,15.828,17.25
+20261015-085627_laya-exp5-from-to-final-from-to-fen-pieces-,laya[exp5-from-to/final|from_to|fen_pieces],cuda,games,2000,0.214,0.1452,17.851,18.92
+20261015-085627_laya-exp5-from-to-final-from-to-fen-pieces-,laya[exp5-from-to/final|from_to|fen_pieces],cuda,puzzles,1000,0.19,0.6034,17.763,19.014
+20261015-093319_laya-movehead-exp6-move-head-final-fen-pieces-,laya-movehead[exp6-move-head/final|fen_pieces],cuda:0,games,2000,0.1345,0.168,14.268,15.218
+20261015-093319_laya-movehead-exp6-move-head-final-fen-pieces-,laya-movehead[exp6-move-head/final|fen_pieces],cuda:0,puzzles,1000,0.129,0.6604,14.387,15.291
