@@ -32,3 +32,19 @@ def test_eval_database_scores_are_flipped_for_black():
 def test_eval_database_mates_become_large_scores():
     raw = {"fen": "6k1/5ppp/8/8/8/8/5PPP/R5K1 w - -", "evals": [{"pvs": [{"mate": 1, "line": "a1a8"}], "depth": 30}]}
     assert to_record(raw)["cp"] == [100_000]
+
+
+def test_extra_moves_never_outrank_lichess_moves():
+    import chess
+
+    from laya_chess.data.enrich import merge_extra
+
+    board = chess.Board("r1bqk2r/ppp2ppp/2np1n2/2b1p3/2B1P3/2NP1N2/PPP2PPP/R1BQK2R w KQkq - 0 1")
+    record = {"fen": board.fen(), "moves": ["e1h1", "c3a4"], "cp": [40, 10]}
+    sf_moves = [chess.Move.from_uci(u) for u in ("e1g1", "h2h3", "a2a4")]
+    merged = merge_extra(board, record, sf_moves, [60, 55, -200])
+    # Castling is already scored (written e1h1 by Lichess), so it isn't added twice.
+    assert merged["moves"] == ["e1h1", "c3a4", "h2h3", "a2a4"]
+    # h2h3 is 5 below Stockfish's best, but can't rank above c3a4, Lichess's lowest listed move.
+    assert merged["cp"] == [40, 10, 10, 40 - 260]
+    assert merged["extra"] == 2

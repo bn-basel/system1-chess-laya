@@ -18,6 +18,9 @@ LAYA_MILESTONES = [
     ("laya-pieces-300k", "checkpoints/board-pieces/final"),
     ("laya-pieces-1.5M", "checkpoints/pieces-long/final"),
     ("laya-pieces-1.5M+guard", "checkpoints/pieces-long/final"),  # with the "finish the game" guard
+    # The same 1.5M run, trained with castling targets fixed (see docs/experiments.md, round 1).
+    ("laya-pieces-1.5M-castling", "checkpoints/long-castling-fix/final"),
+    ("laya-pieces-1.5M-castling+guard", "checkpoints/long-castling-fix/final"),
 ]
 # Opponents: Stockfish's strength-limited mode is fixed at its stated rating (roughly the CCRL blitz scale) and
 # anchors the Elo numbers; random and grab-material are rated from their games like the Laya versions.

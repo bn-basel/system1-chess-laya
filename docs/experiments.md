@@ -15,6 +15,75 @@ One entry per experiment: the idea, what changed, the result, and the decision. 
 
 ## Experiments
 
+### 7. Richer targets: Stockfish scores more moves (2026-10-16)
+
+**Idea.** A Lichess record scores 1 to 5 moves (26% only one). Every other legal move gets target 0, as if a decent
+move were as bad as a blunder. Scoring more moves should teach Laya how good the other moves are.
+
+**Change.** `scripts/enrich_trainset.py` had our own Stockfish score the top 10 moves of each of the first 300k
+training positions (300k nodes, one thread per process, about 1.5 hours on the CPU, no download). Lichess's own,
+deeper scores are kept. An extra move gets Lichess's best score minus Stockfish's gap to its own best, but never
+more than Lichess's lowest listed move. Scored moves per position went from 3.5 to 9.4. The validation set is
+unchanged. Found along the way: the database holds a few impossible or odd boards (72 in 300k, e.g. three white
+knights or four white queens on the back rank) on which Stockfish crashes; those keep their Lichess scores only. Run
+`exp7-rich-targets`, with `--fix-castling` and `--data data/train-rich`.
+
+**Result.** Validation, against `base-castling-fix` (same positions, same order; only the targets differ):
+
+| Positions | `val_top1` baseline | `val_top1` richer | `val_loss` baseline | `val_loss` richer |
+|---|---:|---:|---:|---:|
+| 100k | 21.2% | 21.6% | 2.886 | 2.891 |
+| 200k | 22.7% | 22.8% | 2.813 | 2.847 |
+| 250k | 23.2% | 23.0% | 2.804 | 2.827 |
+| 300k | **24.5%** | **24.1%** | 2.795 | 2.821 |
+
+- No gain on validation: -0.4 points at 300k, within noise. `val_loss` is a little worse. That's expected: the
+  model now spreads probability over more good moves, while the validation answer key still lists only Lichess's
+  few.
+- Test sets (reported only): puzzles 36.5% (baseline 35.0%), games best move 24.2% (24.7%), win-chance lost 11.0%
+  (11.6%). Slightly better on two of three, but within noise and not used to decide.
+- Speed unchanged (15.1 ms per move).
+
+**Decision.** Not a winner on validation. It may still help a longer run, where the extra information has more
+time to matter, but that is untested.
+
+### Long run with the castling fix (2026-10-16)
+
+**What.** The recommended combined run from round 1: the same 1.5M-position run as `pieces-long`, with
+`--fix-castling` as the only change. Run `long-castling-fix` (about 7 hours, stopped once at 1.18M and resumed from
+the 1.1M save). Then the usual matches, 600 games per version.
+
+**Training curve.** Validation `val_top1` ends at 26.1% (the old `pieces-long` ended at 24.6%, but on the old answer
+key, so the two aren't strictly comparable).
+
+**Test sets** (these use the same answer key for both):
+
+| Model | Puzzles | Games best move | Win-chance lost | Time per move |
+|---|---:|---:|---:|---:|
+| `pieces-long` (old) | 35.8% | 24.6% | 10.9% | 14.9 ms |
+| `long-castling-fix` | **37.0%** | **25.6%** | **10.6%** | 15.1 ms |
+
+**Matches** (points out of 100 per opponent, draws in brackets):
+
+| Opponent | Old | Fixed | Old + guard | Fixed + guard |
+|---|---:|---:|---:|---:|
+| Random moves | 87 (26) | 87.5 (25) | 99.5 (1) | 99.5 (1) |
+| Grab material | 72.5 (55) | 72.5 (55) | 78 (44) | **86** (26) |
+| Stockfish 1320 | 11.5 | **16.5** | 7 | **13** |
+| Stockfish 1500 | 4.5 | 6.5 | 2.5 | 6 |
+| Stockfish 1700 | 3 | 4 | 3.5 | 4.5 |
+| Stockfish 2000 | 2.5 | 3.5 | 3.5 | 5.5 |
+| **Elo** | 1006 (968-1044) | 1039 (996-1082) | 1051 (1019-1084) | **1121** (1088-1153) |
+
+- With the guard, the fix is worth about **+70 Elo**, and the two ranges no longer overlap. It is the best Laya so
+  far. (Re-fitting all games moved the older ratings by a point or two: 1053 is now 1051, 1008 is now 1006.)
+- Without the guard, +33 Elo, within the noise of 600 games.
+- It scores more against every Stockfish level, and with the guard it wins far more against grab material (26
+  draws instead of 44).
+- Same speed.
+
+**Decision.** `long-castling-fix` is the new best model. Use `--fix-castling` for every run from now on.
+
 ### Found in round 1: castling never gets a target (2026-10-14)
 
 Not an experiment, but it affects every run so far. The Lichess database writes castling as the king taking its own

@@ -3599,3 +3599,1203 @@ laya-pieces-1.5M+guard,stockfish-2000,op49,white,0-1,0.0,54,checkmate,18.31
 laya-pieces-1.5M+guard,stockfish-2000,op49,black,1/2-1/2,0.5,108,threefold repetition,18.16
 laya-pieces-1.5M+guard,stockfish-2000,op50,white,0-1,0.0,60,checkmate,17.95
 laya-pieces-1.5M+guard,stockfish-2000,op50,black,1-0,0.0,51,checkmate,18.28
+laya-pieces-1.5M-castling,random,op01,white,1-0,1.0,45,checkmate,17.17
+laya-pieces-1.5M-castling,random,op01,black,1/2-1/2,0.5,76,threefold repetition,15.63
+laya-pieces-1.5M-castling,random,op02,white,1-0,1.0,63,checkmate,15.52
+laya-pieces-1.5M-castling,random,op02,black,0-1,1.0,122,checkmate,15.49
+laya-pieces-1.5M-castling,random,op03,white,1/2-1/2,0.5,49,threefold repetition,15.69
+laya-pieces-1.5M-castling,random,op03,black,1/2-1/2,0.5,101,threefold repetition,15.46
+laya-pieces-1.5M-castling,random,op04,white,1/2-1/2,0.5,46,threefold repetition,15.49
+laya-pieces-1.5M-castling,random,op04,black,0-1,1.0,76,checkmate,15.52
+laya-pieces-1.5M-castling,random,op05,white,1-0,1.0,65,checkmate,15.68
+laya-pieces-1.5M-castling,random,op05,black,0-1,1.0,50,checkmate,15.52
+laya-pieces-1.5M-castling,random,op06,white,1-0,1.0,39,checkmate,15.72
+laya-pieces-1.5M-castling,random,op06,black,1/2-1/2,0.5,72,threefold repetition,15.42
+laya-pieces-1.5M-castling,random,op07,white,1-0,1.0,53,checkmate,15.57
+laya-pieces-1.5M-castling,random,op07,black,0-1,1.0,68,checkmate,15.45
+laya-pieces-1.5M-castling,random,op08,white,1-0,1.0,33,checkmate,15.45
+laya-pieces-1.5M-castling,random,op08,black,0-1,1.0,48,checkmate,15.42
+laya-pieces-1.5M-castling,random,op09,white,1-0,1.0,67,checkmate,15.77
+laya-pieces-1.5M-castling,random,op09,black,0-1,1.0,50,checkmate,15.62
+laya-pieces-1.5M-castling,random,op10,white,1-0,1.0,63,checkmate,15.59
+laya-pieces-1.5M-castling,random,op10,black,1/2-1/2,0.5,114,stalemate,15.29
+laya-pieces-1.5M-castling,random,op11,white,1-0,1.0,81,checkmate,15.18
+laya-pieces-1.5M-castling,random,op11,black,0-1,1.0,78,checkmate,15.83
+laya-pieces-1.5M-castling,random,op12,white,1/2-1/2,0.5,111,threefold repetition,15.26
+laya-pieces-1.5M-castling,random,op12,black,0-1,1.0,70,checkmate,15.12
+laya-pieces-1.5M-castling,random,op13,white,1-0,1.0,25,checkmate,15.37
+laya-pieces-1.5M-castling,random,op13,black,0-1,1.0,70,checkmate,16.63
+laya-pieces-1.5M-castling,random,op14,white,1-0,1.0,49,checkmate,15.09
+laya-pieces-1.5M-castling,random,op14,black,0-1,1.0,24,checkmate,14.82
+laya-pieces-1.5M-castling,random,op15,white,1/2-1/2,0.5,51,threefold repetition,15.07
+laya-pieces-1.5M-castling,random,op15,black,1/2-1/2,0.5,46,stalemate,15.24
+laya-pieces-1.5M-castling,random,op16,white,1-0,1.0,57,checkmate,15.05
+laya-pieces-1.5M-castling,random,op16,black,0-1,1.0,44,checkmate,14.92
+laya-pieces-1.5M-castling,random,op17,white,1-0,1.0,95,checkmate,15.36
+laya-pieces-1.5M-castling,random,op17,black,0-1,1.0,70,checkmate,15.41
+laya-pieces-1.5M-castling,random,op18,white,1-0,1.0,77,checkmate,15.4
+laya-pieces-1.5M-castling,random,op18,black,0-1,1.0,68,checkmate,15.37
+laya-pieces-1.5M-castling,random,op19,white,1-0,1.0,47,checkmate,15.37
+laya-pieces-1.5M-castling,random,op19,black,0-1,1.0,98,checkmate,15.53
+laya-pieces-1.5M-castling,random,op20,white,1-0,1.0,41,checkmate,15.06
+laya-pieces-1.5M-castling,random,op20,black,0-1,1.0,62,checkmate,15.4
+laya-pieces-1.5M-castling,random,op21,white,1/2-1/2,0.5,54,threefold repetition,15.49
+laya-pieces-1.5M-castling,random,op21,black,0-1,1.0,62,checkmate,15.31
+laya-pieces-1.5M-castling,random,op22,white,1-0,1.0,39,checkmate,15.36
+laya-pieces-1.5M-castling,random,op22,black,0-1,1.0,56,checkmate,15.58
+laya-pieces-1.5M-castling,random,op23,white,1-0,1.0,55,checkmate,15.76
+laya-pieces-1.5M-castling,random,op23,black,0-1,1.0,48,checkmate,16.43
+laya-pieces-1.5M-castling,random,op24,white,1-0,1.0,49,checkmate,15.45
+laya-pieces-1.5M-castling,random,op24,black,0-1,1.0,52,checkmate,15.56
+laya-pieces-1.5M-castling,random,op25,white,1-0,1.0,79,checkmate,15.33
+laya-pieces-1.5M-castling,random,op25,black,0-1,1.0,84,checkmate,15.65
+laya-pieces-1.5M-castling,random,op26,white,1-0,1.0,61,checkmate,15.52
+laya-pieces-1.5M-castling,random,op26,black,0-1,1.0,114,checkmate,15.48
+laya-pieces-1.5M-castling,random,op27,white,1/2-1/2,0.5,79,stalemate,15.52
+laya-pieces-1.5M-castling,random,op27,black,1/2-1/2,0.5,78,stalemate,15.41
+laya-pieces-1.5M-castling,random,op28,white,1/2-1/2,0.5,65,stalemate,15.02
+laya-pieces-1.5M-castling,random,op28,black,0-1,1.0,40,checkmate,14.93
+laya-pieces-1.5M-castling,random,op29,white,1-0,1.0,43,checkmate,14.95
+laya-pieces-1.5M-castling,random,op29,black,0-1,1.0,44,checkmate,15.07
+laya-pieces-1.5M-castling,random,op30,white,1/2-1/2,0.5,125,stalemate,15.01
+laya-pieces-1.5M-castling,random,op30,black,0-1,1.0,46,checkmate,14.9
+laya-pieces-1.5M-castling,random,op31,white,1-0,1.0,45,checkmate,15.16
+laya-pieces-1.5M-castling,random,op31,black,0-1,1.0,22,checkmate,14.76
+laya-pieces-1.5M-castling,random,op32,white,1-0,1.0,53,checkmate,15.16
+laya-pieces-1.5M-castling,random,op32,black,0-1,1.0,100,checkmate,15.47
+laya-pieces-1.5M-castling,random,op33,white,1/2-1/2,0.5,59,stalemate,15.25
+laya-pieces-1.5M-castling,random,op33,black,0-1,1.0,78,checkmate,14.98
+laya-pieces-1.5M-castling,random,op34,white,1-0,1.0,45,checkmate,14.93
+laya-pieces-1.5M-castling,random,op34,black,0-1,1.0,66,checkmate,15.15
+laya-pieces-1.5M-castling,random,op35,white,1-0,1.0,103,checkmate,15.26
+laya-pieces-1.5M-castling,random,op35,black,1/2-1/2,0.5,58,stalemate,15.44
+laya-pieces-1.5M-castling,random,op36,white,1-0,1.0,45,checkmate,15.11
+laya-pieces-1.5M-castling,random,op36,black,1/2-1/2,0.5,127,threefold repetition,15.53
+laya-pieces-1.5M-castling,random,op37,white,1-0,1.0,37,checkmate,15.45
+laya-pieces-1.5M-castling,random,op37,black,0-1,1.0,74,checkmate,15.62
+laya-pieces-1.5M-castling,random,op38,white,1-0,1.0,41,checkmate,15.2
+laya-pieces-1.5M-castling,random,op38,black,0-1,1.0,46,checkmate,15.34
+laya-pieces-1.5M-castling,random,op39,white,1-0,1.0,135,checkmate,15.3
+laya-pieces-1.5M-castling,random,op39,black,0-1,1.0,82,checkmate,15.85
+laya-pieces-1.5M-castling,random,op40,white,1-0,1.0,69,checkmate,15.48
+laya-pieces-1.5M-castling,random,op40,black,1/2-1/2,0.5,66,threefold repetition,15.56
+laya-pieces-1.5M-castling,random,op41,white,1/2-1/2,0.5,69,threefold repetition,15.58
+laya-pieces-1.5M-castling,random,op41,black,0-1,1.0,32,checkmate,15.42
+laya-pieces-1.5M-castling,random,op42,white,1-0,1.0,85,checkmate,15.3
+laya-pieces-1.5M-castling,random,op42,black,1/2-1/2,0.5,98,stalemate,15.61
+laya-pieces-1.5M-castling,random,op43,white,1/2-1/2,0.5,100,threefold repetition,15.41
+laya-pieces-1.5M-castling,random,op43,black,1/2-1/2,0.5,60,threefold repetition,15.16
+laya-pieces-1.5M-castling,random,op44,white,1/2-1/2,0.5,58,threefold repetition,15.59
+laya-pieces-1.5M-castling,random,op44,black,0-1,1.0,32,checkmate,15.3
+laya-pieces-1.5M-castling,random,op45,white,1-0,1.0,27,checkmate,15.07
+laya-pieces-1.5M-castling,random,op45,black,0-1,1.0,34,checkmate,14.98
+laya-pieces-1.5M-castling,random,op46,white,1-0,1.0,77,checkmate,15.39
+laya-pieces-1.5M-castling,random,op46,black,0-1,1.0,60,checkmate,15.09
+laya-pieces-1.5M-castling,random,op47,white,1-0,1.0,81,checkmate,14.9
+laya-pieces-1.5M-castling,random,op47,black,0-1,1.0,128,checkmate,15.28
+laya-pieces-1.5M-castling,random,op48,white,1-0,1.0,23,checkmate,14.93
+laya-pieces-1.5M-castling,random,op48,black,1/2-1/2,0.5,64,stalemate,14.93
+laya-pieces-1.5M-castling,random,op49,white,1-0,1.0,69,checkmate,15.67
+laya-pieces-1.5M-castling,random,op49,black,0-1,1.0,52,checkmate,15.09
+laya-pieces-1.5M-castling,random,op50,white,1-0,1.0,47,checkmate,15.17
+laya-pieces-1.5M-castling,random,op50,black,1/2-1/2,0.5,136,threefold repetition,15.22
+laya-pieces-1.5M-castling,greedy,op01,white,1/2-1/2,0.5,137,insufficient material,15.4
+laya-pieces-1.5M-castling,greedy,op01,black,1/2-1/2,0.5,91,insufficient material,15.24
+laya-pieces-1.5M-castling,greedy,op02,white,1/2-1/2,0.5,80,threefold repetition,15.29
+laya-pieces-1.5M-castling,greedy,op02,black,1/2-1/2,0.5,117,threefold repetition,15.36
+laya-pieces-1.5M-castling,greedy,op03,white,1/2-1/2,0.5,135,insufficient material,15.38
+laya-pieces-1.5M-castling,greedy,op03,black,0-1,1.0,100,checkmate,15.22
+laya-pieces-1.5M-castling,greedy,op04,white,1/2-1/2,0.5,136,threefold repetition,15.41
+laya-pieces-1.5M-castling,greedy,op04,black,0-1,1.0,102,checkmate,15.54
+laya-pieces-1.5M-castling,greedy,op05,white,1/2-1/2,0.5,109,insufficient material,15.43
+laya-pieces-1.5M-castling,greedy,op05,black,0-1,1.0,56,checkmate,15.26
+laya-pieces-1.5M-castling,greedy,op06,white,1-0,1.0,39,checkmate,15.53
+laya-pieces-1.5M-castling,greedy,op06,black,1/2-1/2,0.5,122,threefold repetition,15.33
+laya-pieces-1.5M-castling,greedy,op07,white,1-0,1.0,103,checkmate,15.34
+laya-pieces-1.5M-castling,greedy,op07,black,1/2-1/2,0.5,94,insufficient material,15.29
+laya-pieces-1.5M-castling,greedy,op08,white,1/2-1/2,0.5,79,threefold repetition,15.36
+laya-pieces-1.5M-castling,greedy,op08,black,1/2-1/2,0.5,86,stalemate,14.96
+laya-pieces-1.5M-castling,greedy,op09,white,1/2-1/2,0.5,109,threefold repetition,15.15
+laya-pieces-1.5M-castling,greedy,op09,black,1/2-1/2,0.5,103,threefold repetition,15.33
+laya-pieces-1.5M-castling,greedy,op10,white,1-0,1.0,95,checkmate,15.16
+laya-pieces-1.5M-castling,greedy,op10,black,0-1,1.0,54,checkmate,15.61
+laya-pieces-1.5M-castling,greedy,op11,white,1/2-1/2,0.5,145,threefold repetition,14.88
+laya-pieces-1.5M-castling,greedy,op11,black,1/2-1/2,0.5,93,threefold repetition,15.04
+laya-pieces-1.5M-castling,greedy,op12,white,1-0,1.0,97,checkmate,14.91
+laya-pieces-1.5M-castling,greedy,op12,black,1/2-1/2,0.5,67,threefold repetition,15.34
+laya-pieces-1.5M-castling,greedy,op13,white,1/2-1/2,0.5,114,threefold repetition,15.12
+laya-pieces-1.5M-castling,greedy,op13,black,0-1,1.0,100,checkmate,15.25
+laya-pieces-1.5M-castling,greedy,op14,white,1/2-1/2,0.5,98,insufficient material,15.34
+laya-pieces-1.5M-castling,greedy,op14,black,0-1,1.0,22,checkmate,15.16
+laya-pieces-1.5M-castling,greedy,op15,white,1/2-1/2,0.5,105,insufficient material,15.41
+laya-pieces-1.5M-castling,greedy,op15,black,1/2-1/2,0.5,101,threefold repetition,15.5
+laya-pieces-1.5M-castling,greedy,op16,white,1/2-1/2,0.5,126,threefold repetition,15.56
+laya-pieces-1.5M-castling,greedy,op16,black,0-1,1.0,28,checkmate,15.54
+laya-pieces-1.5M-castling,greedy,op17,white,1/2-1/2,0.5,57,threefold repetition,15.25
+laya-pieces-1.5M-castling,greedy,op17,black,1/2-1/2,0.5,78,threefold repetition,15.54
+laya-pieces-1.5M-castling,greedy,op18,white,1-0,1.0,57,checkmate,15.45
+laya-pieces-1.5M-castling,greedy,op18,black,0-1,1.0,110,checkmate,15.44
+laya-pieces-1.5M-castling,greedy,op19,white,1/2-1/2,0.5,95,stalemate,15.16
+laya-pieces-1.5M-castling,greedy,op19,black,0-1,1.0,88,checkmate,14.94
+laya-pieces-1.5M-castling,greedy,op20,white,1-0,1.0,139,checkmate,15.09
+laya-pieces-1.5M-castling,greedy,op20,black,0-1,1.0,144,checkmate,14.98
+laya-pieces-1.5M-castling,greedy,op21,white,1/2-1/2,0.5,61,threefold repetition,15.29
+laya-pieces-1.5M-castling,greedy,op21,black,0-1,1.0,48,checkmate,15.0
+laya-pieces-1.5M-castling,greedy,op22,white,1-0,1.0,31,checkmate,14.94
+laya-pieces-1.5M-castling,greedy,op22,black,0-1,1.0,52,checkmate,14.94
+laya-pieces-1.5M-castling,greedy,op23,white,1/2-1/2,0.5,35,threefold repetition,15.45
+laya-pieces-1.5M-castling,greedy,op23,black,0-1,1.0,46,checkmate,15.14
+laya-pieces-1.5M-castling,greedy,op24,white,1/2-1/2,0.5,24,threefold repetition,15.13
+laya-pieces-1.5M-castling,greedy,op24,black,1/2-1/2,0.5,48,threefold repetition,15.41
+laya-pieces-1.5M-castling,greedy,op25,white,1-0,1.0,115,checkmate,15.24
+laya-pieces-1.5M-castling,greedy,op25,black,1/2-1/2,0.5,139,threefold repetition,15.24
+laya-pieces-1.5M-castling,greedy,op26,white,1-0,1.0,25,checkmate,14.96
+laya-pieces-1.5M-castling,greedy,op26,black,1/2-1/2,0.5,106,stalemate,15.25
+laya-pieces-1.5M-castling,greedy,op27,white,1/2-1/2,0.5,124,insufficient material,15.32
+laya-pieces-1.5M-castling,greedy,op27,black,1/2-1/2,0.5,93,threefold repetition,15.26
+laya-pieces-1.5M-castling,greedy,op28,white,1/2-1/2,0.5,154,threefold repetition,15.5
+laya-pieces-1.5M-castling,greedy,op28,black,0-1,1.0,96,checkmate,15.15
+laya-pieces-1.5M-castling,greedy,op29,white,1-0,1.0,127,checkmate,15.56
+laya-pieces-1.5M-castling,greedy,op29,black,1/2-1/2,0.5,141,threefold repetition,15.58
+laya-pieces-1.5M-castling,greedy,op30,white,1/2-1/2,0.5,243,threefold repetition,15.65
+laya-pieces-1.5M-castling,greedy,op30,black,0-1,1.0,40,checkmate,14.89
+laya-pieces-1.5M-castling,greedy,op31,white,1/2-1/2,0.5,122,threefold repetition,15.24
+laya-pieces-1.5M-castling,greedy,op31,black,1/2-1/2,0.5,49,threefold repetition,15.04
+laya-pieces-1.5M-castling,greedy,op32,white,1/2-1/2,0.5,114,threefold repetition,15.04
+laya-pieces-1.5M-castling,greedy,op32,black,1/2-1/2,0.5,119,threefold repetition,15.24
+laya-pieces-1.5M-castling,greedy,op33,white,1-0,1.0,117,checkmate,15.05
+laya-pieces-1.5M-castling,greedy,op33,black,1/2-1/2,0.5,104,threefold repetition,14.95
+laya-pieces-1.5M-castling,greedy,op34,white,1/2-1/2,0.5,69,threefold repetition,15.15
+laya-pieces-1.5M-castling,greedy,op34,black,0-1,1.0,78,checkmate,14.96
+laya-pieces-1.5M-castling,greedy,op35,white,1-0,1.0,133,checkmate,15.19
+laya-pieces-1.5M-castling,greedy,op35,black,0-1,1.0,94,checkmate,15.05
+laya-pieces-1.5M-castling,greedy,op36,white,1-0,1.0,33,checkmate,15.23
+laya-pieces-1.5M-castling,greedy,op36,black,1/2-1/2,0.5,114,threefold repetition,15.21
+laya-pieces-1.5M-castling,greedy,op37,white,1-0,1.0,33,checkmate,15.36
+laya-pieces-1.5M-castling,greedy,op37,black,0-1,1.0,88,checkmate,15.2
+laya-pieces-1.5M-castling,greedy,op38,white,1-0,1.0,79,checkmate,15.24
+laya-pieces-1.5M-castling,greedy,op38,black,1/2-1/2,0.5,124,threefold repetition,15.3
+laya-pieces-1.5M-castling,greedy,op39,white,1-0,1.0,19,checkmate,15.53
+laya-pieces-1.5M-castling,greedy,op39,black,0-1,1.0,52,checkmate,15.4
+laya-pieces-1.5M-castling,greedy,op40,white,1/2-1/2,0.5,241,insufficient material,15.75
+laya-pieces-1.5M-castling,greedy,op40,black,1/2-1/2,0.5,132,threefold repetition,15.45
+laya-pieces-1.5M-castling,greedy,op41,white,1-0,1.0,55,checkmate,15.43
+laya-pieces-1.5M-castling,greedy,op41,black,0-1,1.0,74,checkmate,15.22
+laya-pieces-1.5M-castling,greedy,op42,white,1/2-1/2,0.5,82,threefold repetition,15.35
+laya-pieces-1.5M-castling,greedy,op42,black,1/2-1/2,0.5,46,threefold repetition,14.95
+laya-pieces-1.5M-castling,greedy,op43,white,1-0,1.0,147,checkmate,15.31
+laya-pieces-1.5M-castling,greedy,op43,black,0-1,1.0,94,checkmate,15.18
+laya-pieces-1.5M-castling,greedy,op44,white,1-0,1.0,107,checkmate,15.08
+laya-pieces-1.5M-castling,greedy,op44,black,1/2-1/2,0.5,97,threefold repetition,15.06
+laya-pieces-1.5M-castling,greedy,op45,white,1-0,1.0,79,checkmate,15.39
+laya-pieces-1.5M-castling,greedy,op45,black,1/2-1/2,0.5,117,threefold repetition,15.06
+laya-pieces-1.5M-castling,greedy,op46,white,1/2-1/2,0.5,134,threefold repetition,15.14
+laya-pieces-1.5M-castling,greedy,op46,black,0-1,1.0,70,checkmate,15.38
+laya-pieces-1.5M-castling,greedy,op47,white,1/2-1/2,0.5,131,threefold repetition,15.19
+laya-pieces-1.5M-castling,greedy,op47,black,0-1,1.0,24,checkmate,15.61
+laya-pieces-1.5M-castling,greedy,op48,white,1/2-1/2,0.5,99,stalemate,15.26
+laya-pieces-1.5M-castling,greedy,op48,black,1/2-1/2,0.5,88,threefold repetition,15.3
+laya-pieces-1.5M-castling,greedy,op49,white,1-0,1.0,61,checkmate,15.33
+laya-pieces-1.5M-castling,greedy,op49,black,1/2-1/2,0.5,93,threefold repetition,15.41
+laya-pieces-1.5M-castling,greedy,op50,white,1/2-1/2,0.5,74,threefold repetition,15.25
+laya-pieces-1.5M-castling,greedy,op50,black,0-1,1.0,50,checkmate,15.16
+laya-pieces-1.5M-castling,stockfish-1320,op01,white,0-1,0.0,74,checkmate,16.82
+laya-pieces-1.5M-castling,stockfish-1320,op01,black,0-1,1.0,126,checkmate,17.08
+laya-pieces-1.5M-castling,stockfish-1320,op02,white,0-1,0.0,32,checkmate,17.27
+laya-pieces-1.5M-castling,stockfish-1320,op02,black,1-0,0.0,65,checkmate,17.37
+laya-pieces-1.5M-castling,stockfish-1320,op03,white,0-1,0.0,58,checkmate,17.13
+laya-pieces-1.5M-castling,stockfish-1320,op03,black,1/2-1/2,0.5,78,threefold repetition,16.93
+laya-pieces-1.5M-castling,stockfish-1320,op04,white,0-1,0.0,134,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-1320,op04,black,1/2-1/2,0.5,76,threefold repetition,17.12
+laya-pieces-1.5M-castling,stockfish-1320,op05,white,0-1,0.0,70,checkmate,16.49
+laya-pieces-1.5M-castling,stockfish-1320,op05,black,1/2-1/2,0.5,60,threefold repetition,17.13
+laya-pieces-1.5M-castling,stockfish-1320,op06,white,0-1,0.0,106,checkmate,16.78
+laya-pieces-1.5M-castling,stockfish-1320,op06,black,1-0,0.0,53,checkmate,17.19
+laya-pieces-1.5M-castling,stockfish-1320,op07,white,0-1,0.0,76,checkmate,17.42
+laya-pieces-1.5M-castling,stockfish-1320,op07,black,1-0,0.0,59,checkmate,16.73
+laya-pieces-1.5M-castling,stockfish-1320,op08,white,0-1,0.0,78,checkmate,17.0
+laya-pieces-1.5M-castling,stockfish-1320,op08,black,1-0,0.0,65,checkmate,16.91
+laya-pieces-1.5M-castling,stockfish-1320,op09,white,0-1,0.0,102,checkmate,17.06
+laya-pieces-1.5M-castling,stockfish-1320,op09,black,1-0,0.0,57,checkmate,17.11
+laya-pieces-1.5M-castling,stockfish-1320,op10,white,1/2-1/2,0.5,77,threefold repetition,17.1
+laya-pieces-1.5M-castling,stockfish-1320,op10,black,1/2-1/2,0.5,152,threefold repetition,16.87
+laya-pieces-1.5M-castling,stockfish-1320,op11,white,0-1,0.0,168,checkmate,16.85
+laya-pieces-1.5M-castling,stockfish-1320,op11,black,1-0,0.0,93,checkmate,17.02
+laya-pieces-1.5M-castling,stockfish-1320,op12,white,0-1,0.0,68,checkmate,16.79
+laya-pieces-1.5M-castling,stockfish-1320,op12,black,1-0,0.0,71,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-1320,op13,white,0-1,0.0,42,checkmate,17.28
+laya-pieces-1.5M-castling,stockfish-1320,op13,black,1-0,0.0,99,checkmate,16.85
+laya-pieces-1.5M-castling,stockfish-1320,op14,white,0-1,0.0,78,checkmate,17.28
+laya-pieces-1.5M-castling,stockfish-1320,op14,black,1/2-1/2,0.5,250,fifty moves,16.81
+laya-pieces-1.5M-castling,stockfish-1320,op15,white,1/2-1/2,0.5,89,threefold repetition,16.89
+laya-pieces-1.5M-castling,stockfish-1320,op15,black,1/2-1/2,0.5,104,threefold repetition,16.71
+laya-pieces-1.5M-castling,stockfish-1320,op16,white,1/2-1/2,0.5,92,threefold repetition,17.16
+laya-pieces-1.5M-castling,stockfish-1320,op16,black,1-0,0.0,105,checkmate,17.19
+laya-pieces-1.5M-castling,stockfish-1320,op17,white,0-1,0.0,26,checkmate,17.33
+laya-pieces-1.5M-castling,stockfish-1320,op17,black,1-0,0.0,139,checkmate,16.69
+laya-pieces-1.5M-castling,stockfish-1320,op18,white,0-1,0.0,90,checkmate,17.02
+laya-pieces-1.5M-castling,stockfish-1320,op18,black,1-0,0.0,107,checkmate,17.0
+laya-pieces-1.5M-castling,stockfish-1320,op19,white,0-1,0.0,96,checkmate,17.0
+laya-pieces-1.5M-castling,stockfish-1320,op19,black,1-0,0.0,51,checkmate,17.07
+laya-pieces-1.5M-castling,stockfish-1320,op20,white,0-1,0.0,88,checkmate,16.83
+laya-pieces-1.5M-castling,stockfish-1320,op20,black,1-0,0.0,53,checkmate,16.77
+laya-pieces-1.5M-castling,stockfish-1320,op21,white,0-1,0.0,46,checkmate,17.05
+laya-pieces-1.5M-castling,stockfish-1320,op21,black,1-0,0.0,45,checkmate,16.81
+laya-pieces-1.5M-castling,stockfish-1320,op22,white,0-1,0.0,70,checkmate,16.83
+laya-pieces-1.5M-castling,stockfish-1320,op22,black,1-0,0.0,63,checkmate,16.72
+laya-pieces-1.5M-castling,stockfish-1320,op23,white,0-1,0.0,58,checkmate,17.18
+laya-pieces-1.5M-castling,stockfish-1320,op23,black,1-0,0.0,67,checkmate,17.04
+laya-pieces-1.5M-castling,stockfish-1320,op24,white,0-1,0.0,114,checkmate,16.97
+laya-pieces-1.5M-castling,stockfish-1320,op24,black,1-0,0.0,103,checkmate,17.03
+laya-pieces-1.5M-castling,stockfish-1320,op25,white,0-1,0.0,108,checkmate,17.14
+laya-pieces-1.5M-castling,stockfish-1320,op25,black,1-0,0.0,95,checkmate,17.38
+laya-pieces-1.5M-castling,stockfish-1320,op26,white,0-1,0.0,80,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-1320,op26,black,1-0,0.0,67,checkmate,17.31
+laya-pieces-1.5M-castling,stockfish-1320,op27,white,0-1,0.0,40,checkmate,17.06
+laya-pieces-1.5M-castling,stockfish-1320,op27,black,1/2-1/2,0.5,150,threefold repetition,16.93
+laya-pieces-1.5M-castling,stockfish-1320,op28,white,0-1,0.0,64,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-1320,op28,black,0-1,1.0,106,checkmate,16.9
+laya-pieces-1.5M-castling,stockfish-1320,op29,white,1/2-1/2,0.5,109,threefold repetition,16.94
+laya-pieces-1.5M-castling,stockfish-1320,op29,black,0-1,1.0,102,checkmate,16.61
+laya-pieces-1.5M-castling,stockfish-1320,op30,white,0-1,0.0,70,checkmate,16.91
+laya-pieces-1.5M-castling,stockfish-1320,op30,black,1/2-1/2,0.5,90,threefold repetition,17.07
+laya-pieces-1.5M-castling,stockfish-1320,op31,white,1/2-1/2,0.5,105,threefold repetition,16.56
+laya-pieces-1.5M-castling,stockfish-1320,op31,black,1/2-1/2,0.5,192,threefold repetition,16.68
+laya-pieces-1.5M-castling,stockfish-1320,op32,white,0-1,0.0,52,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-1320,op32,black,1/2-1/2,0.5,122,threefold repetition,16.9
+laya-pieces-1.5M-castling,stockfish-1320,op33,white,0-1,0.0,92,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-1320,op33,black,1/2-1/2,0.5,172,threefold repetition,16.62
+laya-pieces-1.5M-castling,stockfish-1320,op34,white,0-1,0.0,52,checkmate,17.11
+laya-pieces-1.5M-castling,stockfish-1320,op34,black,1-0,0.0,55,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-1320,op35,white,0-1,0.0,54,checkmate,17.25
+laya-pieces-1.5M-castling,stockfish-1320,op35,black,1-0,0.0,97,checkmate,17.03
+laya-pieces-1.5M-castling,stockfish-1320,op36,white,1/2-1/2,0.5,155,threefold repetition,16.86
+laya-pieces-1.5M-castling,stockfish-1320,op36,black,1-0,0.0,75,checkmate,17.06
+laya-pieces-1.5M-castling,stockfish-1320,op37,white,0-1,0.0,116,checkmate,16.72
+laya-pieces-1.5M-castling,stockfish-1320,op37,black,1-0,0.0,45,checkmate,16.99
+laya-pieces-1.5M-castling,stockfish-1320,op38,white,1/2-1/2,0.5,145,threefold repetition,16.67
+laya-pieces-1.5M-castling,stockfish-1320,op38,black,1/2-1/2,0.5,170,threefold repetition,16.89
+laya-pieces-1.5M-castling,stockfish-1320,op39,white,0-1,0.0,108,checkmate,16.93
+laya-pieces-1.5M-castling,stockfish-1320,op39,black,1/2-1/2,0.5,144,threefold repetition,16.97
+laya-pieces-1.5M-castling,stockfish-1320,op40,white,1/2-1/2,0.5,137,stalemate,16.85
+laya-pieces-1.5M-castling,stockfish-1320,op40,black,1-0,0.0,59,checkmate,17.02
+laya-pieces-1.5M-castling,stockfish-1320,op41,white,0-1,0.0,72,checkmate,17.08
+laya-pieces-1.5M-castling,stockfish-1320,op41,black,1-0,0.0,67,checkmate,17.07
+laya-pieces-1.5M-castling,stockfish-1320,op42,white,0-1,0.0,34,checkmate,17.28
+laya-pieces-1.5M-castling,stockfish-1320,op42,black,1-0,0.0,97,checkmate,16.7
+laya-pieces-1.5M-castling,stockfish-1320,op43,white,0-1,0.0,132,checkmate,16.94
+laya-pieces-1.5M-castling,stockfish-1320,op43,black,1/2-1/2,0.5,116,threefold repetition,16.74
+laya-pieces-1.5M-castling,stockfish-1320,op44,white,0-1,0.0,72,checkmate,17.13
+laya-pieces-1.5M-castling,stockfish-1320,op44,black,1/2-1/2,0.5,128,threefold repetition,16.64
+laya-pieces-1.5M-castling,stockfish-1320,op45,white,0-1,0.0,88,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-1320,op45,black,1-0,0.0,91,checkmate,17.32
+laya-pieces-1.5M-castling,stockfish-1320,op46,white,0-1,0.0,82,checkmate,17.32
+laya-pieces-1.5M-castling,stockfish-1320,op46,black,1-0,0.0,65,checkmate,17.08
+laya-pieces-1.5M-castling,stockfish-1320,op47,white,0-1,0.0,68,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-1320,op47,black,1-0,0.0,63,checkmate,17.16
+laya-pieces-1.5M-castling,stockfish-1320,op48,white,0-1,0.0,82,checkmate,16.8
+laya-pieces-1.5M-castling,stockfish-1320,op48,black,0-1,1.0,112,checkmate,16.83
+laya-pieces-1.5M-castling,stockfish-1320,op49,white,0-1,0.0,62,checkmate,16.91
+laya-pieces-1.5M-castling,stockfish-1320,op49,black,1/2-1/2,0.5,126,threefold repetition,16.86
+laya-pieces-1.5M-castling,stockfish-1320,op50,white,0-1,0.0,66,checkmate,17.15
+laya-pieces-1.5M-castling,stockfish-1320,op50,black,1/2-1/2,0.5,82,threefold repetition,17.21
+laya-pieces-1.5M-castling,stockfish-1500,op01,white,0-1,0.0,40,checkmate,17.02
+laya-pieces-1.5M-castling,stockfish-1500,op01,black,1/2-1/2,0.5,140,threefold repetition,16.79
+laya-pieces-1.5M-castling,stockfish-1500,op02,white,0-1,0.0,48,checkmate,16.87
+laya-pieces-1.5M-castling,stockfish-1500,op02,black,1-0,0.0,79,checkmate,16.89
+laya-pieces-1.5M-castling,stockfish-1500,op03,white,0-1,0.0,44,checkmate,17.39
+laya-pieces-1.5M-castling,stockfish-1500,op03,black,1/2-1/2,0.5,94,threefold repetition,17.05
+laya-pieces-1.5M-castling,stockfish-1500,op04,white,0-1,0.0,116,checkmate,16.93
+laya-pieces-1.5M-castling,stockfish-1500,op04,black,1-0,0.0,107,checkmate,17.14
+laya-pieces-1.5M-castling,stockfish-1500,op05,white,0-1,0.0,50,checkmate,17.4
+laya-pieces-1.5M-castling,stockfish-1500,op05,black,1-0,0.0,103,checkmate,16.52
+laya-pieces-1.5M-castling,stockfish-1500,op06,white,0-1,0.0,66,checkmate,16.97
+laya-pieces-1.5M-castling,stockfish-1500,op06,black,1-0,0.0,103,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-1500,op07,white,0-1,0.0,102,checkmate,17.05
+laya-pieces-1.5M-castling,stockfish-1500,op07,black,1-0,0.0,61,checkmate,17.3
+laya-pieces-1.5M-castling,stockfish-1500,op08,white,0-1,0.0,64,checkmate,17.16
+laya-pieces-1.5M-castling,stockfish-1500,op08,black,1-0,0.0,53,checkmate,17.45
+laya-pieces-1.5M-castling,stockfish-1500,op09,white,0-1,0.0,64,checkmate,17.27
+laya-pieces-1.5M-castling,stockfish-1500,op09,black,1-0,0.0,57,checkmate,17.01
+laya-pieces-1.5M-castling,stockfish-1500,op10,white,0-1,0.0,70,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-1500,op10,black,1-0,0.0,71,checkmate,16.98
+laya-pieces-1.5M-castling,stockfish-1500,op11,white,0-1,0.0,74,checkmate,16.98
+laya-pieces-1.5M-castling,stockfish-1500,op11,black,1-0,0.0,97,checkmate,17.18
+laya-pieces-1.5M-castling,stockfish-1500,op12,white,0-1,0.0,50,checkmate,17.04
+laya-pieces-1.5M-castling,stockfish-1500,op12,black,1-0,0.0,51,checkmate,17.17
+laya-pieces-1.5M-castling,stockfish-1500,op13,white,0-1,0.0,66,checkmate,16.98
+laya-pieces-1.5M-castling,stockfish-1500,op13,black,1-0,0.0,69,checkmate,17.13
+laya-pieces-1.5M-castling,stockfish-1500,op14,white,0-1,0.0,58,checkmate,17.28
+laya-pieces-1.5M-castling,stockfish-1500,op14,black,1-0,0.0,85,checkmate,17.36
+laya-pieces-1.5M-castling,stockfish-1500,op15,white,0-1,0.0,64,checkmate,16.53
+laya-pieces-1.5M-castling,stockfish-1500,op15,black,1/2-1/2,0.5,90,threefold repetition,16.77
+laya-pieces-1.5M-castling,stockfish-1500,op16,white,0-1,0.0,96,checkmate,16.75
+laya-pieces-1.5M-castling,stockfish-1500,op16,black,1-0,0.0,73,checkmate,16.94
+laya-pieces-1.5M-castling,stockfish-1500,op17,white,0-1,0.0,122,checkmate,16.87
+laya-pieces-1.5M-castling,stockfish-1500,op17,black,1-0,0.0,73,checkmate,16.9
+laya-pieces-1.5M-castling,stockfish-1500,op18,white,0-1,0.0,82,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-1500,op18,black,1-0,0.0,81,checkmate,17.1
+laya-pieces-1.5M-castling,stockfish-1500,op19,white,0-1,0.0,52,checkmate,16.98
+laya-pieces-1.5M-castling,stockfish-1500,op19,black,1-0,0.0,73,checkmate,17.09
+laya-pieces-1.5M-castling,stockfish-1500,op20,white,0-1,0.0,40,checkmate,16.84
+laya-pieces-1.5M-castling,stockfish-1500,op20,black,1-0,0.0,115,checkmate,16.98
+laya-pieces-1.5M-castling,stockfish-1500,op21,white,0-1,0.0,46,checkmate,16.62
+laya-pieces-1.5M-castling,stockfish-1500,op21,black,1-0,0.0,57,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-1500,op22,white,0-1,0.0,80,checkmate,17.0
+laya-pieces-1.5M-castling,stockfish-1500,op22,black,1-0,0.0,71,checkmate,17.3
+laya-pieces-1.5M-castling,stockfish-1500,op23,white,0-1,0.0,68,checkmate,16.9
+laya-pieces-1.5M-castling,stockfish-1500,op23,black,1-0,0.0,125,checkmate,16.59
+laya-pieces-1.5M-castling,stockfish-1500,op24,white,1/2-1/2,0.5,107,threefold repetition,17.24
+laya-pieces-1.5M-castling,stockfish-1500,op24,black,1-0,0.0,115,checkmate,16.91
+laya-pieces-1.5M-castling,stockfish-1500,op25,white,0-1,0.0,44,checkmate,16.94
+laya-pieces-1.5M-castling,stockfish-1500,op25,black,1/2-1/2,0.5,46,threefold repetition,17.13
+laya-pieces-1.5M-castling,stockfish-1500,op26,white,0-1,0.0,62,checkmate,17.06
+laya-pieces-1.5M-castling,stockfish-1500,op26,black,1-0,0.0,43,checkmate,17.22
+laya-pieces-1.5M-castling,stockfish-1500,op27,white,0-1,0.0,74,checkmate,16.98
+laya-pieces-1.5M-castling,stockfish-1500,op27,black,1-0,0.0,53,checkmate,16.77
+laya-pieces-1.5M-castling,stockfish-1500,op28,white,0-1,0.0,88,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-1500,op28,black,1-0,0.0,65,checkmate,17.46
+laya-pieces-1.5M-castling,stockfish-1500,op29,white,0-1,0.0,128,checkmate,16.84
+laya-pieces-1.5M-castling,stockfish-1500,op29,black,1-0,0.0,107,checkmate,16.71
+laya-pieces-1.5M-castling,stockfish-1500,op30,white,1-0,1.0,75,checkmate,17.15
+laya-pieces-1.5M-castling,stockfish-1500,op30,black,1/2-1/2,0.5,66,threefold repetition,16.83
+laya-pieces-1.5M-castling,stockfish-1500,op31,white,0-1,0.0,58,checkmate,16.72
+laya-pieces-1.5M-castling,stockfish-1500,op31,black,1-0,0.0,95,checkmate,16.75
+laya-pieces-1.5M-castling,stockfish-1500,op32,white,1/2-1/2,0.5,85,threefold repetition,16.57
+laya-pieces-1.5M-castling,stockfish-1500,op32,black,1-0,0.0,97,checkmate,16.81
+laya-pieces-1.5M-castling,stockfish-1500,op33,white,0-1,0.0,42,checkmate,17.24
+laya-pieces-1.5M-castling,stockfish-1500,op33,black,1/2-1/2,0.5,56,threefold repetition,17.02
+laya-pieces-1.5M-castling,stockfish-1500,op34,white,0-1,0.0,56,checkmate,17.14
+laya-pieces-1.5M-castling,stockfish-1500,op34,black,1-0,0.0,77,checkmate,16.92
+laya-pieces-1.5M-castling,stockfish-1500,op35,white,0-1,0.0,38,checkmate,17.26
+laya-pieces-1.5M-castling,stockfish-1500,op35,black,1-0,0.0,69,checkmate,17.38
+laya-pieces-1.5M-castling,stockfish-1500,op36,white,0-1,0.0,156,checkmate,16.72
+laya-pieces-1.5M-castling,stockfish-1500,op36,black,1-0,0.0,63,checkmate,16.98
+laya-pieces-1.5M-castling,stockfish-1500,op37,white,0-1,0.0,58,checkmate,16.94
+laya-pieces-1.5M-castling,stockfish-1500,op37,black,1-0,0.0,67,checkmate,16.93
+laya-pieces-1.5M-castling,stockfish-1500,op38,white,0-1,0.0,48,checkmate,17.26
+laya-pieces-1.5M-castling,stockfish-1500,op38,black,1-0,0.0,35,checkmate,17.05
+laya-pieces-1.5M-castling,stockfish-1500,op39,white,0-1,0.0,86,checkmate,16.87
+laya-pieces-1.5M-castling,stockfish-1500,op39,black,1-0,0.0,71,checkmate,16.97
+laya-pieces-1.5M-castling,stockfish-1500,op40,white,0-1,0.0,80,checkmate,17.18
+laya-pieces-1.5M-castling,stockfish-1500,op40,black,1-0,0.0,91,checkmate,16.89
+laya-pieces-1.5M-castling,stockfish-1500,op41,white,0-1,0.0,100,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-1500,op41,black,1-0,0.0,27,checkmate,17.23
+laya-pieces-1.5M-castling,stockfish-1500,op42,white,0-1,0.0,100,checkmate,16.79
+laya-pieces-1.5M-castling,stockfish-1500,op42,black,1-0,0.0,67,checkmate,17.02
+laya-pieces-1.5M-castling,stockfish-1500,op43,white,0-1,0.0,78,checkmate,17.25
+laya-pieces-1.5M-castling,stockfish-1500,op43,black,1-0,0.0,103,checkmate,17.12
+laya-pieces-1.5M-castling,stockfish-1500,op44,white,0-1,0.0,70,checkmate,16.5
+laya-pieces-1.5M-castling,stockfish-1500,op44,black,1-0,0.0,35,checkmate,16.9
+laya-pieces-1.5M-castling,stockfish-1500,op45,white,1/2-1/2,0.5,85,threefold repetition,16.84
+laya-pieces-1.5M-castling,stockfish-1500,op45,black,1/2-1/2,0.5,56,threefold repetition,17.09
+laya-pieces-1.5M-castling,stockfish-1500,op46,white,0-1,0.0,126,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-1500,op46,black,1-0,0.0,55,checkmate,17.46
+laya-pieces-1.5M-castling,stockfish-1500,op47,white,0-1,0.0,54,checkmate,17.1
+laya-pieces-1.5M-castling,stockfish-1500,op47,black,1-0,0.0,77,checkmate,17.06
+laya-pieces-1.5M-castling,stockfish-1500,op48,white,1/2-1/2,0.5,75,threefold repetition,17.27
+laya-pieces-1.5M-castling,stockfish-1500,op48,black,1-0,0.0,85,checkmate,17.17
+laya-pieces-1.5M-castling,stockfish-1500,op49,white,0-1,0.0,70,checkmate,17.25
+laya-pieces-1.5M-castling,stockfish-1500,op49,black,1-0,0.0,85,checkmate,17.03
+laya-pieces-1.5M-castling,stockfish-1500,op50,white,0-1,0.0,78,checkmate,16.85
+laya-pieces-1.5M-castling,stockfish-1500,op50,black,1-0,0.0,83,checkmate,16.94
+laya-pieces-1.5M-castling,stockfish-1700,op01,white,0-1,0.0,82,checkmate,16.89
+laya-pieces-1.5M-castling,stockfish-1700,op01,black,1-0,0.0,73,checkmate,16.6
+laya-pieces-1.5M-castling,stockfish-1700,op02,white,0-1,0.0,76,checkmate,16.92
+laya-pieces-1.5M-castling,stockfish-1700,op02,black,1-0,0.0,65,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-1700,op03,white,0-1,0.0,56,checkmate,16.94
+laya-pieces-1.5M-castling,stockfish-1700,op03,black,1-0,0.0,55,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-1700,op04,white,0-1,0.0,76,checkmate,17.1
+laya-pieces-1.5M-castling,stockfish-1700,op04,black,1-0,0.0,55,checkmate,17.0
+laya-pieces-1.5M-castling,stockfish-1700,op05,white,0-1,0.0,56,checkmate,17.13
+laya-pieces-1.5M-castling,stockfish-1700,op05,black,1-0,0.0,29,checkmate,17.28
+laya-pieces-1.5M-castling,stockfish-1700,op06,white,0-1,0.0,86,checkmate,16.93
+laya-pieces-1.5M-castling,stockfish-1700,op06,black,1-0,0.0,51,checkmate,16.85
+laya-pieces-1.5M-castling,stockfish-1700,op07,white,0-1,0.0,100,checkmate,17.05
+laya-pieces-1.5M-castling,stockfish-1700,op07,black,1-0,0.0,127,checkmate,16.91
+laya-pieces-1.5M-castling,stockfish-1700,op08,white,0-1,0.0,80,checkmate,16.58
+laya-pieces-1.5M-castling,stockfish-1700,op08,black,1-0,0.0,61,checkmate,17.04
+laya-pieces-1.5M-castling,stockfish-1700,op09,white,0-1,0.0,74,checkmate,16.84
+laya-pieces-1.5M-castling,stockfish-1700,op09,black,1-0,0.0,65,checkmate,16.99
+laya-pieces-1.5M-castling,stockfish-1700,op10,white,1/2-1/2,0.5,127,threefold repetition,17.15
+laya-pieces-1.5M-castling,stockfish-1700,op10,black,1/2-1/2,0.5,110,threefold repetition,17.22
+laya-pieces-1.5M-castling,stockfish-1700,op11,white,0-1,0.0,80,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-1700,op11,black,1-0,0.0,53,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-1700,op12,white,0-1,0.0,38,checkmate,16.74
+laya-pieces-1.5M-castling,stockfish-1700,op12,black,1-0,0.0,49,checkmate,17.04
+laya-pieces-1.5M-castling,stockfish-1700,op13,white,0-1,0.0,82,checkmate,16.98
+laya-pieces-1.5M-castling,stockfish-1700,op13,black,1-0,0.0,83,checkmate,16.75
+laya-pieces-1.5M-castling,stockfish-1700,op14,white,1/2-1/2,0.5,61,threefold repetition,17.18
+laya-pieces-1.5M-castling,stockfish-1700,op14,black,1-0,0.0,95,checkmate,16.76
+laya-pieces-1.5M-castling,stockfish-1700,op15,white,0-1,0.0,54,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-1700,op15,black,1-0,0.0,43,checkmate,17.11
+laya-pieces-1.5M-castling,stockfish-1700,op16,white,0-1,0.0,62,checkmate,17.09
+laya-pieces-1.5M-castling,stockfish-1700,op16,black,1-0,0.0,53,checkmate,16.76
+laya-pieces-1.5M-castling,stockfish-1700,op17,white,0-1,0.0,64,checkmate,16.91
+laya-pieces-1.5M-castling,stockfish-1700,op17,black,1-0,0.0,89,checkmate,17.1
+laya-pieces-1.5M-castling,stockfish-1700,op18,white,0-1,0.0,48,checkmate,16.97
+laya-pieces-1.5M-castling,stockfish-1700,op18,black,1-0,0.0,59,checkmate,17.07
+laya-pieces-1.5M-castling,stockfish-1700,op19,white,0-1,0.0,68,checkmate,17.13
+laya-pieces-1.5M-castling,stockfish-1700,op19,black,1-0,0.0,57,checkmate,16.84
+laya-pieces-1.5M-castling,stockfish-1700,op20,white,0-1,0.0,20,checkmate,17.29
+laya-pieces-1.5M-castling,stockfish-1700,op20,black,1-0,0.0,39,checkmate,17.17
+laya-pieces-1.5M-castling,stockfish-1700,op21,white,0-1,0.0,58,checkmate,17.11
+laya-pieces-1.5M-castling,stockfish-1700,op21,black,1-0,0.0,59,checkmate,17.18
+laya-pieces-1.5M-castling,stockfish-1700,op22,white,0-1,0.0,106,checkmate,17.1
+laya-pieces-1.5M-castling,stockfish-1700,op22,black,1-0,0.0,41,checkmate,17.21
+laya-pieces-1.5M-castling,stockfish-1700,op23,white,0-1,0.0,74,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-1700,op23,black,1-0,0.0,77,checkmate,16.57
+laya-pieces-1.5M-castling,stockfish-1700,op24,white,0-1,0.0,52,checkmate,16.82
+laya-pieces-1.5M-castling,stockfish-1700,op24,black,1-0,0.0,65,checkmate,16.87
+laya-pieces-1.5M-castling,stockfish-1700,op25,white,0-1,0.0,96,checkmate,16.77
+laya-pieces-1.5M-castling,stockfish-1700,op25,black,1-0,0.0,79,checkmate,17.04
+laya-pieces-1.5M-castling,stockfish-1700,op26,white,0-1,0.0,64,checkmate,16.99
+laya-pieces-1.5M-castling,stockfish-1700,op26,black,1-0,0.0,83,checkmate,17.16
+laya-pieces-1.5M-castling,stockfish-1700,op27,white,0-1,0.0,90,checkmate,17.09
+laya-pieces-1.5M-castling,stockfish-1700,op27,black,1-0,0.0,41,checkmate,17.08
+laya-pieces-1.5M-castling,stockfish-1700,op28,white,0-1,0.0,96,checkmate,16.8
+laya-pieces-1.5M-castling,stockfish-1700,op28,black,1-0,0.0,51,checkmate,17.13
+laya-pieces-1.5M-castling,stockfish-1700,op29,white,0-1,0.0,120,checkmate,16.71
+laya-pieces-1.5M-castling,stockfish-1700,op29,black,1-0,0.0,95,checkmate,16.55
+laya-pieces-1.5M-castling,stockfish-1700,op30,white,0-1,0.0,60,checkmate,17.12
+laya-pieces-1.5M-castling,stockfish-1700,op30,black,1-0,0.0,73,checkmate,17.11
+laya-pieces-1.5M-castling,stockfish-1700,op31,white,0-1,0.0,74,checkmate,17.06
+laya-pieces-1.5M-castling,stockfish-1700,op31,black,1/2-1/2,0.5,96,threefold repetition,16.88
+laya-pieces-1.5M-castling,stockfish-1700,op32,white,0-1,0.0,54,checkmate,17.18
+laya-pieces-1.5M-castling,stockfish-1700,op32,black,1/2-1/2,0.5,84,threefold repetition,16.98
+laya-pieces-1.5M-castling,stockfish-1700,op33,white,0-1,0.0,86,checkmate,17.06
+laya-pieces-1.5M-castling,stockfish-1700,op33,black,1-0,0.0,67,checkmate,17.09
+laya-pieces-1.5M-castling,stockfish-1700,op34,white,0-1,0.0,52,checkmate,17.4
+laya-pieces-1.5M-castling,stockfish-1700,op34,black,1-0,0.0,61,checkmate,16.98
+laya-pieces-1.5M-castling,stockfish-1700,op35,white,0-1,0.0,48,checkmate,17.23
+laya-pieces-1.5M-castling,stockfish-1700,op35,black,1-0,0.0,77,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-1700,op36,white,0-1,0.0,58,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-1700,op36,black,1/2-1/2,0.5,96,threefold repetition,16.68
+laya-pieces-1.5M-castling,stockfish-1700,op37,white,0-1,0.0,48,checkmate,17.04
+laya-pieces-1.5M-castling,stockfish-1700,op37,black,1-0,0.0,47,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-1700,op38,white,0-1,0.0,140,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-1700,op38,black,1-0,0.0,83,checkmate,17.01
+laya-pieces-1.5M-castling,stockfish-1700,op39,white,0-1,0.0,88,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-1700,op39,black,1-0,0.0,47,checkmate,17.21
+laya-pieces-1.5M-castling,stockfish-1700,op40,white,1/2-1/2,0.5,146,threefold repetition,16.88
+laya-pieces-1.5M-castling,stockfish-1700,op40,black,1-0,0.0,43,checkmate,17.18
+laya-pieces-1.5M-castling,stockfish-1700,op41,white,0-1,0.0,42,checkmate,17.18
+laya-pieces-1.5M-castling,stockfish-1700,op41,black,1-0,0.0,127,checkmate,16.1
+laya-pieces-1.5M-castling,stockfish-1700,op42,white,0-1,0.0,74,checkmate,16.78
+laya-pieces-1.5M-castling,stockfish-1700,op42,black,1-0,0.0,59,checkmate,16.85
+laya-pieces-1.5M-castling,stockfish-1700,op43,white,0-1,0.0,74,checkmate,16.92
+laya-pieces-1.5M-castling,stockfish-1700,op43,black,1-0,0.0,81,checkmate,16.94
+laya-pieces-1.5M-castling,stockfish-1700,op44,white,0-1,0.0,36,checkmate,17.07
+laya-pieces-1.5M-castling,stockfish-1700,op44,black,1-0,0.0,77,checkmate,16.94
+laya-pieces-1.5M-castling,stockfish-1700,op45,white,0-1,0.0,100,checkmate,16.94
+laya-pieces-1.5M-castling,stockfish-1700,op45,black,1/2-1/2,0.5,136,threefold repetition,17.08
+laya-pieces-1.5M-castling,stockfish-1700,op46,white,0-1,0.0,96,checkmate,16.92
+laya-pieces-1.5M-castling,stockfish-1700,op46,black,1-0,0.0,55,checkmate,17.17
+laya-pieces-1.5M-castling,stockfish-1700,op47,white,0-1,0.0,80,checkmate,16.93
+laya-pieces-1.5M-castling,stockfish-1700,op47,black,1-0,0.0,65,checkmate,17.02
+laya-pieces-1.5M-castling,stockfish-1700,op48,white,0-1,0.0,74,checkmate,16.87
+laya-pieces-1.5M-castling,stockfish-1700,op48,black,1-0,0.0,51,checkmate,17.08
+laya-pieces-1.5M-castling,stockfish-1700,op49,white,0-1,0.0,46,checkmate,17.08
+laya-pieces-1.5M-castling,stockfish-1700,op49,black,1-0,0.0,81,checkmate,16.87
+laya-pieces-1.5M-castling,stockfish-1700,op50,white,0-1,0.0,98,checkmate,16.73
+laya-pieces-1.5M-castling,stockfish-1700,op50,black,1-0,0.0,101,checkmate,16.81
+laya-pieces-1.5M-castling,stockfish-2000,op01,white,0-1,0.0,60,checkmate,16.84
+laya-pieces-1.5M-castling,stockfish-2000,op01,black,1-0,0.0,107,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-2000,op02,white,0-1,0.0,104,checkmate,16.86
+laya-pieces-1.5M-castling,stockfish-2000,op02,black,1-0,0.0,69,checkmate,17.14
+laya-pieces-1.5M-castling,stockfish-2000,op03,white,0-1,0.0,80,checkmate,16.92
+laya-pieces-1.5M-castling,stockfish-2000,op03,black,1/2-1/2,0.5,96,threefold repetition,16.85
+laya-pieces-1.5M-castling,stockfish-2000,op04,white,0-1,0.0,58,checkmate,17.25
+laya-pieces-1.5M-castling,stockfish-2000,op04,black,1-0,0.0,55,checkmate,17.11
+laya-pieces-1.5M-castling,stockfish-2000,op05,white,0-1,0.0,98,checkmate,16.72
+laya-pieces-1.5M-castling,stockfish-2000,op05,black,1-0,0.0,67,checkmate,16.63
+laya-pieces-1.5M-castling,stockfish-2000,op06,white,0-1,0.0,62,checkmate,16.6
+laya-pieces-1.5M-castling,stockfish-2000,op06,black,1-0,0.0,69,checkmate,16.78
+laya-pieces-1.5M-castling,stockfish-2000,op07,white,0-1,0.0,54,checkmate,17.15
+laya-pieces-1.5M-castling,stockfish-2000,op07,black,1-0,0.0,67,checkmate,16.61
+laya-pieces-1.5M-castling,stockfish-2000,op08,white,0-1,0.0,46,checkmate,17.07
+laya-pieces-1.5M-castling,stockfish-2000,op08,black,1-0,0.0,47,checkmate,17.08
+laya-pieces-1.5M-castling,stockfish-2000,op09,white,0-1,0.0,62,checkmate,17.16
+laya-pieces-1.5M-castling,stockfish-2000,op09,black,1-0,0.0,61,checkmate,17.03
+laya-pieces-1.5M-castling,stockfish-2000,op10,white,0-1,0.0,90,checkmate,17.09
+laya-pieces-1.5M-castling,stockfish-2000,op10,black,1-0,0.0,35,checkmate,17.16
+laya-pieces-1.5M-castling,stockfish-2000,op11,white,0-1,0.0,66,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-2000,op11,black,1-0,0.0,95,checkmate,16.91
+laya-pieces-1.5M-castling,stockfish-2000,op12,white,0-1,0.0,50,checkmate,16.97
+laya-pieces-1.5M-castling,stockfish-2000,op12,black,1-0,0.0,53,checkmate,16.78
+laya-pieces-1.5M-castling,stockfish-2000,op13,white,0-1,0.0,64,checkmate,17.1
+laya-pieces-1.5M-castling,stockfish-2000,op13,black,1-0,0.0,39,checkmate,17.06
+laya-pieces-1.5M-castling,stockfish-2000,op14,white,0-1,0.0,116,checkmate,16.67
+laya-pieces-1.5M-castling,stockfish-2000,op14,black,1-0,0.0,101,checkmate,16.71
+laya-pieces-1.5M-castling,stockfish-2000,op15,white,0-1,0.0,76,checkmate,16.73
+laya-pieces-1.5M-castling,stockfish-2000,op15,black,1-0,0.0,77,checkmate,17.04
+laya-pieces-1.5M-castling,stockfish-2000,op16,white,0-1,0.0,44,checkmate,17.34
+laya-pieces-1.5M-castling,stockfish-2000,op16,black,1-0,0.0,53,checkmate,17.33
+laya-pieces-1.5M-castling,stockfish-2000,op17,white,0-1,0.0,60,checkmate,16.74
+laya-pieces-1.5M-castling,stockfish-2000,op17,black,1-0,0.0,63,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-2000,op18,white,0-1,0.0,56,checkmate,17.16
+laya-pieces-1.5M-castling,stockfish-2000,op18,black,1-0,0.0,61,checkmate,17.39
+laya-pieces-1.5M-castling,stockfish-2000,op19,white,0-1,0.0,62,checkmate,17.37
+laya-pieces-1.5M-castling,stockfish-2000,op19,black,1-0,0.0,65,checkmate,16.97
+laya-pieces-1.5M-castling,stockfish-2000,op20,white,0-1,0.0,22,checkmate,17.34
+laya-pieces-1.5M-castling,stockfish-2000,op20,black,1-0,0.0,121,checkmate,16.71
+laya-pieces-1.5M-castling,stockfish-2000,op21,white,0-1,0.0,54,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-2000,op21,black,1-0,0.0,59,checkmate,16.83
+laya-pieces-1.5M-castling,stockfish-2000,op22,white,0-1,0.0,58,checkmate,16.8
+laya-pieces-1.5M-castling,stockfish-2000,op22,black,1-0,0.0,59,checkmate,16.9
+laya-pieces-1.5M-castling,stockfish-2000,op23,white,0-1,0.0,64,checkmate,16.97
+laya-pieces-1.5M-castling,stockfish-2000,op23,black,1-0,0.0,41,checkmate,17.25
+laya-pieces-1.5M-castling,stockfish-2000,op24,white,0-1,0.0,50,checkmate,16.96
+laya-pieces-1.5M-castling,stockfish-2000,op24,black,1-0,0.0,59,checkmate,17.02
+laya-pieces-1.5M-castling,stockfish-2000,op25,white,1/2-1/2,0.5,69,threefold repetition,16.93
+laya-pieces-1.5M-castling,stockfish-2000,op25,black,1-0,0.0,63,checkmate,16.75
+laya-pieces-1.5M-castling,stockfish-2000,op26,white,0-1,0.0,54,checkmate,17.05
+laya-pieces-1.5M-castling,stockfish-2000,op26,black,1-0,0.0,37,checkmate,16.92
+laya-pieces-1.5M-castling,stockfish-2000,op27,white,0-1,0.0,90,checkmate,16.89
+laya-pieces-1.5M-castling,stockfish-2000,op27,black,1-0,0.0,59,checkmate,17.13
+laya-pieces-1.5M-castling,stockfish-2000,op28,white,0-1,0.0,102,checkmate,17.19
+laya-pieces-1.5M-castling,stockfish-2000,op28,black,1-0,0.0,129,checkmate,16.73
+laya-pieces-1.5M-castling,stockfish-2000,op29,white,0-1,0.0,98,checkmate,16.69
+laya-pieces-1.5M-castling,stockfish-2000,op29,black,1/2-1/2,0.5,96,threefold repetition,16.81
+laya-pieces-1.5M-castling,stockfish-2000,op30,white,0-1,0.0,66,checkmate,16.83
+laya-pieces-1.5M-castling,stockfish-2000,op30,black,1-0,0.0,125,checkmate,16.77
+laya-pieces-1.5M-castling,stockfish-2000,op31,white,0-1,0.0,34,checkmate,17.09
+laya-pieces-1.5M-castling,stockfish-2000,op31,black,1-0,0.0,85,checkmate,16.99
+laya-pieces-1.5M-castling,stockfish-2000,op32,white,0-1,0.0,54,checkmate,17.43
+laya-pieces-1.5M-castling,stockfish-2000,op32,black,1-0,0.0,77,checkmate,16.99
+laya-pieces-1.5M-castling,stockfish-2000,op33,white,0-1,0.0,54,checkmate,16.98
+laya-pieces-1.5M-castling,stockfish-2000,op33,black,1-0,0.0,65,checkmate,16.95
+laya-pieces-1.5M-castling,stockfish-2000,op34,white,1/2-1/2,0.5,103,threefold repetition,16.84
+laya-pieces-1.5M-castling,stockfish-2000,op34,black,1-0,0.0,51,checkmate,17.16
+laya-pieces-1.5M-castling,stockfish-2000,op35,white,1/2-1/2,0.5,55,threefold repetition,16.93
+laya-pieces-1.5M-castling,stockfish-2000,op35,black,1-0,0.0,69,checkmate,17.01
+laya-pieces-1.5M-castling,stockfish-2000,op36,white,0-1,0.0,46,checkmate,16.92
+laya-pieces-1.5M-castling,stockfish-2000,op36,black,1-0,0.0,85,checkmate,16.84
+laya-pieces-1.5M-castling,stockfish-2000,op37,white,0-1,0.0,70,checkmate,16.79
+laya-pieces-1.5M-castling,stockfish-2000,op37,black,1-0,0.0,29,checkmate,17.18
+laya-pieces-1.5M-castling,stockfish-2000,op38,white,0-1,0.0,68,checkmate,16.68
+laya-pieces-1.5M-castling,stockfish-2000,op38,black,1-0,0.0,103,checkmate,16.83
+laya-pieces-1.5M-castling,stockfish-2000,op39,white,0-1,0.0,68,checkmate,17.32
+laya-pieces-1.5M-castling,stockfish-2000,op39,black,1/2-1/2,0.5,94,threefold repetition,17.11
+laya-pieces-1.5M-castling,stockfish-2000,op40,white,0-1,0.0,64,checkmate,17.14
+laya-pieces-1.5M-castling,stockfish-2000,op40,black,1-0,0.0,53,checkmate,17.16
+laya-pieces-1.5M-castling,stockfish-2000,op41,white,0-1,0.0,86,checkmate,17.09
+laya-pieces-1.5M-castling,stockfish-2000,op41,black,1-0,0.0,85,checkmate,17.05
+laya-pieces-1.5M-castling,stockfish-2000,op42,white,0-1,0.0,60,checkmate,16.67
+laya-pieces-1.5M-castling,stockfish-2000,op42,black,1/2-1/2,0.5,60,threefold repetition,16.82
+laya-pieces-1.5M-castling,stockfish-2000,op43,white,0-1,0.0,50,checkmate,16.97
+laya-pieces-1.5M-castling,stockfish-2000,op43,black,1-0,0.0,25,checkmate,17.23
+laya-pieces-1.5M-castling,stockfish-2000,op44,white,0-1,0.0,110,checkmate,16.66
+laya-pieces-1.5M-castling,stockfish-2000,op44,black,1-0,0.0,57,checkmate,17.39
+laya-pieces-1.5M-castling,stockfish-2000,op45,white,0-1,0.0,68,checkmate,17.04
+laya-pieces-1.5M-castling,stockfish-2000,op45,black,1-0,0.0,61,checkmate,17.05
+laya-pieces-1.5M-castling,stockfish-2000,op46,white,0-1,0.0,62,checkmate,17.11
+laya-pieces-1.5M-castling,stockfish-2000,op46,black,1-0,0.0,63,checkmate,16.88
+laya-pieces-1.5M-castling,stockfish-2000,op47,white,0-1,0.0,68,checkmate,16.91
+laya-pieces-1.5M-castling,stockfish-2000,op47,black,1-0,0.0,55,checkmate,16.91
+laya-pieces-1.5M-castling,stockfish-2000,op48,white,0-1,0.0,22,checkmate,17.43
+laya-pieces-1.5M-castling,stockfish-2000,op48,black,1-0,0.0,59,checkmate,17.1
+laya-pieces-1.5M-castling,stockfish-2000,op49,white,0-1,0.0,52,checkmate,17.18
+laya-pieces-1.5M-castling,stockfish-2000,op49,black,1-0,0.0,57,checkmate,17.03
+laya-pieces-1.5M-castling,stockfish-2000,op50,white,0-1,0.0,68,checkmate,17.03
+laya-pieces-1.5M-castling,stockfish-2000,op50,black,1-0,0.0,43,checkmate,17.27
+laya-pieces-1.5M-castling+guard,random,op01,white,1-0,1.0,45,checkmate,16.48
+laya-pieces-1.5M-castling+guard,random,op01,black,0-1,1.0,138,checkmate,15.2
+laya-pieces-1.5M-castling+guard,random,op02,white,1-0,1.0,23,checkmate,14.97
+laya-pieces-1.5M-castling+guard,random,op02,black,0-1,1.0,46,checkmate,15.06
+laya-pieces-1.5M-castling+guard,random,op03,white,1-0,1.0,37,checkmate,14.9
+laya-pieces-1.5M-castling+guard,random,op03,black,0-1,1.0,228,checkmate,15.2
+laya-pieces-1.5M-castling+guard,random,op04,white,1-0,1.0,51,checkmate,14.93
+laya-pieces-1.5M-castling+guard,random,op04,black,0-1,1.0,78,checkmate,15.22
+laya-pieces-1.5M-castling+guard,random,op05,white,1-0,1.0,65,checkmate,15.48
+laya-pieces-1.5M-castling+guard,random,op05,black,0-1,1.0,92,checkmate,15.2
+laya-pieces-1.5M-castling+guard,random,op06,white,1-0,1.0,67,checkmate,15.22
+laya-pieces-1.5M-castling+guard,random,op06,black,0-1,1.0,28,checkmate,15.4
+laya-pieces-1.5M-castling+guard,random,op07,white,1-0,1.0,87,checkmate,15.62
+laya-pieces-1.5M-castling+guard,random,op07,black,0-1,1.0,102,checkmate,15.02
+laya-pieces-1.5M-castling+guard,random,op08,white,1-0,1.0,57,checkmate,15.03
+laya-pieces-1.5M-castling+guard,random,op08,black,0-1,1.0,144,checkmate,15.28
+laya-pieces-1.5M-castling+guard,random,op09,white,1-0,1.0,75,checkmate,14.97
+laya-pieces-1.5M-castling+guard,random,op09,black,0-1,1.0,32,checkmate,14.95
+laya-pieces-1.5M-castling+guard,random,op10,white,1-0,1.0,141,checkmate,15.01
+laya-pieces-1.5M-castling+guard,random,op10,black,0-1,1.0,46,checkmate,15.0
+laya-pieces-1.5M-castling+guard,random,op11,white,1-0,1.0,85,checkmate,15.3
+laya-pieces-1.5M-castling+guard,random,op11,black,0-1,1.0,108,checkmate,15.26
+laya-pieces-1.5M-castling+guard,random,op12,white,1-0,1.0,183,checkmate,15.61
+laya-pieces-1.5M-castling+guard,random,op12,black,0-1,1.0,60,checkmate,15.48
+laya-pieces-1.5M-castling+guard,random,op13,white,1-0,1.0,43,checkmate,15.49
+laya-pieces-1.5M-castling+guard,random,op13,black,0-1,1.0,44,checkmate,16.85
+laya-pieces-1.5M-castling+guard,random,op14,white,1-0,1.0,67,checkmate,15.32
+laya-pieces-1.5M-castling+guard,random,op14,black,0-1,1.0,66,checkmate,15.09
+laya-pieces-1.5M-castling+guard,random,op15,white,1/2-1/2,0.5,45,threefold repetition,15.09
+laya-pieces-1.5M-castling+guard,random,op15,black,0-1,1.0,80,checkmate,15.24
+laya-pieces-1.5M-castling+guard,random,op16,white,1-0,1.0,51,checkmate,15.43
+laya-pieces-1.5M-castling+guard,random,op16,black,0-1,1.0,72,checkmate,15.16
+laya-pieces-1.5M-castling+guard,random,op17,white,1-0,1.0,27,checkmate,15.54
+laya-pieces-1.5M-castling+guard,random,op17,black,0-1,1.0,68,checkmate,15.1
+laya-pieces-1.5M-castling+guard,random,op18,white,1-0,1.0,25,checkmate,15.24
+laya-pieces-1.5M-castling+guard,random,op18,black,0-1,1.0,48,checkmate,15.4
+laya-pieces-1.5M-castling+guard,random,op19,white,1-0,1.0,43,checkmate,15.38
+laya-pieces-1.5M-castling+guard,random,op19,black,0-1,1.0,76,checkmate,15.56
+laya-pieces-1.5M-castling+guard,random,op20,white,1-0,1.0,97,checkmate,15.26
+laya-pieces-1.5M-castling+guard,random,op20,black,0-1,1.0,24,checkmate,15.34
+laya-pieces-1.5M-castling+guard,random,op21,white,1-0,1.0,33,checkmate,15.09
+laya-pieces-1.5M-castling+guard,random,op21,black,0-1,1.0,96,checkmate,15.45
+laya-pieces-1.5M-castling+guard,random,op22,white,1-0,1.0,31,checkmate,16.04
+laya-pieces-1.5M-castling+guard,random,op22,black,0-1,1.0,56,checkmate,15.56
+laya-pieces-1.5M-castling+guard,random,op23,white,1-0,1.0,187,checkmate,15.45
+laya-pieces-1.5M-castling+guard,random,op23,black,0-1,1.0,68,checkmate,15.21
+laya-pieces-1.5M-castling+guard,random,op24,white,1-0,1.0,105,checkmate,15.08
+laya-pieces-1.5M-castling+guard,random,op24,black,0-1,1.0,64,checkmate,14.97
+laya-pieces-1.5M-castling+guard,random,op25,white,1-0,1.0,57,checkmate,15.14
+laya-pieces-1.5M-castling+guard,random,op25,black,0-1,1.0,58,checkmate,15.11
+laya-pieces-1.5M-castling+guard,random,op26,white,1-0,1.0,61,checkmate,15.28
+laya-pieces-1.5M-castling+guard,random,op26,black,0-1,1.0,66,checkmate,15.06
+laya-pieces-1.5M-castling+guard,random,op27,white,1-0,1.0,57,checkmate,15.19
+laya-pieces-1.5M-castling+guard,random,op27,black,0-1,1.0,62,checkmate,14.93
+laya-pieces-1.5M-castling+guard,random,op28,white,1-0,1.0,89,checkmate,15.16
+laya-pieces-1.5M-castling+guard,random,op28,black,0-1,1.0,58,checkmate,15.37
+laya-pieces-1.5M-castling+guard,random,op29,white,1-0,1.0,33,checkmate,15.04
+laya-pieces-1.5M-castling+guard,random,op29,black,0-1,1.0,30,checkmate,14.88
+laya-pieces-1.5M-castling+guard,random,op30,white,1-0,1.0,151,checkmate,15.14
+laya-pieces-1.5M-castling+guard,random,op30,black,0-1,1.0,20,checkmate,15.17
+laya-pieces-1.5M-castling+guard,random,op31,white,1-0,1.0,63,checkmate,15.53
+laya-pieces-1.5M-castling+guard,random,op31,black,0-1,1.0,70,checkmate,15.31
+laya-pieces-1.5M-castling+guard,random,op32,white,1-0,1.0,69,checkmate,15.5
+laya-pieces-1.5M-castling+guard,random,op32,black,0-1,1.0,44,checkmate,15.43
+laya-pieces-1.5M-castling+guard,random,op33,white,1-0,1.0,107,checkmate,15.16
+laya-pieces-1.5M-castling+guard,random,op33,black,0-1,1.0,60,checkmate,15.45
+laya-pieces-1.5M-castling+guard,random,op34,white,1-0,1.0,49,checkmate,15.36
+laya-pieces-1.5M-castling+guard,random,op34,black,0-1,1.0,56,checkmate,15.43
+laya-pieces-1.5M-castling+guard,random,op35,white,1-0,1.0,23,checkmate,15.23
+laya-pieces-1.5M-castling+guard,random,op35,black,0-1,1.0,46,checkmate,15.39
+laya-pieces-1.5M-castling+guard,random,op36,white,1-0,1.0,47,checkmate,15.24
+laya-pieces-1.5M-castling+guard,random,op36,black,0-1,1.0,94,checkmate,15.78
+laya-pieces-1.5M-castling+guard,random,op37,white,1-0,1.0,43,checkmate,15.22
+laya-pieces-1.5M-castling+guard,random,op37,black,0-1,1.0,116,checkmate,15.34
+laya-pieces-1.5M-castling+guard,random,op38,white,1-0,1.0,73,checkmate,15.35
+laya-pieces-1.5M-castling+guard,random,op38,black,0-1,1.0,56,checkmate,15.44
+laya-pieces-1.5M-castling+guard,random,op39,white,1-0,1.0,53,checkmate,15.43
+laya-pieces-1.5M-castling+guard,random,op39,black,0-1,1.0,46,checkmate,15.32
+laya-pieces-1.5M-castling+guard,random,op40,white,1-0,1.0,49,checkmate,15.11
+laya-pieces-1.5M-castling+guard,random,op40,black,0-1,1.0,54,checkmate,15.13
+laya-pieces-1.5M-castling+guard,random,op41,white,1-0,1.0,51,checkmate,15.06
+laya-pieces-1.5M-castling+guard,random,op41,black,0-1,1.0,50,checkmate,15.06
+laya-pieces-1.5M-castling+guard,random,op42,white,1-0,1.0,71,checkmate,15.07
+laya-pieces-1.5M-castling+guard,random,op42,black,0-1,1.0,34,checkmate,14.97
+laya-pieces-1.5M-castling+guard,random,op43,white,1-0,1.0,71,checkmate,14.84
+laya-pieces-1.5M-castling+guard,random,op43,black,0-1,1.0,66,checkmate,14.85
+laya-pieces-1.5M-castling+guard,random,op44,white,1-0,1.0,45,checkmate,15.23
+laya-pieces-1.5M-castling+guard,random,op44,black,0-1,1.0,100,checkmate,15.13
+laya-pieces-1.5M-castling+guard,random,op45,white,1-0,1.0,31,checkmate,15.02
+laya-pieces-1.5M-castling+guard,random,op45,black,0-1,1.0,74,checkmate,15.35
+laya-pieces-1.5M-castling+guard,random,op46,white,1-0,1.0,47,checkmate,15.23
+laya-pieces-1.5M-castling+guard,random,op46,black,0-1,1.0,52,checkmate,15.2
+laya-pieces-1.5M-castling+guard,random,op47,white,1-0,1.0,27,checkmate,15.02
+laya-pieces-1.5M-castling+guard,random,op47,black,0-1,1.0,140,checkmate,14.9
+laya-pieces-1.5M-castling+guard,random,op48,white,1-0,1.0,55,checkmate,15.06
+laya-pieces-1.5M-castling+guard,random,op48,black,0-1,1.0,96,checkmate,15.24
+laya-pieces-1.5M-castling+guard,random,op49,white,1-0,1.0,69,checkmate,15.33
+laya-pieces-1.5M-castling+guard,random,op49,black,0-1,1.0,56,checkmate,15.17
+laya-pieces-1.5M-castling+guard,random,op50,white,1-0,1.0,19,checkmate,14.98
+laya-pieces-1.5M-castling+guard,random,op50,black,0-1,1.0,52,checkmate,15.29
+laya-pieces-1.5M-castling+guard,greedy,op01,white,1/2-1/2,0.5,137,insufficient material,15.26
+laya-pieces-1.5M-castling+guard,greedy,op01,black,1/2-1/2,0.5,91,insufficient material,15.08
+laya-pieces-1.5M-castling+guard,greedy,op02,white,1-0,1.0,139,checkmate,15.28
+laya-pieces-1.5M-castling+guard,greedy,op02,black,0-1,1.0,112,checkmate,15.51
+laya-pieces-1.5M-castling+guard,greedy,op03,white,1-0,1.0,43,checkmate,15.28
+laya-pieces-1.5M-castling+guard,greedy,op03,black,0-1,1.0,38,checkmate,15.55
+laya-pieces-1.5M-castling+guard,greedy,op04,white,1-0,1.0,145,checkmate,15.4
+laya-pieces-1.5M-castling+guard,greedy,op04,black,0-1,1.0,108,checkmate,15.01
+laya-pieces-1.5M-castling+guard,greedy,op05,white,1-0,1.0,119,checkmate,15.04
+laya-pieces-1.5M-castling+guard,greedy,op05,black,0-1,1.0,38,checkmate,14.98
+laya-pieces-1.5M-castling+guard,greedy,op06,white,1/2-1/2,0.5,85,threefold repetition,15.14
+laya-pieces-1.5M-castling+guard,greedy,op06,black,1/2-1/2,0.5,110,threefold repetition,15.13
+laya-pieces-1.5M-castling+guard,greedy,op07,white,1-0,1.0,77,checkmate,14.95
+laya-pieces-1.5M-castling+guard,greedy,op07,black,0-1,1.0,122,checkmate,15.17
+laya-pieces-1.5M-castling+guard,greedy,op08,white,1/2-1/2,0.5,125,insufficient material,15.1
+laya-pieces-1.5M-castling+guard,greedy,op08,black,0-1,1.0,132,checkmate,14.98
+laya-pieces-1.5M-castling+guard,greedy,op09,white,1/2-1/2,0.5,91,insufficient material,15.18
+laya-pieces-1.5M-castling+guard,greedy,op09,black,0-1,1.0,82,checkmate,15.13
+laya-pieces-1.5M-castling+guard,greedy,op10,white,1-0,1.0,153,checkmate,15.12
+laya-pieces-1.5M-castling+guard,greedy,op10,black,0-1,1.0,110,checkmate,14.94
+laya-pieces-1.5M-castling+guard,greedy,op11,white,1-0,1.0,113,checkmate,15.07
+laya-pieces-1.5M-castling+guard,greedy,op11,black,0-1,1.0,120,checkmate,15.09
+laya-pieces-1.5M-castling+guard,greedy,op12,white,1-0,1.0,111,checkmate,15.13
+laya-pieces-1.5M-castling+guard,greedy,op12,black,0-1,1.0,128,checkmate,15.0
+laya-pieces-1.5M-castling+guard,greedy,op13,white,1-0,1.0,141,checkmate,15.39
+laya-pieces-1.5M-castling+guard,greedy,op13,black,0-1,1.0,92,checkmate,15.26
+laya-pieces-1.5M-castling+guard,greedy,op14,white,1-0,1.0,59,checkmate,15.44
+laya-pieces-1.5M-castling+guard,greedy,op14,black,0-1,1.0,114,checkmate,15.14
+laya-pieces-1.5M-castling+guard,greedy,op15,white,1-0,1.0,33,checkmate,15.38
+laya-pieces-1.5M-castling+guard,greedy,op15,black,0-1,1.0,124,checkmate,15.41
+laya-pieces-1.5M-castling+guard,greedy,op16,white,1-0,1.0,201,checkmate,14.99
+laya-pieces-1.5M-castling+guard,greedy,op16,black,0-1,1.0,120,checkmate,15.3
+laya-pieces-1.5M-castling+guard,greedy,op17,white,1/2-1/2,0.5,121,insufficient material,15.15
+laya-pieces-1.5M-castling+guard,greedy,op17,black,0-1,1.0,36,checkmate,15.23
+laya-pieces-1.5M-castling+guard,greedy,op18,white,0-1,0.0,28,checkmate,14.95
+laya-pieces-1.5M-castling+guard,greedy,op18,black,0-1,1.0,70,checkmate,14.88
+laya-pieces-1.5M-castling+guard,greedy,op19,white,1-0,1.0,27,checkmate,15.3
+laya-pieces-1.5M-castling+guard,greedy,op19,black,0-1,1.0,122,checkmate,15.06
+laya-pieces-1.5M-castling+guard,greedy,op20,white,1/2-1/2,0.5,137,insufficient material,15.15
+laya-pieces-1.5M-castling+guard,greedy,op20,black,0-1,1.0,30,checkmate,15.11
+laya-pieces-1.5M-castling+guard,greedy,op21,white,1-0,1.0,101,checkmate,15.88
+laya-pieces-1.5M-castling+guard,greedy,op21,black,0-1,1.0,36,checkmate,15.24
+laya-pieces-1.5M-castling+guard,greedy,op22,white,1-0,1.0,67,checkmate,15.19
+laya-pieces-1.5M-castling+guard,greedy,op22,black,0-1,1.0,76,checkmate,15.13
+laya-pieces-1.5M-castling+guard,greedy,op23,white,1-0,1.0,119,checkmate,15.32
+laya-pieces-1.5M-castling+guard,greedy,op23,black,1/2-1/2,0.5,106,insufficient material,15.26
+laya-pieces-1.5M-castling+guard,greedy,op24,white,1-0,1.0,33,checkmate,15.29
+laya-pieces-1.5M-castling+guard,greedy,op24,black,1/2-1/2,0.5,106,insufficient material,15.28
+laya-pieces-1.5M-castling+guard,greedy,op25,white,1-0,1.0,99,checkmate,15.3
+laya-pieces-1.5M-castling+guard,greedy,op25,black,0-1,1.0,132,checkmate,15.56
+laya-pieces-1.5M-castling+guard,greedy,op26,white,1/2-1/2,0.5,145,threefold repetition,15.6
+laya-pieces-1.5M-castling+guard,greedy,op26,black,1/2-1/2,0.5,143,threefold repetition,15.46
+laya-pieces-1.5M-castling+guard,greedy,op27,white,1/2-1/2,0.5,103,insufficient material,15.19
+laya-pieces-1.5M-castling+guard,greedy,op27,black,0-1,1.0,104,checkmate,15.12
+laya-pieces-1.5M-castling+guard,greedy,op28,white,1/2-1/2,0.5,105,insufficient material,15.27
+laya-pieces-1.5M-castling+guard,greedy,op28,black,0-1,1.0,72,checkmate,15.07
+laya-pieces-1.5M-castling+guard,greedy,op29,white,1/2-1/2,0.5,149,insufficient material,15.26
+laya-pieces-1.5M-castling+guard,greedy,op29,black,0-1,1.0,124,checkmate,14.93
+laya-pieces-1.5M-castling+guard,greedy,op30,white,1-0,1.0,131,checkmate,15.06
+laya-pieces-1.5M-castling+guard,greedy,op30,black,0-1,1.0,52,checkmate,15.03
+laya-pieces-1.5M-castling+guard,greedy,op31,white,1-0,1.0,37,checkmate,15.2
+laya-pieces-1.5M-castling+guard,greedy,op31,black,0-1,1.0,86,checkmate,15.02
+laya-pieces-1.5M-castling+guard,greedy,op32,white,1/2-1/2,0.5,175,threefold repetition,15.07
+laya-pieces-1.5M-castling+guard,greedy,op32,black,0-1,1.0,68,checkmate,15.18
+laya-pieces-1.5M-castling+guard,greedy,op33,white,1-0,1.0,115,checkmate,15.05
+laya-pieces-1.5M-castling+guard,greedy,op33,black,0-1,1.0,94,checkmate,15.21
+laya-pieces-1.5M-castling+guard,greedy,op34,white,1-0,1.0,31,checkmate,14.9
+laya-pieces-1.5M-castling+guard,greedy,op34,black,1/2-1/2,0.5,95,threefold repetition,15.05
+laya-pieces-1.5M-castling+guard,greedy,op35,white,1/2-1/2,0.5,136,insufficient material,15.35
+laya-pieces-1.5M-castling+guard,greedy,op35,black,0-1,1.0,74,checkmate,15.19
+laya-pieces-1.5M-castling+guard,greedy,op36,white,1-0,1.0,155,checkmate,15.25
+laya-pieces-1.5M-castling+guard,greedy,op36,black,1/2-1/2,0.5,104,threefold repetition,15.23
+laya-pieces-1.5M-castling+guard,greedy,op37,white,1/2-1/2,0.5,143,insufficient material,15.32
+laya-pieces-1.5M-castling+guard,greedy,op37,black,0-1,1.0,106,checkmate,15.07
+laya-pieces-1.5M-castling+guard,greedy,op38,white,1-0,1.0,49,checkmate,15.3
+laya-pieces-1.5M-castling+guard,greedy,op38,black,0-1,1.0,38,checkmate,15.35
+laya-pieces-1.5M-castling+guard,greedy,op39,white,1/2-1/2,0.5,139,insufficient material,15.04
+laya-pieces-1.5M-castling+guard,greedy,op39,black,0-1,1.0,44,checkmate,15.1
+laya-pieces-1.5M-castling+guard,greedy,op40,white,1-0,1.0,29,checkmate,15.21
+laya-pieces-1.5M-castling+guard,greedy,op40,black,1/2-1/2,0.5,60,threefold repetition,15.0
+laya-pieces-1.5M-castling+guard,greedy,op41,white,1-0,1.0,109,checkmate,15.0
+laya-pieces-1.5M-castling+guard,greedy,op41,black,1/2-1/2,0.5,112,threefold repetition,15.01
+laya-pieces-1.5M-castling+guard,greedy,op42,white,1-0,1.0,139,checkmate,15.18
+laya-pieces-1.5M-castling+guard,greedy,op42,black,0-1,1.0,72,checkmate,15.06
+laya-pieces-1.5M-castling+guard,greedy,op43,white,1-0,1.0,133,checkmate,15.2
+laya-pieces-1.5M-castling+guard,greedy,op43,black,0-1,1.0,144,checkmate,15.21
+laya-pieces-1.5M-castling+guard,greedy,op44,white,1-0,1.0,101,checkmate,15.44
+laya-pieces-1.5M-castling+guard,greedy,op44,black,0-1,1.0,56,checkmate,15.17
+laya-pieces-1.5M-castling+guard,greedy,op45,white,1/2-1/2,0.5,137,threefold repetition,15.22
+laya-pieces-1.5M-castling+guard,greedy,op45,black,0-1,1.0,94,checkmate,14.84
+laya-pieces-1.5M-castling+guard,greedy,op46,white,1-0,1.0,93,checkmate,15.29
+laya-pieces-1.5M-castling+guard,greedy,op46,black,1/2-1/2,0.5,98,threefold repetition,15.38
+laya-pieces-1.5M-castling+guard,greedy,op47,white,1-0,1.0,93,checkmate,15.6
+laya-pieces-1.5M-castling+guard,greedy,op47,black,0-1,1.0,32,checkmate,15.42
+laya-pieces-1.5M-castling+guard,greedy,op48,white,1/2-1/2,0.5,101,threefold repetition,15.39
+laya-pieces-1.5M-castling+guard,greedy,op48,black,0-1,1.0,98,checkmate,15.2
+laya-pieces-1.5M-castling+guard,greedy,op49,white,1-0,1.0,129,checkmate,15.43
+laya-pieces-1.5M-castling+guard,greedy,op49,black,0-1,1.0,32,checkmate,15.56
+laya-pieces-1.5M-castling+guard,greedy,op50,white,1-0,1.0,171,checkmate,15.15
+laya-pieces-1.5M-castling+guard,greedy,op50,black,0-1,1.0,130,checkmate,15.06
+laya-pieces-1.5M-castling+guard,stockfish-1320,op01,white,1/2-1/2,0.5,39,threefold repetition,17.11
+laya-pieces-1.5M-castling+guard,stockfish-1320,op01,black,1-0,0.0,93,checkmate,17.3
+laya-pieces-1.5M-castling+guard,stockfish-1320,op02,white,1/2-1/2,0.5,103,threefold repetition,16.97
+laya-pieces-1.5M-castling+guard,stockfish-1320,op02,black,1-0,0.0,67,checkmate,17.38
+laya-pieces-1.5M-castling+guard,stockfish-1320,op03,white,0-1,0.0,70,checkmate,17.13
+laya-pieces-1.5M-castling+guard,stockfish-1320,op03,black,1-0,0.0,85,checkmate,16.65
+laya-pieces-1.5M-castling+guard,stockfish-1320,op04,white,1/2-1/2,0.5,241,threefold repetition,16.57
+laya-pieces-1.5M-castling+guard,stockfish-1320,op04,black,1-0,0.0,131,checkmate,16.91
+laya-pieces-1.5M-castling+guard,stockfish-1320,op05,white,0-1,0.0,130,checkmate,16.79
+laya-pieces-1.5M-castling+guard,stockfish-1320,op05,black,0-1,1.0,172,checkmate,16.75
+laya-pieces-1.5M-castling+guard,stockfish-1320,op06,white,0-1,0.0,64,checkmate,16.99
+laya-pieces-1.5M-castling+guard,stockfish-1320,op06,black,1-0,0.0,57,checkmate,17.37
+laya-pieces-1.5M-castling+guard,stockfish-1320,op07,white,0-1,0.0,74,checkmate,17.11
+laya-pieces-1.5M-castling+guard,stockfish-1320,op07,black,0-1,1.0,98,checkmate,16.93
+laya-pieces-1.5M-castling+guard,stockfish-1320,op08,white,0-1,0.0,38,checkmate,17.53
+laya-pieces-1.5M-castling+guard,stockfish-1320,op08,black,1/2-1/2,0.5,248,threefold repetition,16.71
+laya-pieces-1.5M-castling+guard,stockfish-1320,op09,white,1/2-1/2,0.5,111,threefold repetition,16.93
+laya-pieces-1.5M-castling+guard,stockfish-1320,op09,black,1-0,0.0,67,checkmate,16.88
+laya-pieces-1.5M-castling+guard,stockfish-1320,op10,white,0-1,0.0,82,checkmate,16.73
+laya-pieces-1.5M-castling+guard,stockfish-1320,op10,black,1-0,0.0,53,checkmate,17.11
+laya-pieces-1.5M-castling+guard,stockfish-1320,op11,white,0-1,0.0,58,checkmate,16.93
+laya-pieces-1.5M-castling+guard,stockfish-1320,op11,black,1/2-1/2,0.5,178,threefold repetition,16.98
+laya-pieces-1.5M-castling+guard,stockfish-1320,op12,white,0-1,0.0,98,checkmate,16.8
+laya-pieces-1.5M-castling+guard,stockfish-1320,op12,black,1-0,0.0,131,checkmate,16.84
+laya-pieces-1.5M-castling+guard,stockfish-1320,op13,white,0-1,0.0,92,checkmate,17.0
+laya-pieces-1.5M-castling+guard,stockfish-1320,op13,black,1-0,0.0,77,checkmate,17.0
+laya-pieces-1.5M-castling+guard,stockfish-1320,op14,white,0-1,0.0,80,checkmate,16.96
+laya-pieces-1.5M-castling+guard,stockfish-1320,op14,black,1-0,0.0,125,checkmate,16.94
+laya-pieces-1.5M-castling+guard,stockfish-1320,op15,white,0-1,0.0,36,checkmate,16.87
+laya-pieces-1.5M-castling+guard,stockfish-1320,op15,black,1-0,0.0,49,checkmate,17.31
+laya-pieces-1.5M-castling+guard,stockfish-1320,op16,white,0-1,0.0,84,checkmate,16.82
+laya-pieces-1.5M-castling+guard,stockfish-1320,op16,black,1-0,0.0,133,checkmate,17.05
+laya-pieces-1.5M-castling+guard,stockfish-1320,op17,white,0-1,0.0,62,checkmate,17.15
+laya-pieces-1.5M-castling+guard,stockfish-1320,op17,black,1-0,0.0,55,checkmate,17.22
+laya-pieces-1.5M-castling+guard,stockfish-1320,op18,white,1-0,1.0,75,checkmate,17.21
+laya-pieces-1.5M-castling+guard,stockfish-1320,op18,black,1-0,0.0,141,checkmate,16.94
+laya-pieces-1.5M-castling+guard,stockfish-1320,op19,white,0-1,0.0,126,checkmate,17.0
+laya-pieces-1.5M-castling+guard,stockfish-1320,op19,black,1-0,0.0,71,checkmate,17.24
+laya-pieces-1.5M-castling+guard,stockfish-1320,op20,white,0-1,0.0,140,checkmate,16.81
+laya-pieces-1.5M-castling+guard,stockfish-1320,op20,black,1-0,0.0,39,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1320,op21,white,0-1,0.0,122,checkmate,16.84
+laya-pieces-1.5M-castling+guard,stockfish-1320,op21,black,1/2-1/2,0.5,68,threefold repetition,16.79
+laya-pieces-1.5M-castling+guard,stockfish-1320,op22,white,1/2-1/2,0.5,85,threefold repetition,16.87
+laya-pieces-1.5M-castling+guard,stockfish-1320,op22,black,1-0,0.0,53,checkmate,17.09
+laya-pieces-1.5M-castling+guard,stockfish-1320,op23,white,0-1,0.0,72,checkmate,16.92
+laya-pieces-1.5M-castling+guard,stockfish-1320,op23,black,1-0,0.0,91,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-1320,op24,white,0-1,0.0,108,checkmate,17.0
+laya-pieces-1.5M-castling+guard,stockfish-1320,op24,black,1-0,0.0,51,checkmate,17.34
+laya-pieces-1.5M-castling+guard,stockfish-1320,op25,white,0-1,0.0,84,checkmate,16.68
+laya-pieces-1.5M-castling+guard,stockfish-1320,op25,black,1-0,0.0,53,checkmate,17.17
+laya-pieces-1.5M-castling+guard,stockfish-1320,op26,white,0-1,0.0,96,checkmate,16.93
+laya-pieces-1.5M-castling+guard,stockfish-1320,op26,black,0-1,1.0,102,checkmate,17.12
+laya-pieces-1.5M-castling+guard,stockfish-1320,op27,white,1/2-1/2,0.5,55,threefold repetition,16.7
+laya-pieces-1.5M-castling+guard,stockfish-1320,op27,black,1-0,0.0,153,checkmate,16.86
+laya-pieces-1.5M-castling+guard,stockfish-1320,op28,white,0-1,0.0,60,checkmate,17.24
+laya-pieces-1.5M-castling+guard,stockfish-1320,op28,black,1-0,0.0,75,checkmate,17.0
+laya-pieces-1.5M-castling+guard,stockfish-1320,op29,white,0-1,0.0,80,checkmate,16.88
+laya-pieces-1.5M-castling+guard,stockfish-1320,op29,black,1/2-1/2,0.5,62,threefold repetition,17.18
+laya-pieces-1.5M-castling+guard,stockfish-1320,op30,white,0-1,0.0,52,checkmate,17.01
+laya-pieces-1.5M-castling+guard,stockfish-1320,op30,black,1-0,0.0,77,checkmate,17.34
+laya-pieces-1.5M-castling+guard,stockfish-1320,op31,white,0-1,0.0,34,checkmate,17.01
+laya-pieces-1.5M-castling+guard,stockfish-1320,op31,black,1-0,0.0,31,checkmate,16.84
+laya-pieces-1.5M-castling+guard,stockfish-1320,op32,white,1/2-1/2,0.5,135,threefold repetition,16.88
+laya-pieces-1.5M-castling+guard,stockfish-1320,op32,black,1/2-1/2,0.5,136,threefold repetition,16.87
+laya-pieces-1.5M-castling+guard,stockfish-1320,op33,white,0-1,0.0,102,checkmate,17.12
+laya-pieces-1.5M-castling+guard,stockfish-1320,op33,black,1-0,0.0,69,checkmate,17.03
+laya-pieces-1.5M-castling+guard,stockfish-1320,op34,white,0-1,0.0,58,checkmate,17.24
+laya-pieces-1.5M-castling+guard,stockfish-1320,op34,black,1-0,0.0,67,checkmate,17.11
+laya-pieces-1.5M-castling+guard,stockfish-1320,op35,white,0-1,0.0,42,checkmate,17.29
+laya-pieces-1.5M-castling+guard,stockfish-1320,op35,black,1-0,0.0,117,checkmate,16.93
+laya-pieces-1.5M-castling+guard,stockfish-1320,op36,white,0-1,0.0,48,checkmate,17.3
+laya-pieces-1.5M-castling+guard,stockfish-1320,op36,black,1-0,0.0,47,checkmate,17.12
+laya-pieces-1.5M-castling+guard,stockfish-1320,op37,white,0-1,0.0,108,checkmate,17.17
+laya-pieces-1.5M-castling+guard,stockfish-1320,op37,black,1-0,0.0,109,checkmate,17.02
+laya-pieces-1.5M-castling+guard,stockfish-1320,op38,white,1/2-1/2,0.5,35,threefold repetition,17.09
+laya-pieces-1.5M-castling+guard,stockfish-1320,op38,black,1-0,0.0,29,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1320,op39,white,0-1,0.0,46,checkmate,17.27
+laya-pieces-1.5M-castling+guard,stockfish-1320,op39,black,1-0,0.0,83,checkmate,17.09
+laya-pieces-1.5M-castling+guard,stockfish-1320,op40,white,0-1,0.0,78,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-1320,op40,black,1-0,0.0,57,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-1320,op41,white,1/2-1/2,0.5,113,threefold repetition,17.09
+laya-pieces-1.5M-castling+guard,stockfish-1320,op41,black,1-0,0.0,47,checkmate,17.1
+laya-pieces-1.5M-castling+guard,stockfish-1320,op42,white,0-1,0.0,132,checkmate,16.96
+laya-pieces-1.5M-castling+guard,stockfish-1320,op42,black,1-0,0.0,77,checkmate,17.13
+laya-pieces-1.5M-castling+guard,stockfish-1320,op43,white,0-1,0.0,126,checkmate,16.84
+laya-pieces-1.5M-castling+guard,stockfish-1320,op43,black,1-0,0.0,83,checkmate,16.89
+laya-pieces-1.5M-castling+guard,stockfish-1320,op44,white,0-1,0.0,56,checkmate,17.08
+laya-pieces-1.5M-castling+guard,stockfish-1320,op44,black,1/2-1/2,0.5,152,threefold repetition,16.74
+laya-pieces-1.5M-castling+guard,stockfish-1320,op45,white,0-1,0.0,100,checkmate,16.85
+laya-pieces-1.5M-castling+guard,stockfish-1320,op45,black,1-0,0.0,83,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-1320,op46,white,1/2-1/2,0.5,89,threefold repetition,16.84
+laya-pieces-1.5M-castling+guard,stockfish-1320,op46,black,1-0,0.0,83,checkmate,17.16
+laya-pieces-1.5M-castling+guard,stockfish-1320,op47,white,0-1,0.0,52,checkmate,17.59
+laya-pieces-1.5M-castling+guard,stockfish-1320,op47,black,1-0,0.0,69,checkmate,17.16
+laya-pieces-1.5M-castling+guard,stockfish-1320,op48,white,0-1,0.0,110,checkmate,17.06
+laya-pieces-1.5M-castling+guard,stockfish-1320,op48,black,1-0,0.0,69,checkmate,17.25
+laya-pieces-1.5M-castling+guard,stockfish-1320,op49,white,0-1,0.0,112,checkmate,16.98
+laya-pieces-1.5M-castling+guard,stockfish-1320,op49,black,1-0,0.0,177,checkmate,17.06
+laya-pieces-1.5M-castling+guard,stockfish-1320,op50,white,1-0,1.0,69,checkmate,17.32
+laya-pieces-1.5M-castling+guard,stockfish-1320,op50,black,1-0,0.0,67,checkmate,17.11
+laya-pieces-1.5M-castling+guard,stockfish-1500,op01,white,0-1,0.0,32,checkmate,17.33
+laya-pieces-1.5M-castling+guard,stockfish-1500,op01,black,1-0,0.0,79,checkmate,16.97
+laya-pieces-1.5M-castling+guard,stockfish-1500,op02,white,0-1,0.0,90,checkmate,16.8
+laya-pieces-1.5M-castling+guard,stockfish-1500,op02,black,1-0,0.0,71,checkmate,17.33
+laya-pieces-1.5M-castling+guard,stockfish-1500,op03,white,0-1,0.0,72,checkmate,17.18
+laya-pieces-1.5M-castling+guard,stockfish-1500,op03,black,1-0,0.0,129,checkmate,16.96
+laya-pieces-1.5M-castling+guard,stockfish-1500,op04,white,0-1,0.0,68,checkmate,16.85
+laya-pieces-1.5M-castling+guard,stockfish-1500,op04,black,1-0,0.0,55,checkmate,17.16
+laya-pieces-1.5M-castling+guard,stockfish-1500,op05,white,0-1,0.0,52,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1500,op05,black,1-0,0.0,49,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1500,op06,white,0-1,0.0,62,checkmate,16.99
+laya-pieces-1.5M-castling+guard,stockfish-1500,op06,black,1-0,0.0,103,checkmate,16.75
+laya-pieces-1.5M-castling+guard,stockfish-1500,op07,white,0-1,0.0,50,checkmate,17.02
+laya-pieces-1.5M-castling+guard,stockfish-1500,op07,black,1-0,0.0,121,checkmate,16.96
+laya-pieces-1.5M-castling+guard,stockfish-1500,op08,white,0-1,0.0,42,checkmate,17.03
+laya-pieces-1.5M-castling+guard,stockfish-1500,op08,black,1-0,0.0,115,checkmate,16.8
+laya-pieces-1.5M-castling+guard,stockfish-1500,op09,white,0-1,0.0,78,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1500,op09,black,1-0,0.0,69,checkmate,17.05
+laya-pieces-1.5M-castling+guard,stockfish-1500,op10,white,0-1,0.0,66,checkmate,17.21
+laya-pieces-1.5M-castling+guard,stockfish-1500,op10,black,1-0,0.0,65,checkmate,17.11
+laya-pieces-1.5M-castling+guard,stockfish-1500,op11,white,0-1,0.0,66,checkmate,17.1
+laya-pieces-1.5M-castling+guard,stockfish-1500,op11,black,1-0,0.0,101,checkmate,16.91
+laya-pieces-1.5M-castling+guard,stockfish-1500,op12,white,0-1,0.0,96,checkmate,17.26
+laya-pieces-1.5M-castling+guard,stockfish-1500,op12,black,1-0,0.0,59,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-1500,op13,white,0-1,0.0,62,checkmate,16.92
+laya-pieces-1.5M-castling+guard,stockfish-1500,op13,black,1-0,0.0,113,checkmate,16.72
+laya-pieces-1.5M-castling+guard,stockfish-1500,op14,white,1/2-1/2,0.5,113,threefold repetition,16.92
+laya-pieces-1.5M-castling+guard,stockfish-1500,op14,black,1-0,0.0,27,checkmate,17.25
+laya-pieces-1.5M-castling+guard,stockfish-1500,op15,white,1/2-1/2,0.5,105,threefold repetition,16.92
+laya-pieces-1.5M-castling+guard,stockfish-1500,op15,black,1-0,0.0,57,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1500,op16,white,0-1,0.0,64,checkmate,17.3
+laya-pieces-1.5M-castling+guard,stockfish-1500,op16,black,1-0,0.0,65,checkmate,17.26
+laya-pieces-1.5M-castling+guard,stockfish-1500,op17,white,0-1,0.0,126,checkmate,16.92
+laya-pieces-1.5M-castling+guard,stockfish-1500,op17,black,1-0,0.0,45,checkmate,17.18
+laya-pieces-1.5M-castling+guard,stockfish-1500,op18,white,0-1,0.0,64,checkmate,17.28
+laya-pieces-1.5M-castling+guard,stockfish-1500,op18,black,1-0,0.0,149,checkmate,16.87
+laya-pieces-1.5M-castling+guard,stockfish-1500,op19,white,0-1,0.0,102,checkmate,16.98
+laya-pieces-1.5M-castling+guard,stockfish-1500,op19,black,1-0,0.0,51,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1500,op20,white,0-1,0.0,78,checkmate,16.75
+laya-pieces-1.5M-castling+guard,stockfish-1500,op20,black,1-0,0.0,81,checkmate,17.12
+laya-pieces-1.5M-castling+guard,stockfish-1500,op21,white,0-1,0.0,56,checkmate,16.76
+laya-pieces-1.5M-castling+guard,stockfish-1500,op21,black,1-0,0.0,107,checkmate,16.91
+laya-pieces-1.5M-castling+guard,stockfish-1500,op22,white,0-1,0.0,88,checkmate,17.1
+laya-pieces-1.5M-castling+guard,stockfish-1500,op22,black,1-0,0.0,49,checkmate,17.0
+laya-pieces-1.5M-castling+guard,stockfish-1500,op23,white,0-1,0.0,108,checkmate,16.96
+laya-pieces-1.5M-castling+guard,stockfish-1500,op23,black,1/2-1/2,0.5,86,threefold repetition,16.97
+laya-pieces-1.5M-castling+guard,stockfish-1500,op24,white,0-1,0.0,60,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1500,op24,black,1/2-1/2,0.5,58,threefold repetition,17.23
+laya-pieces-1.5M-castling+guard,stockfish-1500,op25,white,0-1,0.0,96,checkmate,16.79
+laya-pieces-1.5M-castling+guard,stockfish-1500,op25,black,1-0,0.0,81,checkmate,16.7
+laya-pieces-1.5M-castling+guard,stockfish-1500,op26,white,1/2-1/2,0.5,59,threefold repetition,17.05
+laya-pieces-1.5M-castling+guard,stockfish-1500,op26,black,1/2-1/2,0.5,98,threefold repetition,17.03
+laya-pieces-1.5M-castling+guard,stockfish-1500,op27,white,0-1,0.0,116,checkmate,16.66
+laya-pieces-1.5M-castling+guard,stockfish-1500,op27,black,1-0,0.0,71,checkmate,17.06
+laya-pieces-1.5M-castling+guard,stockfish-1500,op28,white,0-1,0.0,64,checkmate,17.29
+laya-pieces-1.5M-castling+guard,stockfish-1500,op28,black,1/2-1/2,0.5,90,threefold repetition,17.06
+laya-pieces-1.5M-castling+guard,stockfish-1500,op29,white,1/2-1/2,0.5,69,threefold repetition,17.18
+laya-pieces-1.5M-castling+guard,stockfish-1500,op29,black,1/2-1/2,0.5,86,threefold repetition,17.16
+laya-pieces-1.5M-castling+guard,stockfish-1500,op30,white,0-1,0.0,86,checkmate,17.51
+laya-pieces-1.5M-castling+guard,stockfish-1500,op30,black,1-0,0.0,177,checkmate,16.91
+laya-pieces-1.5M-castling+guard,stockfish-1500,op31,white,0-1,0.0,42,checkmate,16.9
+laya-pieces-1.5M-castling+guard,stockfish-1500,op31,black,1-0,0.0,109,checkmate,16.55
+laya-pieces-1.5M-castling+guard,stockfish-1500,op32,white,0-1,0.0,58,checkmate,17.39
+laya-pieces-1.5M-castling+guard,stockfish-1500,op32,black,1/2-1/2,0.5,90,threefold repetition,17.21
+laya-pieces-1.5M-castling+guard,stockfish-1500,op33,white,0-1,0.0,22,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-1500,op33,black,1-0,0.0,49,checkmate,17.3
+laya-pieces-1.5M-castling+guard,stockfish-1500,op34,white,0-1,0.0,54,checkmate,17.4
+laya-pieces-1.5M-castling+guard,stockfish-1500,op34,black,1-0,0.0,157,checkmate,17.19
+laya-pieces-1.5M-castling+guard,stockfish-1500,op35,white,0-1,0.0,40,checkmate,17.13
+laya-pieces-1.5M-castling+guard,stockfish-1500,op35,black,0-1,1.0,162,checkmate,16.73
+laya-pieces-1.5M-castling+guard,stockfish-1500,op36,white,0-1,0.0,78,checkmate,16.94
+laya-pieces-1.5M-castling+guard,stockfish-1500,op36,black,1-0,0.0,45,checkmate,17.13
+laya-pieces-1.5M-castling+guard,stockfish-1500,op37,white,0-1,0.0,82,checkmate,17.05
+laya-pieces-1.5M-castling+guard,stockfish-1500,op37,black,1-0,0.0,53,checkmate,17.19
+laya-pieces-1.5M-castling+guard,stockfish-1500,op38,white,0-1,0.0,40,checkmate,17.03
+laya-pieces-1.5M-castling+guard,stockfish-1500,op38,black,1-0,0.0,105,checkmate,16.75
+laya-pieces-1.5M-castling+guard,stockfish-1500,op39,white,0-1,0.0,90,checkmate,17.29
+laya-pieces-1.5M-castling+guard,stockfish-1500,op39,black,1-0,0.0,63,checkmate,17.27
+laya-pieces-1.5M-castling+guard,stockfish-1500,op40,white,0-1,0.0,68,checkmate,16.7
+laya-pieces-1.5M-castling+guard,stockfish-1500,op40,black,1-0,0.0,41,checkmate,17.38
+laya-pieces-1.5M-castling+guard,stockfish-1500,op41,white,0-1,0.0,76,checkmate,17.58
+laya-pieces-1.5M-castling+guard,stockfish-1500,op41,black,1-0,0.0,37,checkmate,17.27
+laya-pieces-1.5M-castling+guard,stockfish-1500,op42,white,0-1,0.0,92,checkmate,16.99
+laya-pieces-1.5M-castling+guard,stockfish-1500,op42,black,1-0,0.0,51,checkmate,17.34
+laya-pieces-1.5M-castling+guard,stockfish-1500,op43,white,0-1,0.0,58,checkmate,17.35
+laya-pieces-1.5M-castling+guard,stockfish-1500,op43,black,1-0,0.0,63,checkmate,17.3
+laya-pieces-1.5M-castling+guard,stockfish-1500,op44,white,0-1,0.0,62,checkmate,17.02
+laya-pieces-1.5M-castling+guard,stockfish-1500,op44,black,1-0,0.0,57,checkmate,16.95
+laya-pieces-1.5M-castling+guard,stockfish-1500,op45,white,0-1,0.0,72,checkmate,16.69
+laya-pieces-1.5M-castling+guard,stockfish-1500,op45,black,1-0,0.0,49,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1500,op46,white,0-1,0.0,42,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-1500,op46,black,1-0,0.0,75,checkmate,17.11
+laya-pieces-1.5M-castling+guard,stockfish-1500,op47,white,0-1,0.0,46,checkmate,16.82
+laya-pieces-1.5M-castling+guard,stockfish-1500,op47,black,1-0,0.0,43,checkmate,17.19
+laya-pieces-1.5M-castling+guard,stockfish-1500,op48,white,0-1,0.0,70,checkmate,16.96
+laya-pieces-1.5M-castling+guard,stockfish-1500,op48,black,1-0,0.0,49,checkmate,16.88
+laya-pieces-1.5M-castling+guard,stockfish-1500,op49,white,0-1,0.0,84,checkmate,17.06
+laya-pieces-1.5M-castling+guard,stockfish-1500,op49,black,1-0,0.0,93,checkmate,17.42
+laya-pieces-1.5M-castling+guard,stockfish-1500,op50,white,0-1,0.0,44,checkmate,17.29
+laya-pieces-1.5M-castling+guard,stockfish-1500,op50,black,1-0,0.0,71,checkmate,17.42
+laya-pieces-1.5M-castling+guard,stockfish-1700,op01,white,0-1,0.0,20,checkmate,17.76
+laya-pieces-1.5M-castling+guard,stockfish-1700,op01,black,1-0,0.0,77,checkmate,17.28
+laya-pieces-1.5M-castling+guard,stockfish-1700,op02,white,0-1,0.0,60,checkmate,17.15
+laya-pieces-1.5M-castling+guard,stockfish-1700,op02,black,1/2-1/2,0.5,72,threefold repetition,17.28
+laya-pieces-1.5M-castling+guard,stockfish-1700,op03,white,0-1,0.0,48,checkmate,17.33
+laya-pieces-1.5M-castling+guard,stockfish-1700,op03,black,1-0,0.0,43,checkmate,17.53
+laya-pieces-1.5M-castling+guard,stockfish-1700,op04,white,0-1,0.0,58,checkmate,17.08
+laya-pieces-1.5M-castling+guard,stockfish-1700,op04,black,1-0,0.0,73,checkmate,17.04
+laya-pieces-1.5M-castling+guard,stockfish-1700,op05,white,0-1,0.0,60,checkmate,17.11
+laya-pieces-1.5M-castling+guard,stockfish-1700,op05,black,1-0,0.0,45,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1700,op06,white,0-1,0.0,64,checkmate,16.84
+laya-pieces-1.5M-castling+guard,stockfish-1700,op06,black,1-0,0.0,107,checkmate,17.03
+laya-pieces-1.5M-castling+guard,stockfish-1700,op07,white,0-1,0.0,94,checkmate,17.22
+laya-pieces-1.5M-castling+guard,stockfish-1700,op07,black,1-0,0.0,67,checkmate,17.21
+laya-pieces-1.5M-castling+guard,stockfish-1700,op08,white,0-1,0.0,82,checkmate,17.02
+laya-pieces-1.5M-castling+guard,stockfish-1700,op08,black,1/2-1/2,0.5,58,threefold repetition,17.04
+laya-pieces-1.5M-castling+guard,stockfish-1700,op09,white,0-1,0.0,78,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-1700,op09,black,1-0,0.0,79,checkmate,17.19
+laya-pieces-1.5M-castling+guard,stockfish-1700,op10,white,0-1,0.0,66,checkmate,17.08
+laya-pieces-1.5M-castling+guard,stockfish-1700,op10,black,1-0,0.0,23,checkmate,16.93
+laya-pieces-1.5M-castling+guard,stockfish-1700,op11,white,0-1,0.0,72,checkmate,17.05
+laya-pieces-1.5M-castling+guard,stockfish-1700,op11,black,1-0,0.0,65,checkmate,16.74
+laya-pieces-1.5M-castling+guard,stockfish-1700,op12,white,0-1,0.0,86,checkmate,16.91
+laya-pieces-1.5M-castling+guard,stockfish-1700,op12,black,1-0,0.0,57,checkmate,16.9
+laya-pieces-1.5M-castling+guard,stockfish-1700,op13,white,0-1,0.0,54,checkmate,17.06
+laya-pieces-1.5M-castling+guard,stockfish-1700,op13,black,1-0,0.0,55,checkmate,16.98
+laya-pieces-1.5M-castling+guard,stockfish-1700,op14,white,0-1,0.0,58,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-1700,op14,black,1-0,0.0,51,checkmate,17.25
+laya-pieces-1.5M-castling+guard,stockfish-1700,op15,white,0-1,0.0,96,checkmate,17.05
+laya-pieces-1.5M-castling+guard,stockfish-1700,op15,black,1-0,0.0,67,checkmate,17.37
+laya-pieces-1.5M-castling+guard,stockfish-1700,op16,white,1/2-1/2,0.5,91,threefold repetition,16.63
+laya-pieces-1.5M-castling+guard,stockfish-1700,op16,black,1-0,0.0,79,checkmate,16.9
+laya-pieces-1.5M-castling+guard,stockfish-1700,op17,white,0-1,0.0,60,checkmate,16.98
+laya-pieces-1.5M-castling+guard,stockfish-1700,op17,black,1-0,0.0,77,checkmate,17.01
+laya-pieces-1.5M-castling+guard,stockfish-1700,op18,white,0-1,0.0,44,checkmate,17.31
+laya-pieces-1.5M-castling+guard,stockfish-1700,op18,black,1-0,0.0,55,checkmate,16.95
+laya-pieces-1.5M-castling+guard,stockfish-1700,op19,white,0-1,0.0,56,checkmate,17.12
+laya-pieces-1.5M-castling+guard,stockfish-1700,op19,black,1-0,0.0,47,checkmate,16.8
+laya-pieces-1.5M-castling+guard,stockfish-1700,op20,white,0-1,0.0,68,checkmate,17.3
+laya-pieces-1.5M-castling+guard,stockfish-1700,op20,black,1-0,0.0,69,checkmate,17.03
+laya-pieces-1.5M-castling+guard,stockfish-1700,op21,white,0-1,0.0,58,checkmate,17.25
+laya-pieces-1.5M-castling+guard,stockfish-1700,op21,black,1-0,0.0,39,checkmate,17.09
+laya-pieces-1.5M-castling+guard,stockfish-1700,op22,white,0-1,0.0,80,checkmate,16.88
+laya-pieces-1.5M-castling+guard,stockfish-1700,op22,black,1-0,0.0,57,checkmate,16.84
+laya-pieces-1.5M-castling+guard,stockfish-1700,op23,white,0-1,0.0,40,checkmate,17.32
+laya-pieces-1.5M-castling+guard,stockfish-1700,op23,black,1-0,0.0,57,checkmate,17.37
+laya-pieces-1.5M-castling+guard,stockfish-1700,op24,white,0-1,0.0,60,checkmate,17.01
+laya-pieces-1.5M-castling+guard,stockfish-1700,op24,black,1-0,0.0,47,checkmate,17.35
+laya-pieces-1.5M-castling+guard,stockfish-1700,op25,white,0-1,0.0,124,checkmate,16.96
+laya-pieces-1.5M-castling+guard,stockfish-1700,op25,black,1-0,0.0,65,checkmate,17.35
+laya-pieces-1.5M-castling+guard,stockfish-1700,op26,white,0-1,0.0,24,checkmate,17.32
+laya-pieces-1.5M-castling+guard,stockfish-1700,op26,black,1/2-1/2,0.5,94,threefold repetition,17.13
+laya-pieces-1.5M-castling+guard,stockfish-1700,op27,white,1/2-1/2,0.5,111,threefold repetition,16.9
+laya-pieces-1.5M-castling+guard,stockfish-1700,op27,black,1-0,0.0,65,checkmate,17.0
+laya-pieces-1.5M-castling+guard,stockfish-1700,op28,white,0-1,0.0,70,checkmate,16.74
+laya-pieces-1.5M-castling+guard,stockfish-1700,op28,black,1/2-1/2,0.5,80,threefold repetition,17.11
+laya-pieces-1.5M-castling+guard,stockfish-1700,op29,white,0-1,0.0,58,checkmate,16.95
+laya-pieces-1.5M-castling+guard,stockfish-1700,op29,black,1/2-1/2,0.5,96,threefold repetition,17.01
+laya-pieces-1.5M-castling+guard,stockfish-1700,op30,white,0-1,0.0,74,checkmate,17.03
+laya-pieces-1.5M-castling+guard,stockfish-1700,op30,black,1-0,0.0,59,checkmate,17.24
+laya-pieces-1.5M-castling+guard,stockfish-1700,op31,white,0-1,0.0,110,checkmate,16.67
+laya-pieces-1.5M-castling+guard,stockfish-1700,op31,black,1-0,0.0,51,checkmate,17.05
+laya-pieces-1.5M-castling+guard,stockfish-1700,op32,white,0-1,0.0,46,checkmate,17.02
+laya-pieces-1.5M-castling+guard,stockfish-1700,op32,black,1-0,0.0,81,checkmate,16.86
+laya-pieces-1.5M-castling+guard,stockfish-1700,op33,white,0-1,0.0,44,checkmate,16.95
+laya-pieces-1.5M-castling+guard,stockfish-1700,op33,black,1-0,0.0,81,checkmate,16.92
+laya-pieces-1.5M-castling+guard,stockfish-1700,op34,white,0-1,0.0,62,checkmate,16.83
+laya-pieces-1.5M-castling+guard,stockfish-1700,op34,black,1-0,0.0,59,checkmate,16.85
+laya-pieces-1.5M-castling+guard,stockfish-1700,op35,white,0-1,0.0,86,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-1700,op35,black,1-0,0.0,51,checkmate,17.4
+laya-pieces-1.5M-castling+guard,stockfish-1700,op36,white,1/2-1/2,0.5,59,threefold repetition,17.11
+laya-pieces-1.5M-castling+guard,stockfish-1700,op36,black,1-0,0.0,77,checkmate,16.75
+laya-pieces-1.5M-castling+guard,stockfish-1700,op37,white,0-1,0.0,90,checkmate,17.17
+laya-pieces-1.5M-castling+guard,stockfish-1700,op37,black,1-0,0.0,57,checkmate,16.99
+laya-pieces-1.5M-castling+guard,stockfish-1700,op38,white,0-1,0.0,64,checkmate,17.01
+laya-pieces-1.5M-castling+guard,stockfish-1700,op38,black,1-0,0.0,31,checkmate,17.15
+laya-pieces-1.5M-castling+guard,stockfish-1700,op39,white,0-1,0.0,70,checkmate,17.22
+laya-pieces-1.5M-castling+guard,stockfish-1700,op39,black,1-0,0.0,61,checkmate,17.16
+laya-pieces-1.5M-castling+guard,stockfish-1700,op40,white,0-1,0.0,104,checkmate,16.81
+laya-pieces-1.5M-castling+guard,stockfish-1700,op40,black,1-0,0.0,35,checkmate,17.15
+laya-pieces-1.5M-castling+guard,stockfish-1700,op41,white,0-1,0.0,82,checkmate,17.27
+laya-pieces-1.5M-castling+guard,stockfish-1700,op41,black,1-0,0.0,105,checkmate,17.04
+laya-pieces-1.5M-castling+guard,stockfish-1700,op42,white,0-1,0.0,90,checkmate,16.99
+laya-pieces-1.5M-castling+guard,stockfish-1700,op42,black,1-0,0.0,55,checkmate,17.31
+laya-pieces-1.5M-castling+guard,stockfish-1700,op43,white,0-1,0.0,46,checkmate,17.16
+laya-pieces-1.5M-castling+guard,stockfish-1700,op43,black,1-0,0.0,111,checkmate,16.75
+laya-pieces-1.5M-castling+guard,stockfish-1700,op44,white,0-1,0.0,26,checkmate,17.27
+laya-pieces-1.5M-castling+guard,stockfish-1700,op44,black,1-0,0.0,79,checkmate,17.1
+laya-pieces-1.5M-castling+guard,stockfish-1700,op45,white,0-1,0.0,72,checkmate,17.01
+laya-pieces-1.5M-castling+guard,stockfish-1700,op45,black,1/2-1/2,0.5,90,threefold repetition,16.86
+laya-pieces-1.5M-castling+guard,stockfish-1700,op46,white,0-1,0.0,72,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-1700,op46,black,1-0,0.0,65,checkmate,17.2
+laya-pieces-1.5M-castling+guard,stockfish-1700,op47,white,0-1,0.0,54,checkmate,17.08
+laya-pieces-1.5M-castling+guard,stockfish-1700,op47,black,1-0,0.0,47,checkmate,17.17
+laya-pieces-1.5M-castling+guard,stockfish-1700,op48,white,0-1,0.0,52,checkmate,17.15
+laya-pieces-1.5M-castling+guard,stockfish-1700,op48,black,1-0,0.0,79,checkmate,16.84
+laya-pieces-1.5M-castling+guard,stockfish-1700,op49,white,0-1,0.0,92,checkmate,17.16
+laya-pieces-1.5M-castling+guard,stockfish-1700,op49,black,1-0,0.0,67,checkmate,16.99
+laya-pieces-1.5M-castling+guard,stockfish-1700,op50,white,0-1,0.0,78,checkmate,17.23
+laya-pieces-1.5M-castling+guard,stockfish-1700,op50,black,1-0,0.0,71,checkmate,17.09
+laya-pieces-1.5M-castling+guard,stockfish-2000,op01,white,0-1,0.0,36,checkmate,17.26
+laya-pieces-1.5M-castling+guard,stockfish-2000,op01,black,1-0,0.0,53,checkmate,17.27
+laya-pieces-1.5M-castling+guard,stockfish-2000,op02,white,0-1,0.0,60,checkmate,16.92
+laya-pieces-1.5M-castling+guard,stockfish-2000,op02,black,1-0,0.0,93,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-2000,op03,white,0-1,0.0,58,checkmate,17.02
+laya-pieces-1.5M-castling+guard,stockfish-2000,op03,black,1-0,0.0,83,checkmate,16.89
+laya-pieces-1.5M-castling+guard,stockfish-2000,op04,white,0-1,0.0,62,checkmate,17.16
+laya-pieces-1.5M-castling+guard,stockfish-2000,op04,black,1/2-1/2,0.5,56,threefold repetition,16.87
+laya-pieces-1.5M-castling+guard,stockfish-2000,op05,white,0-1,0.0,48,checkmate,17.11
+laya-pieces-1.5M-castling+guard,stockfish-2000,op05,black,1-0,0.0,57,checkmate,17.01
+laya-pieces-1.5M-castling+guard,stockfish-2000,op06,white,0-1,0.0,74,checkmate,17.19
+laya-pieces-1.5M-castling+guard,stockfish-2000,op06,black,1-0,0.0,57,checkmate,16.98
+laya-pieces-1.5M-castling+guard,stockfish-2000,op07,white,0-1,0.0,72,checkmate,17.31
+laya-pieces-1.5M-castling+guard,stockfish-2000,op07,black,1-0,0.0,65,checkmate,16.82
+laya-pieces-1.5M-castling+guard,stockfish-2000,op08,white,1/2-1/2,0.5,69,threefold repetition,16.94
+laya-pieces-1.5M-castling+guard,stockfish-2000,op08,black,1/2-1/2,0.5,76,threefold repetition,17.17
+laya-pieces-1.5M-castling+guard,stockfish-2000,op09,white,0-1,0.0,92,checkmate,17.05
+laya-pieces-1.5M-castling+guard,stockfish-2000,op09,black,1/2-1/2,0.5,58,threefold repetition,17.09
+laya-pieces-1.5M-castling+guard,stockfish-2000,op10,white,0-1,0.0,64,checkmate,17.25
+laya-pieces-1.5M-castling+guard,stockfish-2000,op10,black,1-0,0.0,53,checkmate,16.56
+laya-pieces-1.5M-castling+guard,stockfish-2000,op11,white,0-1,0.0,56,checkmate,17.06
+laya-pieces-1.5M-castling+guard,stockfish-2000,op11,black,1-0,0.0,59,checkmate,17.1
+laya-pieces-1.5M-castling+guard,stockfish-2000,op12,white,0-1,0.0,66,checkmate,16.91
+laya-pieces-1.5M-castling+guard,stockfish-2000,op12,black,1-0,0.0,55,checkmate,17.15
+laya-pieces-1.5M-castling+guard,stockfish-2000,op13,white,1/2-1/2,0.5,87,threefold repetition,17.19
+laya-pieces-1.5M-castling+guard,stockfish-2000,op13,black,1-0,0.0,59,checkmate,17.09
+laya-pieces-1.5M-castling+guard,stockfish-2000,op14,white,0-1,0.0,62,checkmate,17.35
+laya-pieces-1.5M-castling+guard,stockfish-2000,op14,black,1-0,0.0,47,checkmate,17.47
+laya-pieces-1.5M-castling+guard,stockfish-2000,op15,white,0-1,0.0,46,checkmate,17.12
+laya-pieces-1.5M-castling+guard,stockfish-2000,op15,black,1-0,0.0,67,checkmate,17.1
+laya-pieces-1.5M-castling+guard,stockfish-2000,op16,white,1/2-1/2,0.5,77,threefold repetition,16.68
+laya-pieces-1.5M-castling+guard,stockfish-2000,op16,black,1-0,0.0,57,checkmate,17.23
+laya-pieces-1.5M-castling+guard,stockfish-2000,op17,white,1/2-1/2,0.5,71,threefold repetition,16.97
+laya-pieces-1.5M-castling+guard,stockfish-2000,op17,black,1-0,0.0,57,checkmate,17.03
+laya-pieces-1.5M-castling+guard,stockfish-2000,op18,white,0-1,0.0,66,checkmate,17.11
+laya-pieces-1.5M-castling+guard,stockfish-2000,op18,black,1-0,0.0,73,checkmate,17.17
+laya-pieces-1.5M-castling+guard,stockfish-2000,op19,white,0-1,0.0,76,checkmate,17.19
+laya-pieces-1.5M-castling+guard,stockfish-2000,op19,black,1-0,0.0,73,checkmate,17.31
+laya-pieces-1.5M-castling+guard,stockfish-2000,op20,white,0-1,0.0,38,checkmate,17.01
+laya-pieces-1.5M-castling+guard,stockfish-2000,op20,black,1-0,0.0,71,checkmate,17.06
+laya-pieces-1.5M-castling+guard,stockfish-2000,op21,white,0-1,0.0,50,checkmate,17.02
+laya-pieces-1.5M-castling+guard,stockfish-2000,op21,black,1-0,0.0,77,checkmate,17.06
+laya-pieces-1.5M-castling+guard,stockfish-2000,op22,white,0-1,0.0,42,checkmate,16.55
+laya-pieces-1.5M-castling+guard,stockfish-2000,op22,black,1-0,0.0,63,checkmate,17.09
+laya-pieces-1.5M-castling+guard,stockfish-2000,op23,white,0-1,0.0,72,checkmate,16.83
+laya-pieces-1.5M-castling+guard,stockfish-2000,op23,black,1-0,0.0,91,checkmate,16.84
+laya-pieces-1.5M-castling+guard,stockfish-2000,op24,white,0-1,0.0,84,checkmate,16.89
+laya-pieces-1.5M-castling+guard,stockfish-2000,op24,black,1-0,0.0,45,checkmate,17.11
+laya-pieces-1.5M-castling+guard,stockfish-2000,op25,white,0-1,0.0,50,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-2000,op25,black,1-0,0.0,57,checkmate,16.97
+laya-pieces-1.5M-castling+guard,stockfish-2000,op26,white,0-1,0.0,98,checkmate,17.03
+laya-pieces-1.5M-castling+guard,stockfish-2000,op26,black,1-0,0.0,21,checkmate,17.29
+laya-pieces-1.5M-castling+guard,stockfish-2000,op27,white,1/2-1/2,0.5,75,threefold repetition,16.84
+laya-pieces-1.5M-castling+guard,stockfish-2000,op27,black,1/2-1/2,0.5,92,threefold repetition,16.91
+laya-pieces-1.5M-castling+guard,stockfish-2000,op28,white,0-1,0.0,30,checkmate,17.53
+laya-pieces-1.5M-castling+guard,stockfish-2000,op28,black,1-0,0.0,75,checkmate,17.4
+laya-pieces-1.5M-castling+guard,stockfish-2000,op29,white,0-1,0.0,62,checkmate,17.03
+laya-pieces-1.5M-castling+guard,stockfish-2000,op29,black,1-0,0.0,97,checkmate,16.78
+laya-pieces-1.5M-castling+guard,stockfish-2000,op30,white,0-1,0.0,70,checkmate,16.98
+laya-pieces-1.5M-castling+guard,stockfish-2000,op30,black,1-0,0.0,35,checkmate,17.19
+laya-pieces-1.5M-castling+guard,stockfish-2000,op31,white,0-1,0.0,32,checkmate,16.86
+laya-pieces-1.5M-castling+guard,stockfish-2000,op31,black,1-0,0.0,71,checkmate,17.12
+laya-pieces-1.5M-castling+guard,stockfish-2000,op32,white,0-1,0.0,74,checkmate,16.92
+laya-pieces-1.5M-castling+guard,stockfish-2000,op32,black,1-0,0.0,79,checkmate,16.98
+laya-pieces-1.5M-castling+guard,stockfish-2000,op33,white,0-1,0.0,54,checkmate,17.0
+laya-pieces-1.5M-castling+guard,stockfish-2000,op33,black,1-0,0.0,47,checkmate,16.96
+laya-pieces-1.5M-castling+guard,stockfish-2000,op34,white,0-1,0.0,100,checkmate,16.84
+laya-pieces-1.5M-castling+guard,stockfish-2000,op34,black,1-0,0.0,63,checkmate,17.2
+laya-pieces-1.5M-castling+guard,stockfish-2000,op35,white,0-1,0.0,86,checkmate,17.24
+laya-pieces-1.5M-castling+guard,stockfish-2000,op35,black,1-0,0.0,69,checkmate,17.25
+laya-pieces-1.5M-castling+guard,stockfish-2000,op36,white,0-1,0.0,44,checkmate,17.12
+laya-pieces-1.5M-castling+guard,stockfish-2000,op36,black,1-0,0.0,57,checkmate,17.14
+laya-pieces-1.5M-castling+guard,stockfish-2000,op37,white,0-1,0.0,80,checkmate,17.37
+laya-pieces-1.5M-castling+guard,stockfish-2000,op37,black,1-0,0.0,55,checkmate,17.29
+laya-pieces-1.5M-castling+guard,stockfish-2000,op38,white,0-1,0.0,58,checkmate,17.48
+laya-pieces-1.5M-castling+guard,stockfish-2000,op38,black,1-0,0.0,57,checkmate,16.87
+laya-pieces-1.5M-castling+guard,stockfish-2000,op39,white,0-1,0.0,110,checkmate,16.9
+laya-pieces-1.5M-castling+guard,stockfish-2000,op39,black,1-0,0.0,93,checkmate,16.75
+laya-pieces-1.5M-castling+guard,stockfish-2000,op40,white,1/2-1/2,0.5,73,threefold repetition,17.07
+laya-pieces-1.5M-castling+guard,stockfish-2000,op40,black,1-0,0.0,43,checkmate,17.58
+laya-pieces-1.5M-castling+guard,stockfish-2000,op41,white,0-1,0.0,90,checkmate,17.02
+laya-pieces-1.5M-castling+guard,stockfish-2000,op41,black,1-0,0.0,37,checkmate,16.94
+laya-pieces-1.5M-castling+guard,stockfish-2000,op42,white,0-1,0.0,56,checkmate,17.21
+laya-pieces-1.5M-castling+guard,stockfish-2000,op42,black,1-0,0.0,57,checkmate,17.02
+laya-pieces-1.5M-castling+guard,stockfish-2000,op43,white,0-1,0.0,72,checkmate,17.01
+laya-pieces-1.5M-castling+guard,stockfish-2000,op43,black,1-0,0.0,153,checkmate,17.07
+laya-pieces-1.5M-castling+guard,stockfish-2000,op44,white,0-1,0.0,56,checkmate,16.58
+laya-pieces-1.5M-castling+guard,stockfish-2000,op44,black,1/2-1/2,0.5,52,threefold repetition,16.99
+laya-pieces-1.5M-castling+guard,stockfish-2000,op45,white,0-1,0.0,134,checkmate,17.0
+laya-pieces-1.5M-castling+guard,stockfish-2000,op45,black,1-0,0.0,61,checkmate,17.18
+laya-pieces-1.5M-castling+guard,stockfish-2000,op46,white,0-1,0.0,110,checkmate,17.01
+laya-pieces-1.5M-castling+guard,stockfish-2000,op46,black,1-0,0.0,65,checkmate,17.29
+laya-pieces-1.5M-castling+guard,stockfish-2000,op47,white,0-1,0.0,66,checkmate,17.35
+laya-pieces-1.5M-castling+guard,stockfish-2000,op47,black,1-0,0.0,45,checkmate,16.82
+laya-pieces-1.5M-castling+guard,stockfish-2000,op48,white,0-1,0.0,60,checkmate,17.04
+laya-pieces-1.5M-castling+guard,stockfish-2000,op48,black,1-0,0.0,47,checkmate,17.16
+laya-pieces-1.5M-castling+guard,stockfish-2000,op49,white,0-1,0.0,62,checkmate,17.04
+laya-pieces-1.5M-castling+guard,stockfish-2000,op49,black,1-0,0.0,65,checkmate,17.19
+laya-pieces-1.5M-castling+guard,stockfish-2000,op50,white,0-1,0.0,74,checkmate,17.04
+laya-pieces-1.5M-castling+guard,stockfish-2000,op50,black,1-0,0.0,27,checkmate,17.83
