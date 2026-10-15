@@ -13,6 +13,27 @@ One entry per experiment: the idea, what changed, the result, and the decision. 
 - **Small differences are noise.** Rough noise levels: about ±1 point on validation top-1 (2,000 positions), about
   ±1.5 points on puzzles (1,000), about ±0.5 points on win-chance lost (2,000 game positions).
 
+## Where we stopped (2026-10-16)
+
+The improvement loop stops here. The best model is `long-castling-fix` with the finish-the-game guard: **1121 Elo**
+at about 15 ms per move. Its biggest gain came from a bug fix (castling targets), not from a new idea: six changes
+to the input or output format found nothing. The remaining ideas would cost many GPU hours for gains too small to
+measure reliably with 600 games (about ±35 Elo), so they aren't worth it for this project.
+
+Ideas left for anyone who continues, most promising first:
+
+- **Look at how Laya loses.** Find the moves in its lost games that threw the game away (cheap, CPU only). If most
+  are simple blunders, a rules-only safety check (don't leave a piece hanging), like the finish-the-game guard,
+  could gain far more than more training. It would measure Laya plus a rule, not Laya alone.
+- **More data.** 300k to 1.5M positions gained about 50 Elo, so 3M would likely add only about 20 (about 14 hours
+  of training). Worth combining with the richer targets of experiment 7, which may only pay off in a long run.
+- **More room for the options.** Laya's default question budget (`head_max_len` 192) cuts the move options of 3%
+  of positions short; 256 would fix that at almost no cost. Untested.
+- **A two-step version of experiment 5.** Ask "which square" after "which piece", telling it the chosen piece. That
+  fixes experiment 5's mismatch but needs two passes per move.
+- **A stronger move output for Option D.** Score each move from the tokens of its two squares instead of one
+  summary of the board. A different project more than a tweak.
+
 ## Experiments
 
 ### 7. Richer targets: Stockfish scores more moves (2026-10-16)
