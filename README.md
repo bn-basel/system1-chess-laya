@@ -7,8 +7,9 @@ answer from a list of options in a single step, without thinking ahead. This pro
 choose chess moves, and measures how good and how fast those moves are compared with Stockfish. First as it comes,
 then after training it on chess.
 
-> **Status:** Phase 4 done (games and Elo). See the
-> [roadmap](docs/roadmap.md).
+> **Status:** Phase 4 done (games and Elo), and the improvement loop has finished (two rounds, stopped on
+> 2026-10-16). Best model: `long-castling-fix`, 37.0% of puzzles and 1121 Elo with the finish-the-game guard (1039
+> without it). See the [experiment log](docs/experiments.md) and the [roadmap](docs/roadmap.md).
 
 ## First results
 
@@ -23,11 +24,12 @@ Tested on 1,000 Lichess puzzles and 2,000 positions from real games ([details](t
 | Laya, after a 10-minute pilot (50k positions) | 32.6% | 16.2% | 17.3 ms (GPU) |
 | Laya, after an overnight run (2.5M positions) | 35.3% | 12.9% | 15.3 ms (GPU) |
 | Laya with a piece list, 300k positions | 34.8% | 11.5% | 17.2 ms (GPU) |
-| **Laya with a piece list, 1.5M positions** | **35.8%** | **10.9%** | 14.9 ms (GPU) |
+| Laya with a piece list, 1.5M positions | 35.8% | 10.9% | 14.9 ms (GPU) |
+| **Laya with a piece list, 1.5M positions, castling fix** | **37.0%** | **10.6%** | 15.1 ms (GPU) |
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/strength_vs_time-dark.png">
-  <img alt="Puzzles solved vs time per move: Stockfish solves 79-100% of puzzles in 0.5-60 ms; Laya goes from 5% before training to 35% after training, at about 17 ms per move" src="figures/strength_vs_time.png">
+  <img alt="Puzzles solved vs time per move: Stockfish solves 79-100% of puzzles in 0.5-60 ms; Laya goes from 5% before training to 37% after training, at about 15 ms per move" src="figures/strength_vs_time.png">
 </picture>
 
 Out of the box, Laya plays no better than random. After training on 50,000 positions analysed by Stockfish, it already
@@ -37,7 +39,13 @@ beats a "grab material" player. Training overnight on 2.5 million positions impr
 `r1bqkb1r/pppp1ppp/2n2n2` reaches it as fragments like `rk`, `pp`, `1`, so it has to count its way to each piece.
 Adding a list of each side's pieces, written like the moves (`Ke1 Qd1 Nf3`), let a 300k-position run beat the 2.5M
 FEN run on move quality. An 8×8 grid of the same length made no difference. A longer run with the piece list (1.5M
-positions) gave the best model so far, but only by a little: with this setup Laya levels off at about 36% of puzzles.
+positions) gave only a little more: with this setup Laya levels off at about 36% of puzzles.
+
+**The best model came from a bug fix.** The training data never taught Laya to castle: the Lichess database writes
+castling differently from python-chess, so castling always got a target of 0 and the old model never castled. Fixing
+that, with the same 1.5M-position run, gave **37.0%** of puzzles. Six other experiments (a lower learning rate, no
+FEN, longer move notation, a two-step piece-then-square question, a different move output, and richer training
+targets) found no clear gain; see the [experiment log](docs/experiments.md).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/board_formats-dark.png">
@@ -46,27 +54,28 @@ positions) gave the best model so far, but only by a little: with this setup Lay
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/learning_curve-dark.png">
-  <img alt="Learning curve of the best model: puzzles solved rises from 4% to about 30% in the first 400k training positions and levels off at about 36% from 800k positions on" src="figures/learning_curve.png">
+  <img alt="Learning curve of the best model: puzzles solved rises from 4% to about 33% in the first 100k training positions and levels off at about 37% from 900k positions on" src="figures/learning_curve.png">
 </picture>
 
-## Elo from 3,000 games
+## Elo from 4,800 games
 
 Each Laya version played 100 games against each opponent: a random mover, a "grab material" player, and Stockfish
 limited to 1320, 1500, 1700 and 2000 Elo. All games start from 50 balanced openings, each played with both colours.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/elo_ladder-dark.png">
-  <img alt="Elo ladder: untrained Laya 689 (level with random moves at 678), grab material 834, pilot 908, piece list 300k 961, FEN 2.5M 964, piece list 1.5M 1008, and 1053 with the finish-the-game guard; Stockfish levels at 1320 to 2000 above" src="figures/elo_ladder.png">
+  <img alt="Elo ladder: untrained Laya 684 (level with random moves at 668), grab material 835, pilot 905, piece list 300k 959, FEN 2.5M 962, piece list 1.5M 1006, 1039 with the castling fix, and 1121 with the castling fix and the finish-the-game guard; Stockfish levels at 1320 to 2000 above" src="figures/elo_ladder.png">
 </picture>
 
-Training took Laya from the level of a random mover (689) to about **1010 Elo**, ahead of "grab material" (834) but
-still well below Stockfish's weakest setting (1320), against which it scored 11.5 out of 100. The ranking matches
+Training took Laya from the level of a random mover (684) to about **1040 Elo** (1006 before the castling fix), ahead
+of "grab material" (835) but still well below Stockfish's weakest setting (1320), against which it scored 16.5 out of
+100. The ranking matches
 the test-set results. The numbers are on Stockfish's scale (roughly the CCRL computer rating list), not a human one.
 
-**Laya wins material but can't finish games.** Against the random mover, the best Laya won 74 games and drew 26, and
-in every one of those 26 draws it was at least a rook ahead. It walks into threefold repetitions and stalemates
+**Laya wins material but can't finish games.** Against the random mover, the 1.5M model before the castling fix won 74 games and
+drew 26, and in every one of those 26 draws it was at least a rook ahead. It walks into threefold repetitions and stalemates
 because it only ever sees the current position, not how the game got there. A simple guard (when clearly ahead, skip
-moves that repeat a position or stalemate) fixes that: 99.5 out of 100 against the random mover, and **1053 Elo**.
+moves that repeat a position or stalemate) fixes that: 99.5 out of 100 against the random mover, and **1121 Elo** for the best model.
 It changes nothing against Stockfish, where Laya is rarely ahead.
 
 **Hardware:** Laya needs about 2.3 GB of GPU memory. On an RTX 5080 it takes about 18 ms per move, or about
