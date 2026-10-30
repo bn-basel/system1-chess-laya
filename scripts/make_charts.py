@@ -241,6 +241,8 @@ PLAYER_LABELS = {
     "laya-pieces-300k": "Laya, piece list (300k positions)",
     "laya-pieces-1.5M": "Laya, piece list (1.5M positions)",
     "laya-pieces-1.5M+guard": "Laya, piece list (1.5M) + finish-the-game guard",
+    "laya-pieces-1.5M-castling": "Laya, piece list (1.5M), castling fix",
+    "laya-pieces-1.5M-castling+guard": "Laya, piece list (1.5M), castling fix + guard",
     "random": "Random moves",
     "greedy": "Grab material",
 }
@@ -252,7 +254,7 @@ def elo_ladder(theme: dict):
     fig, ax = new_figure(
         theme,
         "The Elo ladder",
-        "3,000 games: each Laya version played 100 games against each opponent. Stockfish levels are fixed at their "
+        "4,800 games: each Laya version played 100 games against each opponent. Stockfish levels are fixed at their "
         "stated ratings.",
         size=(8, 5.5),
     )
@@ -269,7 +271,7 @@ def elo_ladder(theme: dict):
             ax.plot([low, high], [y, y], color=color, linewidth=2, alpha=0.45, solid_capstyle="round", zorder=2)
         ax.plot(elo, y, marker, markersize=8, color=color, markeredgecolor=theme["surface"], markeredgewidth=1.5,
                 zorder=3)  # fmt: skip
-        bold = player == "laya-pieces-1.5M"
+        bold = player == "laya-pieces-1.5M-castling+guard"
         ax.annotate(f"{label}  {elo}", (high, y), xytext=(10, 0), textcoords="offset points", va="center",
                     fontsize=9, color=theme["ink"] if bold else theme["ink_secondary"],
                     fontweight="semibold" if bold else "normal")  # fmt: skip
